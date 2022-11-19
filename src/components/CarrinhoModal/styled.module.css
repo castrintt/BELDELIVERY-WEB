@@ -1,0 +1,22 @@
+.container_carrinho_modal{
+    position: fixed;
+    right: 0;
+    top: 0;
+    padding-top: 70px;
+    height: 100%;
+    width: 25%;
+    background-color: rgba(0, 0, 0, 0.672);
+    transition: all 0.4s;
+    z-index: 99;
+}
+.container_carrinho_modal_off{
+    width: 0%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    padding-top: 70px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.672);
+    transition: all 0.4s;
+    z-index: 99;
+}

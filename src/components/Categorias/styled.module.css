@@ -1,0 +1,23 @@
+.container_card_category{
+    width: 100%;
+    max-width: 1400px;
+    height: 120px;
+    background-color: rgba(0, 0, 0, 0.322);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.container_card_category > div{
+    width: 19%;
+    height: 90%;
+    background-color: black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container_card_category > div img {
+    width: 70%;
+    height: 100%;
+}

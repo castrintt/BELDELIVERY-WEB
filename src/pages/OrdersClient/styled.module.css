@@ -1,0 +1,50 @@
+
+.container{
+    padding: 6rem 0 1rem 20rem;
+    width: 100%;
+    max-width: 1600px;
+}
+.tittle{
+    padding: 2rem 0;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tittle > h2{
+    font-size: 2rem;
+    color: dodgerblue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.tittle > button{
+    padding: .5rem 1.2rem;
+    border-radius: 5px;
+    background-color: dodgerblue;
+    border: none;
+    outline: none;
+    color: white;
+}
+
+.container_form_user{
+    width: 95%;
+    height: 550px;
+    padding: 1rem;
+    border: 1px solid #bbbbbb52;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.144);
+}
+.card_order{
+    height: 80px;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.411);
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.144);
+}
+
+.container_form_user > div > span:first-of-type{
+    font-weight: bold;
+}
+
+tr, td{
+    text-align: center;
+}
