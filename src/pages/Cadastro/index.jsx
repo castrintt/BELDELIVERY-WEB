@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 import Loading from "../../components/Loading";
+import SidebarLogin from "../../components/SideBarLogin/SidebarLogin";
 
 const Cadastro = () => {
     const [ typeCadastro, setTypeCadastro ] = useState(null);
@@ -43,8 +44,8 @@ const Cadastro = () => {
                 if(password === true){
                     createClient();
                     setErrorMesenge(null);
-                } else {setErrorMesenge(password);;};
-            } else {setErrorMesenge(email); ;};
+                } else {setErrorMesenge(password);};
+            } else {setErrorMesenge(email);};
         } else {setErrorMesenge(name); };
     };
     
@@ -146,7 +147,54 @@ const Cadastro = () => {
     return(
         <>
             {loading && <Loading />}
-            {typeCadastro == null ? (
+            <main className={css.container_cadastro}>
+                <section className={css.content_cadastro}>
+                    <SidebarLogin />
+                    <div className={css.container_form}>
+                        <h1>Faça seu cadastro</h1>
+                        <div className={css.inputGroup}>
+                            <label htmlFor="nameclient">Nome:</label>
+                            <input 
+                                type="text"
+                                id="nameclient"
+                                onChange={e => setClientForm({...clientForm, name: e.target.value})}
+                                value={clientForm.name}
+                            />
+                        </div>
+
+                        <div className={css.inputGroup}>
+                            <label htmlFor="emailclient">Email:</label>
+                            <input 
+                                type="email"
+                                id="emailclient"
+                                onChange={e => setClientForm({...clientForm, email: e.target.value})}
+                                value={clientForm.email}
+                            />
+                        </div>
+                        
+                        <div className={css.inputGroup}>
+                            <label htmlFor="passwordclient">Senha:</label>
+                            <input
+                                type="password"
+                                id="passwordclient"
+                                onChange={e => setClientForm({...clientForm, password: e.target.value})}
+                                value={clientForm.password}
+                            />
+                        </div>
+
+                        <div className={css.inputGroup}>
+                            <label htmlFor="confirmpasswordclient">Confirme a senha:</label>
+                            <input 
+                                type="password"
+                                id="confirmpasswordclient"
+                                onChange={e => setClientConfirmPassword(e.target.value)}
+                                value={clientConfirmPassword}
+                            />
+                        </div>
+                    </div>
+                </section>
+            </main>
+            {/* {typeCadastro == null ? (
                 <section className={css.container_login}>
                     <div className={css.container_select_type}>
                         <h1>Faça seu cadastro</h1>
@@ -284,8 +332,7 @@ const Cadastro = () => {
                         <Button onClick={() => typeCadastro === "Client" ? postFormClient() : postFormStore()} variant="primary">Cadastrar</Button>
                     </div>
                 </div>
-            </section>
-        )}
+            </section> */}
         </>
     )
 }

@@ -6,7 +6,7 @@
     height: 100%;
     width: 25%;
     background-color: rgba(0, 0, 0, 0.672);
-    transition: all 0.4s;
+    transition: all 0.2s;
     z-index: 99;
 }
 .container_carrinho_modal_off{
@@ -17,6 +17,6 @@
     padding-top: 70px;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.672);
-    transition: all 0.4s;
+    transition: all 0.2s;
     z-index: 99;
 }

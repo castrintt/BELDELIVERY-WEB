@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import css from "./styled.module.css";
 import Loading from "../Loading";
-import axios from "axios";
-import api from "../../services/axios/axios";
+import { logout } from "../../services/validations/validation";
 
 const NavBarLeft = () => {
     const [typeUser, setTypeUser] = useState("");
@@ -14,17 +13,8 @@ const NavBarLeft = () => {
     const navigate = useNavigate();
     
     useEffect(() => {
-        setLoading(true);
-        api.get(`/clientProfile/${localStorage.getItem("id")}`)
-        .then((res) => {
-            setUserName(res.data.name);
-            setLoading(false);
-        })
-        .catch((error) => {
-            setLoading(false);
-            console.log(error);
-        })
-    }, [])
+        setUserName(localStorage.getItem("clientName"));
+    }, []);
     
     return (
         <>
@@ -71,7 +61,7 @@ const NavBarLeft = () => {
                         </div>
                     </div>
                     <div>
-                        <div onClick={() => navigate("/home")}>
+                        <div onClick={() => logout()}>
                             <img src="https://img.icons8.com/windows/40/null/exit.png"/>
                             <span>Sair</span>
                         </div>
@@ -86,27 +76,26 @@ const NavBarLeft = () => {
                                 <div className={css.container_img_avatar}>
 
                                 </div>
-                                <span>{userName}</span>
                             </div>
-                            <div className={css.menu_items}>
-                                <img src="https://img.icons8.com/material-rounded/35/null/home-page.png"/>
+                            <div className={css.menu_items_hidde}>
+                                <img src="https://img.icons8.com/material-rounded/30/null/home-page.png"/>
                             </div>
-                            <div className={css.menu_items} onClick={() => navigate("/perfil")}>
-                                <img src="https://img.icons8.com/small/40/000000/user-male-circle.png"/>
+                            <div className={css.menu_items_hidde} onClick={() => navigate("/perfil")}>
+                                <img src="https://img.icons8.com/small/30/000000/user-male-circle.png"/>
                             </div>
-                            <div className={css.menu_items} onClick={() => navigate("/perfil/pedidos")}>
-                                <img src="https://img.icons8.com/sf-ultralight/40/null/mobile-order.png"/>
+                            <div className={css.menu_items_hidde} onClick={() => navigate("/perfil/pedidos")}>
+                                <img src="https://img.icons8.com/sf-ultralight/30/null/mobile-order.png"/>
                             </div>
-                            <div className={css.menu_items} onClick={() => navigate("/perfil/enderecos")}>
-                                <img src="https://img.icons8.com/ios/40/null/order-delivered.png"/>
+                            <div className={css.menu_items_hidde} onClick={() => navigate("/perfil/enderecos")}>
+                                <img src="https://img.icons8.com/ios/30/null/order-delivered.png"/>
                             </div>
-                            <div className={css.menu_items} onClick={() => navigate("/perfil/alterar-senha")}>
-                                <img src="https://img.icons8.com/ios/35/null/private-lock.png"/>
+                            <div className={css.menu_items_hidde} onClick={() => navigate("/perfil/alterar-senha")}>
+                                <img src="https://img.icons8.com/ios/30/null/private-lock.png"/>
                             </div>
                         </div>
                         <div>
-                            <div className={css.menu_items}>
-                                <img src="https://img.icons8.com/windows/40/null/exit.png"/>
+                            <div className={css.menu_items_hidde} onClick={() => logout()}>
+                                <img src="https://img.icons8.com/windows/30/null/exit.png"/>
                             </div>
                         </div>
                     </div>

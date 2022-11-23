@@ -1,23 +1,22 @@
 .container_left_bar{
-    width: 280px;
+    width: 250px;
     height: 100%;
     padding: 100px 0 20px 0;
 
-    background-color: #217373;
+    background-color: #BFA893;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.164);
 
     z-index: 9;
     position: fixed;
     top: 0;
     left: 0;
-    transition: all .15s;
+    /* transition: all .1s; */
 }
 .hidde_bar{
     width: 100px;
     height: 100%;
-    padding: 100px 0 20px 0;
-
-    background-color: #217373;
+    padding: 100px 0 0 0;
+    background-color: #BFA893;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.164);
 
     z-index: 9;
@@ -25,7 +24,7 @@
     top: 0;
     bottom: 0;
     left: 0;
-    transition: all .15s;
+    /* transition: all .1s; */
 }
 .icon_open_menu{
     width: 35px;
@@ -44,8 +43,8 @@
 }
 .container_avatar .container_img_avatar{
     margin-bottom: 1rem;
-    width: 130px;
-    height: 130px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     border: 3px solid black;
 }
@@ -89,12 +88,21 @@
     align-items: center;
 }
 .menu_items{
+    width: 90%;
+    font-weight: 700;
     padding: 5px;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.349);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.24);
+    transition: all .33s;
+    font-size: .9rem;
 }
 .menu_items:hover{
-    border-bottom: 1px solid rgba(128, 128, 128, 0.568);
-    background-color: rgba(128, 128, 128, 0.349);
+    width: 100%;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.212);
+    transition: all .33s;
+}
+.menu_items_hidde{
+    width: 100%;
+    text-align: center;
 }
 .nav_container > div:first-of-type > div:last-of-type,
 .nav_container_hidde > div:first-of-type > div:last-of-type{
@@ -123,4 +131,3 @@
 .nav_container_hidde > div:nth-of-type(2) > div{
     cursor: pointer;
 }
-

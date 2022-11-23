@@ -27,7 +27,7 @@ const OrdersClient = () => {
                 <div className={css.tittle}>
                     <h2>Meus pedidos</h2>
                 </div>
-                <Table striped bordered>
+                <Table striped bordered className={css.table}>
                     <thead>
                         <tr>
                             <th>#</th>
