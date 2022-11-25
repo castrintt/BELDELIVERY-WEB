@@ -4,14 +4,14 @@ import css from "./styled.module.css";
 import { useState } from "react";
 import Loading from "../../components/Loading";
 import { db } from "../../services/api/firebaseConfig.js";
-import { emailValidate, passwordLoginValidate } from "../../services/validations/validation";
+import { emailValidate, passwordLoginValidate } from "../../services/helpers/helpers";
 import { useEffect } from "react";
 
 const Login = () => {
     const [loginType, setLoginType] = useState("Client");
     const [loading, setLoading] = useState(false);
     const [errorStatus, setErrorStatus] = useState(true);
-    const [errorMessenge, setErrorMessenge] = useState("");
+    //const [errorMessenge, setErrorMessenge] = useState("");
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -23,16 +23,16 @@ const Login = () => {
         const emailValidateResponse = emailValidate(formData.email);
         const passwordValidateResponse = passwordLoginValidate(formData.password);
 
-        if (emailValidateResponse){
-            if (passwordValidateResponse){
+        if (emailValidateResponse === true){
+            if (passwordValidateResponse === true){
                 setErrorStatus(false);
             } else {
                 setErrorStatus(true);
-                setErrorMessenge(passwordValidateResponse)
+                alert(passwordValidateResponse)
             };
         } else {
             setErrorStatus(true);
-            setErrorMessenge(emailValidateResponse);
+            alert(emailValidateResponse);
         };
     };
 
@@ -45,12 +45,14 @@ const Login = () => {
         .then((res) => {
             if(res.size > 0){
                 const caminhoValue = res.docs[0]._delegate._document.data.value.mapValue.fields;
-                console.log(caminhoValue)
+                
                 localStorage.setItem("clientId", res.docs[0].id);
                 localStorage.setItem("clientName", caminhoValue.name.stringValue);
                 localStorage.setItem("userType", caminhoValue.type.integerValue);
                 navigate("/home");
-            }
+            } else {
+                alert("Usuário não encontrado");
+            };
             setLoading(false);
         })
         .catch((error) => {
@@ -58,21 +60,50 @@ const Login = () => {
             setLoading(false);
         })
     };
-    
+
+    const loginStore = () => {
+        setLoading(true);
+        db.collection("store")
+        .where("email", "==" , formData.email)
+        .where("password", "==", formData.password)
+        .get()
+        .then((res) => {
+            if(res.size > 0){
+                const caminhoValue = res.docs[0]._delegate._document.data.value.mapValue.fields;
+                
+                localStorage.setItem("storeId", res.docs[0].id);
+                localStorage.setItem("storeName", caminhoValue.name.stringValue);
+                localStorage.setItem("userType", caminhoValue.type.integerValue);
+                navigate("/home");
+            } else {
+                alert("Loja não encontrada");
+            };
+            setLoading(false);
+        })
+        .catch((error) => {
+            console.log(error);
+            setLoading(false);
+        })
+    };
+
     useEffect(() => {
         if(loginType === "Client" & !errorStatus){
             loginClient();
-        } else {
-            console.log("nao");
+        } else if (loginType === "Store" & !errorStatus){
+            loginStore();
         }
-    }, [errorStatus])
+    }, [errorStatus]);
 
     return(
         <>
             {loading && <Loading />}
             <section className={css.container_login}>
                 <div className={css.card_login}>
-                    <h1>{loginType === "Client" ? "Faça Login e mate sua fome!" : "Faça login e venda conosco!"}</h1>
+                    <h1>
+                        {loginType === "Client"
+                        ? "Faça Login e mate sua fome!"
+                        : "Faça login e venda conosco!"}
+                    </h1>
                     <div>
                         <input
                             type="text"
@@ -81,7 +112,6 @@ const Login = () => {
                             value={formData.email}
                             onChange={e => setFormData({...formData, email: e.target.value})}
                         />
-
                         <input
                             type="text"
                             id="password"
@@ -111,7 +141,7 @@ const Login = () => {
                 </div>
            </section>
         </>
-    )
-}
+    );
+};
 
 export default Login;

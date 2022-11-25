@@ -1,11 +1,16 @@
 import { db } from "../api/firebaseConfig";
-import { useNavigate } from "react-router-dom";
 
-export const verifyExitentClient = () => {
-    db.collection("client").get()
+export const verifyExitentClient = (email) => {
+    db.collection("client")
+    .where("name", "===", email)
+    .get()
     .then((res) => {
-        console.log(res);
-    })
+        if(res.size > 0){
+            return true;
+        } else {
+            return false;
+        };
+    });
 };
 
 export const nameValidate = (name) => {
@@ -19,7 +24,7 @@ export const emailValidate = (email) => {
     
     if(regex.test(email)){
         return true;
-    } else return "Digite um e-mail válido"
+    } else return "Digite um e-mail válido";
 };
 
 export const passwordRegisterValidate = (password, clientConfirmPassword) => {

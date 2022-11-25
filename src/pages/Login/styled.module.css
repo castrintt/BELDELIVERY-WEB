@@ -5,9 +5,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    --main-color: #731aeb;
-    --second-color: #67DDC5;
 }
 
 .card_login{

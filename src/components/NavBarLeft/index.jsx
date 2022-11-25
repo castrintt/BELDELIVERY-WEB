@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import css from "./styled.module.css";
 import Loading from "../Loading";
-import { logout } from "../../services/validations/validation";
+import { logout } from "../../services/helpers/helpers";
 
 const NavBarLeft = () => {
     const [typeUser, setTypeUser] = useState("");
