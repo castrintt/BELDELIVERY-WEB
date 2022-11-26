@@ -6,7 +6,6 @@
     justify-content: center;
     align-items: center;
 }
-
 .card_login{
     width: 450px;
     height: 600px;
@@ -17,14 +16,12 @@
     box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.164);
     text-align: center;
 }
-
 .card_login > h1{
     font-weight: 700;
     font-size: 2rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     line-height: 3rem;
 }
-
 .card_login > div:first-of-type{
     padding: 2rem 0 1rem 0;
     text-align: left;
@@ -55,7 +52,6 @@
 .card_login > div:nth-of-type(2) > button{
     width: 100%;
 }
-
 .card_login > div:nth-of-type(3){
     width: 100%;
     padding: .4rem .9rem;
@@ -68,7 +64,6 @@
 .card_login > div:nth-of-type(3):hover{
     background-color: rgba(255, 255, 255, 0.315);
 }
-
 .link{
     width: auto;
     margin-top: 1rem;
@@ -81,4 +76,13 @@
 }
 .link:last-of-type{
     margin: 1rem 0;
+}
+
+@media all and (max-width: 650px) {
+    .card_login{
+        margin: 2rem 0;
+        width: 95%;
+        height: auto;
+        padding: 3rem 2rem;
+    }
 }
