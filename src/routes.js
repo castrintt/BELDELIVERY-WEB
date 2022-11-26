@@ -4,7 +4,7 @@ import HomePage from "./pages/Home";
 import PerfilCliente from "./pages/PerfilCliente";
 import PerfilLoja from "./pages/PerfilLoja";
 import Login from "./pages/Login";
-import Cadastro from "./pages/Cadastro";
+import Cadastro from "./pages/Cadastro/Cadastro";
 import CadastroCliente from "./pages/Cadastro/ClientForm/ClientForm";
 import CadastroLoja from "./pages/Cadastro/StoreForm/StoreForm";
 import OrdersClient from "./pages/OrdersClient";

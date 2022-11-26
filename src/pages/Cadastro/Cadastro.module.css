@@ -1,0 +1,68 @@
+.container_cadastro{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to right top, #731aeb 1%, #67DDC5 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content_cadastro{
+    width: 85vw;
+    height: 85%;
+    border: 1px solid rgba(0, 0, 0, 0.226);
+    display: flex;
+}
+.container_form{
+    width: 75%;
+    height: 100%;
+    padding: 2rem 3rem;
+    background-color: white;
+}
+.container_form > h1{
+    font-weight: 700;
+    font-size: 2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    line-height: 3rem;
+}
+.container_form:first-of-type{
+    padding: 1rem 0;
+    text-align: left;
+}
+.card_login{
+    width: 450px;
+    height: auto;
+    max-height: 80vh;
+    text-align: center;
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.281);
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.164);
+}
+.card_login > div{
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-around;
+}
+.card_login > p{
+    font-size: 1.2rem;
+}
+.card_login > div > button{
+    width: 40%;
+    padding: .7rem 0;
+    background-color: rgba(255, 255, 255, 0.596);
+    border: 1px solid rgba(0, 0, 0, 0.363);
+    border-radius: 5px;
+    font-weight: 700;
+}
+.card_login > div > button:hover{
+    background-color: rgba(255, 255, 255, 0.747);
+}
+
+@media all and (max-width: 650px) {
+    .card_login{
+        margin: 2rem 0;
+        width: 95%;
+        height: auto;
+        padding: 3rem 2rem;
+    }
+}
