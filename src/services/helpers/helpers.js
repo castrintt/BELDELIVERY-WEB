@@ -1,50 +1,121 @@
 import { db } from "../api/firebaseConfig";
 
 export const verifyExitentClient = (email) => {
-    db.collection("client")
-    .where("name", "===", email)
+    let response = true;
+
+    db.collection('client')
+    .where('email', '==', email)
     .get()
     .then((res) => {
-        if(res.size > 0){
-            return true;
-        } else {
-            return false;
-        };
-    });
+      switch (res.size){
+        case 0:
+            response = false;
+            break
+        default:
+            response = true;
+            break
+      }
+    })
+    
+    return response;
 };
 
 export const nameValidate = (name) => {
+    let errorStatus = {
+        status: false,
+        messenge: ""
+    } 
+
     if(name.length > 2){
-        return true;
-    } else return "O nome deve ter mais de 2 caracteres";
+        errorStatus.status = false;
+    } else {
+        errorStatus.status = true;
+        errorStatus.messenge = "O nome deve conter pelo menos 2 caracteres";
+    };
+
+    return errorStatus
 };
 
 export const emailValidate = (email) => {
+    let errorStatus = {
+        status: false,
+        messenge: ""
+    } 
+
     let regex = /^([a-z]){1,}([a-z0-9._-]){1,}([@]){1}([a-z]){2,}([.]){1}([a-z]){2,}([.]?){1}([a-z]?){2,}$/i;
     
     if(regex.test(email)){
-        return true;
-    } else return "Digite um e-mail válido";
+        errorStatus.status = false;
+    } else {
+        errorStatus.status = true;
+        errorStatus.messenge = "Digite um email válido";
+    };
+
+    return errorStatus
 };
 
-export const passwordRegisterValidate = (password, clientConfirmPassword) => {
+export const passwordRegisterValidate = (password) => {
+    let errorStatus = {
+        status: false,
+        messenge: ""
+    }
+
     if(password.length >= 6){
-        if(password === clientConfirmPassword){
-            return true
-        } else return "As senhas devem ser iguais";
-    } else return "A senha deve ter pelo menos 6 caracteres";
+        errorStatus.status = false;
+    } else {
+        errorStatus.status = true;
+        errorStatus.messenge = "A senha deve ter pelo menos 6 caracteres";
+    };
+
+    return errorStatus
+};
+
+export const passwordRegisterConfirmate = (password, clientConfirmPassword) => {
+    let errorStatus = {
+        status: false,
+        messenge: ""
+    };
+
+    if(password === clientConfirmPassword){
+        errorStatus.status = false;
+    } else {
+        errorStatus.status = true;
+        errorStatus.messenge = "As senhas não conferem";
+    };
+
+    return errorStatus
 };
 
 export const passwordLoginValidate = (password) => {
+    let errorStatus = {
+        status: false,
+        messenge: ""
+    };
+
     if(password.length >= 6){
-        return true
-    } else return "A senha deve ter pelo menos 6 caracteres";
+        errorStatus.status = false;
+    } else {
+        errorStatus.status = true;
+        errorStatus.messenge = "A senha deve ter pelo menos 6 caracteres";
+    };
+
+    return errorStatus
 };
 
 export const documentValidate = (document) => {
-    if(document > 10){
-        return true
-    } else return "O documento deve ter pelo menos 11 caracteres";
+    let errorStatus = {
+        status: false,
+        messenge: ""
+    }
+
+    if(document >= 11){
+        errorStatus.status = false;
+    } else {
+        errorStatus.status = true;
+        errorStatus.messenge = "O documento deve ter pelo menos 11 caracteres";
+    };
+
+    return errorStatus
 };
 
 export const logout = () => {

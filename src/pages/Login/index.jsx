@@ -1,17 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import css from "./styled.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Loading from "../../components/Loading";
 import { db } from "../../services/api/firebaseConfig.js";
 import { emailValidate, passwordLoginValidate } from "../../services/helpers/helpers";
-import { useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
     const [loginType, setLoginType] = useState("Client");
     const [loading, setLoading] = useState(false);
+    const [customError, setCustomError] = useState({
+        email: false,
+        password: false,
+    });
     const [errorStatus, setErrorStatus] = useState(true);
-    //const [errorMessenge, setErrorMessenge] = useState("");
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -20,19 +23,23 @@ const Login = () => {
     const navigate = useNavigate();
 
     const DataVerify = () => {
-        const emailValidateResponse = emailValidate(formData.email);
-        const passwordValidateResponse = passwordLoginValidate(formData.password);
+        let emailValidated = emailValidate(formData.email);
+        let passwordValidated = passwordLoginValidate(formData.password);
 
-        if (emailValidateResponse === true){
-            if (passwordValidateResponse === true){
-                setErrorStatus(false);
-            } else {
-                setErrorStatus(true);
-                alert(passwordValidateResponse)
-            };
+        setCustomError({
+            email: emailValidated.status,
+            password: passwordValidated.status
+        });
+
+        if(emailValidated.status === false && passwordValidated.status === false){
+            setErrorStatus(false);
         } else {
-            setErrorStatus(true);
-            alert(emailValidateResponse);
+            if(emailValidated.status === true){
+                toast.error(emailValidated.messenge);
+            }
+            if(passwordValidated.status === true){
+                toast.error(passwordValidated.messenge);
+            }
         };
     };
 
@@ -49,13 +56,16 @@ const Login = () => {
                 localStorage.setItem("clientId", res.docs[0].id);
                 localStorage.setItem("clientName", caminhoValue.name.stringValue);
                 localStorage.setItem("userType", caminhoValue.type.integerValue);
+                toast.success("Logado com sucesso");
                 navigate("/home");
             } else {
-                alert("Usuário não encontrado");
+                setErrorStatus(true);
+                toast.warning("Usuário não encontrado");
             };
             setLoading(false);
         })
         .catch((error) => {
+            setErrorStatus(true);
             console.log(error);
             setLoading(false);
         })
@@ -74,14 +84,17 @@ const Login = () => {
                 localStorage.setItem("storeId", res.docs[0].id);
                 localStorage.setItem("storeName", caminhoValue.name.stringValue);
                 localStorage.setItem("userType", caminhoValue.type.integerValue);
+                toast.success("Logado com sucesso");
                 navigate("/home");
             } else {
-                alert("Loja não encontrada");
+                setErrorStatus(true);
+                toast.warning("Usuário não encontrado");
             };
             setLoading(false);
         })
         .catch((error) => {
             console.log(error);
+            setErrorStatus(true);
             setLoading(false);
         })
     };
@@ -97,6 +110,14 @@ const Login = () => {
     return(
         <>
             {loading && <Loading />}
+            <ToastContainer 
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                closeOnClick
+                draggable
+                theme="dark"
+            />
             <section className={css.container_login}>
                 <div className={css.card_login}>
                     <h1>
@@ -107,14 +128,14 @@ const Login = () => {
                     <div>
                         <input
                             type="text"
-                            id="email"
+                            id={customError.email && css.error_input}
                             placeholder="E-mail"
                             value={formData.email}
                             onChange={e => setFormData({...formData, email: e.target.value})}
                         />
                         <input
                             type="text"
-                            id="password"
+                            id={customError.password && css.error_input}
                             placeholder="Senha"
                             value={formData.password}
                             onChange={e => setFormData({...formData, password: e.target.value})}
