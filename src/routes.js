@@ -5,7 +5,8 @@ import PerfilCliente from "./pages/PerfilCliente";
 import PerfilLoja from "./pages/PerfilLoja";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
-import CadastroLoja from "./pages/CadastroLoja";
+import CadastroCliente from "./pages/Cadastro/ClientForm/ClientForm";
+import CadastroLoja from "./pages/Cadastro/StoreForm/StoreForm";
 import OrdersClient from "./pages/OrdersClient";
 
 function RouterList(){
@@ -16,6 +17,8 @@ function RouterList(){
           <Route path='/home' element={<HomePage />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/cadastro' element={<Cadastro />}/>
+          <Route path='/cadastro/cliente' element={<CadastroCliente />}/>
+          <Route path='/cadastro/loja' element={<CadastroLoja />}/>
           <Route path='/perfil' element={<PerfilCliente />}/>
           <Route path='/perfil/enderecos' element={<PerfilCliente />}/>
           <Route path='/perfil/pedidos' element={<OrdersClient />}/>

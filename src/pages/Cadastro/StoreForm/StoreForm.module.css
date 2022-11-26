@@ -1,6 +1,10 @@
-.container_form{
-    height: 100%;
-    overflow: unset;
+.container_cadastro{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to right top, #731aeb 1%, #67DDC5 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .container_form > h1{
     font-weight: 700;
@@ -70,29 +74,17 @@
 .container_form:first-of-type{
     padding: 1rem 0;
     text-align: left;
-}
+};
 .card_login > div > label{
     text-align: left;
     font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-.card_login > div > div> input{
-    margin-bottom: 1rem;
-    padding: .6rem;
-    width: 100%;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    background-color: rgba(128, 128, 128, 0.13);
 }
 
 .card_login > div:last-of-type{
     width: 100%;
     display: flex;
     flex-direction: column;
-}
-.card_login > .container_form > button{
-    width: 100%;
 }
 
 .link{
@@ -117,4 +109,48 @@
 }
 .button_container{
     width: 60%;
+}
+.card_login{
+    width: 450px;
+    height: auto;
+    max-height: 80vh;
+    text-align: center;
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.281);
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.164);
+}
+.card_login > div > div> input{
+    margin-bottom: 1rem;
+    padding: .6rem;
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.315);
+}
+.card_login > div > div> input:focus{
+    outline: 1px solid rgba(0, 0, 0, 0.425);
+    background-color:rgba(255, 255, 255, 0.527);
+}
+.select_input{
+    margin-bottom: 1rem;
+    padding: .6rem;
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid gray;
+}
+.button{
+    width: 50%;
+    min-width: 70px;
+}
+
+@media all and (max-width: 650px) {
+    .card_login{
+        margin: 2rem 0;
+        width: 95%;
+        height: auto;
+        padding: 3rem 2rem;
+    }
 }

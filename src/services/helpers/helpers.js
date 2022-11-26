@@ -48,7 +48,23 @@ export const documentValidate = (document) => {
 };
 
 export const logout = () => {
-    localStorage.clear("clientId");
-    localStorage.clear("clientName");
-    localStorage.clear("userType");
+    let permission = localStorage.clear("userType");
+
+    switch (permission){
+        case 1:
+            localStorage.clear("clientId");
+            localStorage.clear("clientName");
+            localStorage.clear("userType");
+            break
+        case 2:
+            localStorage.clear("storeId");
+            localStorage.clear("storeName");
+            localStorage.clear("userType");
+            break
+        case 3:
+            localStorage.clear("clientId");
+            localStorage.clear("clientName");
+            localStorage.clear("userType");
+            break
+    }
 };
