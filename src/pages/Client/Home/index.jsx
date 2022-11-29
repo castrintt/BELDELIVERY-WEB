@@ -1,6 +1,6 @@
-import NavBarTop from "../../components/NavBarTop";
+import NavBarTop from "../../../components/NavBarTop";
 import css from "./styled.module.css";
-import CategoriasCards from "../../components/Categorias";
+import CategoriasCards from "../../../components/Categorias";
 
 const HomePage = () => {
 

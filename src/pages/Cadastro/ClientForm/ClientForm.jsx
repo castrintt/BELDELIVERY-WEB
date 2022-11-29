@@ -9,7 +9,7 @@ import {
     passwordRegisterConfirmate,
     emailValidate,
     nameValidate
-} from "../../../services/helpers/helpers";
+} from "../../../utilites/helpers/helpers";
 import { ToastContainer, toast } from 'react-toastify';
 
 const ClientForm = () => {

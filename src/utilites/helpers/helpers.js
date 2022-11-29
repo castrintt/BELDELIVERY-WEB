@@ -1,4 +1,5 @@
-import { db } from "../api/firebaseConfig";
+import { useNavigate } from "react-router-dom";
+import { db } from "../../services/api/firebaseConfig";
 
 export const verifyExitentClient = (email) => {
     let response = true;
@@ -118,24 +119,19 @@ export const documentValidate = (document) => {
     return errorStatus
 };
 
-export const logout = () => {
-    let permission = localStorage.clear("userType");
+export const getCurrentUser = () => {
+    const user = {
+        type: localStorage.getItem("userType"),
+        id: localStorage.getItem("id")
+    };
 
-    switch (permission){
-        case 1:
-            localStorage.clear("clientId");
-            localStorage.clear("clientName");
-            localStorage.clear("userType");
-            break
-        case 2:
-            localStorage.clear("storeId");
-            localStorage.clear("storeName");
-            localStorage.clear("userType");
-            break
-        case 3:
-            localStorage.clear("clientId");
-            localStorage.clear("clientName");
-            localStorage.clear("userType");
-            break
-    }
+    return user;
+};
+
+export const Logout = () => {
+    localStorage.clear("name");
+    localStorage.clear("id");
+    localStorage.clear("userType");
+
+    window.location.replace("/login");
 };

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import css from "./styled.module.css";
 import Loading from "../Loading";
-import { logout } from "../../services/helpers/helpers";
+import { Logout } from "../../utilites/helpers/helpers";
 
 const NavBarLeft = () => {
     const [typeUser, setTypeUser] = useState("");
@@ -61,7 +61,7 @@ const NavBarLeft = () => {
                         </div>
                     </div>
                     <div>
-                        <div onClick={() => logout()}>
+                        <div onClick={() => Logout()}>
                             <img src="https://img.icons8.com/windows/40/null/exit.png"/>
                             <span>Sair</span>
                         </div>
@@ -94,7 +94,7 @@ const NavBarLeft = () => {
                             </div>
                         </div>
                         <div>
-                            <div className={css.menu_items_hidde} onClick={() => logout()}>
+                            <div className={css.menu_items_hidde} onClick={() => Logout()}>
                                 <img src="https://img.icons8.com/windows/30/null/exit.png"/>
                             </div>
                         </div>

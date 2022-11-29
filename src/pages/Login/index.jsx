@@ -4,7 +4,7 @@ import css from "./styled.module.css";
 import { useState, useEffect } from "react";
 import Loading from "../../components/Loading";
 import { db } from "../../services/api/firebaseConfig.js";
-import { emailValidate, passwordLoginValidate } from "../../services/helpers/helpers";
+import { emailValidate, passwordLoginValidate } from "../../utilites/helpers/helpers";
 import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
@@ -53,9 +53,9 @@ const Login = () => {
             if(res.size > 0){
                 const caminhoValue = res.docs[0]._delegate._document.data.value.mapValue.fields;
                 
-                localStorage.setItem("clientId", res.docs[0].id);
-                localStorage.setItem("clientName", caminhoValue.name.stringValue);
-                localStorage.setItem("userType", caminhoValue.type.integerValue);
+                localStorage.setItem("id", res.docs[0].id);
+                localStorage.setItem("name", caminhoValue.name.stringValue);
+                localStorage.setItem("userType", "client");
                 toast.success("Logado com sucesso");
                 navigate("/home");
             } else {
@@ -81,9 +81,9 @@ const Login = () => {
             if(res.size > 0){
                 const caminhoValue = res.docs[0]._delegate._document.data.value.mapValue.fields;
                 
-                localStorage.setItem("storeId", res.docs[0].id);
-                localStorage.setItem("storeName", caminhoValue.name.stringValue);
-                localStorage.setItem("userType", caminhoValue.type.integerValue);
+                localStorage.setItem("id", res.docs[0].id);
+                localStorage.setItem("name", caminhoValue.name.stringValue);
+                localStorage.setItem("userType", "store");
                 toast.success("Logado com sucesso");
                 navigate("/home");
             } else {

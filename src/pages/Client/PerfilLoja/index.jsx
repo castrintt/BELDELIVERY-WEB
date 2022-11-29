@@ -1,4 +1,4 @@
-import NavBarTop from "../../components/NavBarTop";
+import NavBarTop from "../../../components/NavBarTop";
 import css from "./styled.module.css"
 
 const PerfilLoja = () => {
