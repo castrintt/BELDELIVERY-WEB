@@ -1,6 +1,16 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import css from "./NotAuthAcess.module.css";
 
 const NotAuthAcess = () => {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        setTimeout(() => {
+            navigate("/login");
+        }, 3000);
+    }, []);
 
     return(
         <section className={css.container_page}>

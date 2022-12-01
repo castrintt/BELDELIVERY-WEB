@@ -3,9 +3,8 @@
     top: 0;
     height: 70px;
     width: 100%;
-    background-color: white;
+    background-color: #ff6c3e;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.164);
-
     z-index: 99;
 }
 
@@ -52,15 +51,14 @@
 .container_input > input{
     width: 100%;
     padding: .7rem .9rem .7rem 2.2rem;
-    background-color: rgba(255, 255, 255, 0.205);
+    background-color: rgba(255, 255, 255, 0.281);
     border-radius: 7px;
     outline: none;
     border: none;
-    color: white;
     font-weight: lighter;
 }
 .container_input > input:focus{
-    background-color: rgba(255, 255, 255, 0.397);
+    background-color: rgba(255, 255, 255, 0.486);
 }
 .container_input > img{
     position: relative;
@@ -68,6 +66,7 @@
     top: .9rem;
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 .container_icons{

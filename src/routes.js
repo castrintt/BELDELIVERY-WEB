@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AuthRequiredRoutes from "./services/auth/auth";
-import { AuthRequiredContextProvider } from "./services/contexts/authRequiredContext";
 
 import HomePage from "./pages/Client/Home";
 import PerfilCliente from "./pages/Client/PerfilCliente";
@@ -16,12 +15,13 @@ const users = {
   client: "client",
   administrador: "admin",
   store: "store"
-}
+};
 
 const RouterList = () => {
   return (
     <Router>
       <Routes>
+
         {/* public routes */}
         <Route path='/login' element={<Login />}/>
         <Route path='/cadastro' element={<Cadastro />}/>
@@ -49,6 +49,7 @@ const RouterList = () => {
           <Route path='/gerenciar/:store/pedidos' element={<PerfilLoja />}/>
           <Route path='/gerenciar/:store/endereco' element={<PerfilLoja />}/>
         </Route>
+        
       </Routes>
     </Router>
   );

@@ -1,29 +1,28 @@
 import { getCurrentUser } from "../../utilites/helpers/helpers";
 import { db } from "../api/firebaseConfig";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const AuthRequiredRoutes = ({ required }) => {
     const permission = getCurrentUser();
 
-    // const authVerification = () => {
-    //     let authReponse = true;
+    const authUserClient = () => {
+        db.collection(permission.type)
+        .doc(permission.id)
+        .get()
+        .then((res) => {
+            if(res.exists === false){
+                window.location.replace("/login")
+            };
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    };
 
-    //     db.collection("client")
-    //     .get()
-    //     .then((res) => {
-    //         res.docs.map(doc => {
-    //             if(doc.id === 2424124) {
-    //                 authReponse = true;
-    //                 console.log("achou " + doc.id);
-    //             }
-    //         })
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     })
-
-    //     return authReponse;
-    // };
+    useEffect(() => {
+        authUserClient();
+    }, []);
 
     return (
         required.includes(permission.type) &&

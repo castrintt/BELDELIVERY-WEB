@@ -7,38 +7,29 @@ export const authRequiredContext = createContext();
 export const AuthRequiredContextProvider = ({ children }) => {
   const [authValue, setAuthValue] = useState();
 
-    // const permission = getCurrentUser();
+    const permission = getCurrentUser();
 
-    // const authUserClient = () => {
-    //   let response;
-    //   db.collection(permission.type)
-    //   .get()
-    //   .then((res) => {
-    //     console.log(res.docs);
-    //     res.docs.map(doc => {
-    //       if(doc.id === permission.id) {
-    //         response = true;
-    //         console.log("foi")
-    //       } else {
-    //           if(response !== true){
-    //             response = false;
-    //           }
-    //       };
-    //     })
-    //   })
-    //   .catch(error => {
-    //       console.log(error);
-    //   })
-    //   .finally(() => {
-    //     if(!response) {
-    //       window.location.replace("/sem-autorizacao")
-    //     }
-    //   })
-    // };
+    const authUserClient = () => {
+      db.collection(permission.type)
+      .doc(permission.id)
+      .get()
+      .then((res) => {
+        console.log(res);
+       
+      })
+      .catch(error => {
+          console.log(error);
+      })
+      .finally(() => {
+        // if(!response) {
+        //   window.location.replace("/sem-autorizacao")
+        // }
+      })
+    };
 
-    // useEffect(() => {
-    //   authUserClient();
-    // }, []);
+    useEffect(() => {
+      authUserClient();
+    }, []);
 
   return (
     <authRequiredContext.Provider

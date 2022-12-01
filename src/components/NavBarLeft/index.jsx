@@ -11,11 +11,11 @@ const NavBarLeft = () => {
     const [userName, setUserName] = useState("");
 
     const navigate = useNavigate();
-    
+
     useEffect(() => {
-        setUserName(localStorage.getItem("clientName"));
+        setUserName(localStorage.getItem("name"));
     }, []);
-    
+
     return (
         <>
             {loading && <Loading />}

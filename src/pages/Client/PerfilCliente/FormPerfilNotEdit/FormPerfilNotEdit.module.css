@@ -1,0 +1,31 @@
+.container_form{
+    width: 95%;
+    height: 70vh;
+    padding: 2rem;
+    background-color: #e8c39e;
+    border-radius: .4rem;
+}
+.tittle{
+    padding: 2rem 0;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tittle > h2{
+    font-size: 2rem;
+    color: #ff6c3e;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.tittle > button{
+    padding: .5rem 1.2rem;
+    border-radius: 5px;
+    background-color: dodgerblue;
+    border: 1px solid dodgerblue;
+    color: white;
+}
+.tittle > button:hover{
+    background-color: rgb(0, 105, 211);
+    border: 1px solid rgb(0, 105, 211);
+    color: white;
+}
