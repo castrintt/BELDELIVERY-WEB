@@ -20,9 +20,9 @@ const AuthRequiredRoutes = ({ required }) => {
     //     });
     // };
 
-    useEffect(() => {
-        authUserClient();
-    }, []);
+    // useEffect(() => {
+    //     authUserClient();
+    // }, []);
 
     return (
         required.includes(permission.type) &&
