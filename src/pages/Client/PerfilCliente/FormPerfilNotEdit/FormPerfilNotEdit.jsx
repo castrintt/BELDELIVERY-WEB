@@ -28,11 +28,17 @@ const FormPerfilNotEdit = ({userData, setEditForm}) => {
                     </div>
                     <div className={css.input_group}>
                         <p>CPF:</p>
-                        <p>{userData.cpf}</p>
+                        {userData.cpf?.length ?
+                            <p>{userData.cpf}</p> : 
+                            <p>Nenhum CPF cadastrado</p>    
+                        }
                     </div>
                     <div className={css.input_group}>
                         <p>Celular:</p>
-                        <p>{userData.cellPhone}</p>
+                        {userData.cellPhone?.length ?
+                            <p>{userData.cellPhone}</p> : 
+                            <p>Nenhum celular cadastrado</p>    
+                        }
                     </div>
                     <div className={css.input_group}>
                         <p>Número de pedidos:</p>

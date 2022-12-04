@@ -39,6 +39,7 @@ const FormPerfilEdit = ({userData, setEditForm}) => {
             setLoading(false);
             console.log(res);
             setEditForm(false);
+            window.location.reload();
         })
         .catch((error) => {
             setLoading(false);
