@@ -140,7 +140,7 @@ const Login = () => {
                             value={formData.password}
                             onChange={e => setFormData({...formData, password: e.target.value})}
                         />
-                        <span className={css.link} onClick={() => navigate("/esqueci-minha-senha")}>
+                        <span className={css.link}>
                             Esqueceu sua senha?
                         </span>
                     </div>
