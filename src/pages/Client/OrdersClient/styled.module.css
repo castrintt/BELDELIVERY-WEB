@@ -34,10 +34,9 @@
 }
 .card_order{
     margin-bottom: 1rem;
-    width: 100%;
-    max-width: 550px;
+    width: 48%;
     height: 170px;
-    background-color: #e8c39e;
+    background-color: #e8c39e8e;
     border: 1px solid rgba(0, 0, 0, 0.233);
     border-radius: .7rem;
 }
@@ -55,11 +54,13 @@
     font-weight: bold;
 }
 .actions_container{
-    width: 40px;
+    width: 50px;
     display: flex;
     justify-content: space-between;
 }
-
+.actions_container img{
+    cursor: pointer;
+}
 .not_found{
     width: 100%;
     padding: 2rem 0;
@@ -77,5 +78,7 @@
     .container{
         padding: 4rem 0 1rem 0;
     }
-    
+    .card_order{
+        width: 100%;
+    }
 }

@@ -8,9 +8,9 @@ const HomePage = () => {
         <>
             <NavBarTop />
             <section className={css.banner}></section>
-            <div className={css.container}>
+            <main className={css.container}>
                 {/* <CategoriasCards /> */}
-            </div>
+            </main>
         </>
     )
 }
