@@ -119,6 +119,22 @@ export const documentValidate = (document) => {
     return errorStatus
 };
 
+export const cellValidate = (cell) => {
+    let errorStatus = {
+        status: false,
+        messenge: ""
+    }
+
+    if(cell >= 9){
+        errorStatus.status = false;
+    } else {
+        errorStatus.status = true;
+        errorStatus.messenge = "O número deve ter pelo menos 9 caracteres";
+    };
+
+    return errorStatus
+};
+
 export const getCurrentUser = () => {
     const user = {
         type: localStorage.getItem("userType"),

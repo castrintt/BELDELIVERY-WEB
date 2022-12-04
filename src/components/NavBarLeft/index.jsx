@@ -9,7 +9,6 @@ const NavBarLeft = () => {
     const [typeUser, setTypeUser] = useState("");
     const [loading, setLoading] = useState(false);
     const [openBar, setOpenBar] = useState(true);
-    const [userName, setUserName] = useState("");
 
     const navigate = useNavigate();
     const currentUser = getCurrentUser();
@@ -29,7 +28,7 @@ const NavBarLeft = () => {
                             <div className={css.container_img_avatar}>
 
                             </div>
-                            <span>{userName}</span>
+                            <span>{currentUser.name}</span>
                         </div>
                         <div className={css.menu_items} onClick={() => navigate("/home")}>
                             <img src="https://img.icons8.com/material-rounded/35/null/home-page.png"/>

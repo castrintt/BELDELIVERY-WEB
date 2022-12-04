@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import css from "./FormPerfilNotEdit.module.css";
+import moment from "moment/moment";
 
 const FormPerfilNotEdit = ({userData, setEditForm}) => {
 
@@ -12,7 +13,36 @@ const FormPerfilNotEdit = ({userData, setEditForm}) => {
                 </button>
             </div>
             <article className={css.container_form}>
-                
+                <div>
+                    <img src="" />
+                    <input type="file" name="" id="" />
+                </div>
+                <div>
+                    <div className={css.input_group}>
+                        <p>Nome completo:</p>
+                        <p>{userData.name}</p>
+                    </div>
+                    <div className={css.input_group}>
+                        <p>E-mail:</p>
+                        <p>{userData.email}</p>
+                    </div>
+                    <div className={css.input_group}>
+                        <p>CPF:</p>
+                        <p>{userData.cpf}</p>
+                    </div>
+                    <div className={css.input_group}>
+                        <p>Celular:</p>
+                        <p>{userData.cellPhone}</p>
+                    </div>
+                    <div className={css.input_group}>
+                        <p>Número de pedidos:</p>
+                        <p>{userData.orders}</p>
+                    </div>
+                    <div className={css.input_group}>
+                        <p>Conta criada em:</p>
+                        <p>{moment(userData.createdDate).format("DD/MM/YYYY")}</p>
+                    </div>
+                </div>
             </article>
         </>
     );
