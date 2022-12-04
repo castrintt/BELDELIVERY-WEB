@@ -6,19 +6,19 @@ import { useEffect } from "react";
 const AuthRequiredRoutes = ({ required }) => {
     const permission = getCurrentUser();
 
-    const authUserClient = () => {
-        db.collection(permission.type)
-        .doc(permission.id)
-        .get()
-        .then((res) => {
-            if(res.exists === false){
-                window.location.replace("/login")
-            };
-        })
-        .catch(error => {
-            console.log(error);
-        });
-    };
+    // const authUserClient = () => {
+    //     db.collection(permission.type)
+    //     .doc(permission.id)
+    //     .get()
+    //     .then((res) => {
+    //         if(res.exists === false){
+    //             window.location.replace("/login")
+    //         };
+    //     })
+    //     .catch(error => {
+    //         console.log(error);
+    //     });
+    // };
 
     useEffect(() => {
         authUserClient();

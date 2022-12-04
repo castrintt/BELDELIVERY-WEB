@@ -1,7 +1,7 @@
 .container_nav_bar{
     position: fixed;
     top: 0;
-    height: 70px;
+    height: 60px;
     width: 100%;
     background-color: #ff6c3e;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.164);
@@ -25,7 +25,7 @@
     cursor: pointer;
 }
 .container_logo>img{
-    width: 100%;
+    width: 70%;
 }
 
 .container_menu{
@@ -50,7 +50,7 @@
 }
 .container_input > input{
     width: 100%;
-    padding: .7rem .9rem .7rem 2.2rem;
+    padding: .5rem .9rem .5rem 2.2rem;
     background-color: rgba(255, 255, 255, 0.281);
     border-radius: 7px;
     outline: none;
@@ -63,7 +63,7 @@
 .container_input > img{
     position: relative;
     left: 1.7rem;
-    top: .9rem;
+    top: .6rem;
     width: 20px;
     height: 20px;
     cursor: pointer;

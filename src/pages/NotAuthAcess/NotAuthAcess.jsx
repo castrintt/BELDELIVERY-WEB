@@ -15,7 +15,7 @@ const NotAuthAcess = () => {
     return(
         <section className={css.container_page}>
             <div className={css.card_content}>
-                <h1>Você não tem acesso a essa parte do sistema</h1>
+                <h1>Você será redirecionado à tela de Login</h1>
             </div>
         </section>
     )
