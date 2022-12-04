@@ -11,7 +11,7 @@
 .content_nav_bar{
     margin: auto;
     height: 100%;
-    width: 80%;
+    width: 85%;
     max-width: 1400px;
     display: flex;
     justify-content: space-between;
@@ -21,15 +21,13 @@
     display: flex;
 }
 .container_logo{
-    width: 130px;
     cursor: pointer;
 }
 .container_logo>img{
-    width: 70%;
+    width: 5.5rem;
 }
 
 .container_menu{
-    width: 30%;
     justify-content: space-around;
     align-items: center;
 }
@@ -45,7 +43,7 @@
 }
 
 .container_input{
-    width: 35%;
+    width: 30%;
     justify-content: end;
 }
 .container_input > input{
@@ -68,25 +66,23 @@
     height: 20px;
     cursor: pointer;
 }
-
 .container_icons{
-    width: 20%;
     justify-content: end;
 }
-.container_icons > div{
-    margin-left: 2rem;
+.container_carrinho {
     display: flex;
     align-items: center;
     cursor: pointer;
 }
-.container_icons .container_carrinho > div{
+.container_carrinho > div{
     margin-left: .5rem;
+    width: 4rem;
     font-size: 14px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.container_icons .container_carrinho > span:nth-child(2){
+.container_carrinho > span:nth-child(2){
     font-size: 13px;
 }
 
@@ -105,4 +101,29 @@
 #dropdown_custom:active{
     background-color: #bbbbbb;
     border: none;
+}
+
+@media all and (max-width: 770px){
+    .container_logo>img{
+        display: none;
+    }
+    .container_input {
+        width: 60%;
+        justify-content: left;
+    }
+    .container_menu > div {
+        display: none;
+    }
+    .container_carrinho {
+        width: auto;
+        justify-content: right;
+        padding: 0;
+        margin: 0;
+    }
+    .container_carrinho {
+        margin-right: 0;
+    }
+    .container_carrinho > div {
+        display: none;
+    }
 }

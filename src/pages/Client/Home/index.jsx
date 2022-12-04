@@ -9,7 +9,7 @@ const HomePage = () => {
             <NavBarTop />
             <section className={css.banner}></section>
             <div className={css.container}>
-                <CategoriasCards />
+                {/* <CategoriasCards /> */}
             </div>
         </>
     )

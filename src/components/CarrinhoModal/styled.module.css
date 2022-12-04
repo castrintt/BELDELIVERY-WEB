@@ -2,9 +2,9 @@
     position: fixed;
     right: 0;
     top: 0;
-    padding-top: 70px;
+    margin-top: 60px;
     height: 100%;
-    width: 25%;
+    width: 350px;
     background-color: rgba(0, 0, 0, 0.672);
     transition: all 0.2s;
     z-index: 99;
@@ -19,4 +19,10 @@
     background-color: rgba(0, 0, 0, 0.672);
     transition: all 0.2s;
     z-index: 99;
+}
+
+@media all and (max-width: 770px){
+    .container_carrinho_modal{
+        width: 250px;
+    }
 }

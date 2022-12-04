@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import css from "./styled.module.css";
 import Loading from "../Loading";
 import { Logout } from "../../utilites/helpers/helpers";
+import { getCurrentUser } from "../../utilites/helpers/helpers";
 
 const NavBarLeft = () => {
     const [typeUser, setTypeUser] = useState("");
@@ -11,16 +12,13 @@ const NavBarLeft = () => {
     const [userName, setUserName] = useState("");
 
     const navigate = useNavigate();
-
-    useEffect(() => {
-        setUserName(localStorage.getItem("name"));
-    }, []);
+    const currentUser = getCurrentUser();
 
     return (
         <>
             {loading && <Loading />}
             <img className={css.icon_open_menu}
-                src="https://img.icons8.com/ios-filled/50/000000/menu--v1.png"
+                src="https://img.icons8.com/ios-filled/000000/menu--v1.png"
                 onClick={() => setOpenBar(!openBar)}
             />
             {openBar ? (
@@ -35,29 +33,29 @@ const NavBarLeft = () => {
                         </div>
                         <div className={css.menu_items} onClick={() => navigate("/home")}>
                             <img src="https://img.icons8.com/material-rounded/35/null/home-page.png"/>
-                            <span>Home</span>
+                            <span>HOME</span>
                         </div>
                         <div className={css.menu_items} onClick={() => navigate("/perfil")}>
                             <img src="https://img.icons8.com/small/35/000000/user-male-circle.png"/>
-                            <span>Perfil</span>
+                            <span>PERFIL</span>
                         </div>
-                        {typeUser === "ADMIN" && (
+                        {currentUser.type === "store" && (
                             <div className={css.menu_items} onClick={() => navigate("/perfil")}>
                                 <img src="https://img.icons8.com/small/35/000000/user-male-circle.png"/>
-                                <span>Produtos</span>
+                                <span>PRODUTOS</span>
                             </div>
                         )}
                         <div className={css.menu_items} onClick={() => navigate("/perfil/pedidos")}>
                             <img src="https://img.icons8.com/sf-ultralight/35/null/mobile-order.png"/>
-                            <span>Pedidos</span>
+                            <span>PEDIDOS</span>
                         </div>
                         <div className={css.menu_items} onClick={() => navigate("/perfil/enderecos")}>
                             <img src="https://img.icons8.com/ios/35/null/order-delivered.png"/>
-                            <span>Endereços</span>
+                            <span>ENDEREÇOS</span>
                         </div>
                         <div className={css.menu_items} onClick={() => navigate("/perfil/alterar-senha")}>
                             <img src="https://img.icons8.com/ios/30/null/private-lock.png"/>
-                            <span>Alterar senha</span>
+                            <span>ALTERAR SENHA</span>
                         </div>
                     </div>
                     <div>

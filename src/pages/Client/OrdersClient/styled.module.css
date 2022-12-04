@@ -1,12 +1,12 @@
 
 .container{
-    padding: 6rem 0 1rem 18rem;
+    padding: 4rem 0 1rem 15rem;
     width: 100%;
-    max-width: 1600px;
 }
 .tittle{
+    margin: 0 auto;
     padding: 2rem 0;
-    width: 95%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,7 +25,8 @@
     color: white;
 }
 .container_content{
-    width: 95%;
+    margin: 0 auto;
+    width: 90%;
     height: auto;
     display: flex;
     justify-content: space-between;
@@ -33,7 +34,7 @@
 }
 .card_order{
     margin-bottom: 1rem;
-    width: 95%;
+    width: 100%;
     max-width: 550px;
     height: 170px;
     background-color: #e8c39e;
@@ -70,4 +71,11 @@
     font-weight: 700;
     font-size: 1.2rem;
     color: #e8c39e;
+}
+
+@media all and (max-width: 770px){
+    .container{
+        padding: 4rem 0 1rem 0;
+    }
+    
 }

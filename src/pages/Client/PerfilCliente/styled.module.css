@@ -1,6 +1,13 @@
 
 .container{
-    padding: 6rem 0 1rem 20rem;
+    padding: 4rem 0 1rem 15rem;
     width: 100%;
-    max-width: 1600px;
+}
+
+@media all and (max-width: 770px){
+    .container{
+        padding: 4rem 0 1rem 0;
+        width: 100%;
+        max-width: 1600px;
+    };
 }

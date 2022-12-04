@@ -1,14 +1,15 @@
 .container_form{
-    width: 95%;
+    margin: 0 auto;
+    width: 90%;
     height: 70vh;
     padding: 2rem;
-    background-color: #ff6c3e;
+    background-color: #e8c39e;
     border-radius: .4rem;
 }
-
 .tittle{
+    margin: 0 auto;
     padding: 2rem 0;
-    width: 95%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -54,4 +55,13 @@
     background-color: rgb(0, 105, 211);
     border: 1px solid rgb(0, 105, 211);
     color: white;
+}
+
+@media all and (max-width: 770px){
+    .buttons_container > button{
+        margin-left: .3rem;
+        padding: .5rem 1.2rem;
+        border-radius: .4rem;
+        font-size: .9rem;
+    }
 }

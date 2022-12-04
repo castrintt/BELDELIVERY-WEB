@@ -122,7 +122,8 @@ export const documentValidate = (document) => {
 export const getCurrentUser = () => {
     const user = {
         type: localStorage.getItem("userType"),
-        id: localStorage.getItem("id")
+        id: localStorage.getItem("id"),
+        name: localStorage.getItem("name"),
     };
 
     return user;

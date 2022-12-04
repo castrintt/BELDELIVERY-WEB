@@ -10,7 +10,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    /* transition: all .1s; */
 }
 .hidde_bar{
     width: 100px;
@@ -24,17 +23,15 @@
     top: 0;
     bottom: 0;
     left: 0;
-    /* transition: all .1s; */
 }
 .icon_open_menu{
     width: 35px;
     position: fixed;
-    top: 20px;
+    top: 1rem;
     z-index: 999;
     left: 25px;
     cursor: pointer;
 }
-
 .container_avatar{
     display: flex;
     flex-direction: column;
@@ -88,17 +85,15 @@
     align-items: center;
 }
 .menu_items{
-    width: 90%;
+    width: 100%;
     font-weight: 700;
     padding: 5px;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.24);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.24);
     transition: all .33s;
-    font-size: .9rem;
+    font-size: .85rem;
 }
-.menu_items:hover{
-    width: 100%;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.212);
-    transition: all .33s;
+.menu_items:last-of-type> img{
+    padding-left: .3rem;
 }
 .menu_items_hidde{
     width: 100%;
@@ -130,4 +125,18 @@
 .nav_container_hidde > div:first-of-type > div,
 .nav_container_hidde > div:nth-of-type(2) > div{
     cursor: pointer;
+}
+
+@media all and (max-width: 770px){
+    .hidde_bar{
+        display: none;
+    }
+    .icon_open_menu{
+        width: 30px;
+        position: fixed;
+        top: 1rem;
+        z-index: 999;
+        left: 25px;
+        cursor: pointer;
+    }
 }

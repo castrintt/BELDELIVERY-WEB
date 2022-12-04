@@ -1,13 +1,15 @@
 .container_form{
-    width: 95%;
+    margin: 0 auto;
+    width: 90%;
     height: 70vh;
     padding: 2rem;
     background-color: #e8c39e;
     border-radius: .4rem;
 }
 .tittle{
+    margin: 0 auto;
     padding: 2rem 0;
-    width: 95%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -9,7 +9,7 @@ const CarrinhoModal = ({ openModalProps }) => {
                 
             </div>
         </>
-    )
-}
+    );
+};
 
 export default CarrinhoModal;
