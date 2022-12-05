@@ -10,6 +10,7 @@ import CadastroCliente from "./pages/Cadastro/ClientForm/ClientForm";
 import CadastroLoja from "./pages/Cadastro/StoreForm/StoreForm";
 import OrdersClient from "./pages/Client/OrdersClient";
 import NotAuthAcess from "./pages/NotAuthAcess/NotAuthAcess";
+import ChangePassword from "./pages/Client/ChangePassword/ChangePassword";
 
 const users = {
   client: "client",
@@ -36,7 +37,7 @@ const RouterList = () => {
           <Route path='/perfil' element={<PerfilCliente />}/>
           <Route path='/perfil/enderecos' element={<PerfilCliente />}/>
           <Route path='/perfil/pedidos' element={<OrdersClient />}/>
-          <Route path='/perfil/alterar-senha' element={<PerfilCliente />}/>
+          <Route path='/perfil/alterar-senha' element={<ChangePassword />}/>
           <Route path='/lojas' element={<PerfilLoja />}/>
           <Route path='/lojas/:store' element={<PerfilLoja />}/>
           <Route path='/delivery/descobrir/:categoria' element={<HomePage />}/>

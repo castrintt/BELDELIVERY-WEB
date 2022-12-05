@@ -9,9 +9,9 @@ import {
     documentValidate,
     cellValidate
 } from "../../../../utilites/helpers/helpers";
-import ModalCancelForm from "./ModalCancelForm/ModalCancelForm";
+import {ToastContainer, toast} from 'react-toastify';
 
-const FormPerfilEdit = ({userData, setEditForm}) => {
+const FormPerfilEdit = ({userData, setUserData, setEditForm}) => {
     const [loading, setLoading] = useState(false);
     const [customError, setCustomError] = useState({
         email: "",
@@ -20,13 +20,11 @@ const FormPerfilEdit = ({userData, setEditForm}) => {
         cell: ""
     });
     const [userDataUpadate, setUserDataUpadate] = useState(userData);
-    const [openModal, setOpenModal] = useState(false);
 
     const idUser = localStorage.getItem("id");
 
     const updateDataUser = () => {
         setLoading(true);
-
         db.collection("client")
         .doc(idUser)
         .update({
@@ -35,11 +33,11 @@ const FormPerfilEdit = ({userData, setEditForm}) => {
             cpf: userDataUpadate.cpf,
             cellPhone: userDataUpadate.cellPhone,
         })
-        .then((res) => {
+        .then(() => {
             setLoading(false);
-            console.log(res);
+            setUserData(userDataUpadate);
             setEditForm(false);
-            window.location.reload();
+            toast.error("Cadastrado com sucesso, vocês será redirecionado para o Login");
         })
         .catch((error) => {
             setLoading(false);
@@ -60,24 +58,28 @@ const FormPerfilEdit = ({userData, setEditForm}) => {
             cell: cell
         });
 
-        console.log(name.status)
-
-        if(!email.status && !name.status &&
+        if (!email.status && !name.status &&
             !cpf.status && !cell.status)
         {
             updateDataUser();
-            console.log("validado")
-        } else console.log("nao validado")
+        }
     };
 
     return(
         <>
             {loading && <Loading />}
-            {openModal && <ModalCancelForm setOpenModal={setOpenModal} setEditForm={setEditForm} />}
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                closeOnClick
+                draggable
+                theme="dark"
+            />
             <div className={css.tittle}>
                 <h2>Meu Perfil</h2>
                 <div className={css.buttons_container}>
-                    <button onClick={() => setOpenModal(true)}>
+                    <button onClick={() => setEditForm(false)}>
                         CANCELAR
                     </button>
                     <button onClick={() => checkDataForm()}>

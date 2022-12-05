@@ -24,13 +24,13 @@
     padding-top: 1rem;
     width: 100%;
     display: flex;
-    justify-content: start;
+    justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
 }
 .input_group{
     width: 100%;
-    max-width: 300px;
+    max-width: 250px;
     padding: 2rem 0;
 }
 .input_group > p{
@@ -70,8 +70,10 @@
     color: white;
 }
 
-@media all and (max-width: 770px){
+@media all and (max-width: 850px){
     .input_group{
         padding: .7rem 0;
+        max-width: 100%;
+        text-align: center;
     }
 }

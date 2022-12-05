@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import NavBarTop from "../../../components/NavBarTop";
 import css from "./styled.module.css";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { Table } from "react-bootstrap";
 import { getCurrentUser } from "../../../utilites/helpers/helpers";
 import { db } from "../../../services/api/firebaseConfig";
 import Loading from "../../../components/Loading";
@@ -14,9 +11,8 @@ const OrdersClient = () => {
     const [orders, setOrders] = useState([]);
 
     const viewIcon = "https://img.icons8.com/color/20/null/search--v1.png";
-    const deletIcon = "https://img.icons8.com/office/20/null/delete-sign.png"
+    const deletIcon = "https://img.icons8.com/office/20/null/delete-sign.png";
 
-    const navigate = useNavigate();
     const currentUser = getCurrentUser();
 
     const getOrders = () => {
@@ -98,7 +94,7 @@ const OrdersClient = () => {
                 </article>
             </main>
         </>
-    )
+    );
 }
 
 export default OrdersClient;

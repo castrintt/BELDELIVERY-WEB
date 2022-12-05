@@ -6,21 +6,22 @@ import { getCurrentUser } from "../../../utilites/helpers/helpers";
 import { db } from "../../../services/api/firebaseConfig";
 import FormPerfilNotEdit from "./FormPerfilNotEdit/FormPerfilNotEdit";
 import FormPerfilEdit from "./FormPerfilEdit/FormPerfilEdit";
+import Loading from "../../../components/Loading";
 
 const PerfilCliente = () => {
+    const [loading, setLoading] = useState(false);
     const [editForm, setEditForm] = useState(false);
     const [userData, setUserData] = useState({});
 
     const currentUser = getCurrentUser();
-    const navigate = useNavigate();
 
     const getUserData = () => {
+        setLoading(true);
         db.collection(currentUser.type)
         .doc(currentUser.id)
         .get()
         .then((res) => {
             let dataWay = res._delegate._document.data.value.mapValue.fields;
-            console.log(dataWay)
             setUserData({
                 id: res.id,
                 name: dataWay.name.stringValue,
@@ -30,9 +31,11 @@ const PerfilCliente = () => {
                 orders: dataWay.orders.integerValue,
                 cellPhone: dataWay.cellPhone?.stringValue,
             });
+            setLoading(false);
         })
         .catch(error => {
             console.log(error);
+            setLoading(false);
         });
     };
 
@@ -42,10 +45,11 @@ const PerfilCliente = () => {
 
     return(
         <>
+            {loading && <Loading />}
             <NavBarTop />
             <main className={css.container}>
                 {editForm ?
-                    <FormPerfilEdit userData={userData} setEditForm={setEditForm} /> :
+                    <FormPerfilEdit userData={userData} setUserData={setUserData} setEditForm={setEditForm} /> :
                     <FormPerfilNotEdit userData={userData} setEditForm={setEditForm} />
                 }
             </main>
