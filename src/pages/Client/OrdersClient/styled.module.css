@@ -1,4 +1,3 @@
-
 .container{
     padding: 4rem 0 1rem 15rem;
     width: 100%;
@@ -76,10 +75,15 @@
 }
 
 @media all and (max-width: 770px){
+    .container_content{
+        margin: 0 auto;
+        width: 90%;
+        height: auto;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
     .container{
         padding: 4rem 0 1rem 0;
-    }
-    .card_order{
-        width: 100%;
     }
 }

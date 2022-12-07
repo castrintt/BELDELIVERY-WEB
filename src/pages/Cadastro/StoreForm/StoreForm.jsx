@@ -16,7 +16,7 @@ const StoreForm = () => {
         urlName: "",
         typeStore: "",
     });
-    
+
     const urlStore = (name) => {
         let url = name.replace(/ /g, "-")
         setStoreForm({...storeForm, urlName: url.toLowerCase()})

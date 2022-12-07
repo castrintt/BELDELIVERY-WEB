@@ -21,21 +21,22 @@ const OrdersClient = () => {
         .where("idClient", "==" , currentUser.id)
         .get()
         .then((res) => {
-            res.docs.map(doc => {
-                const caminho = doc._delegate._document.data.value.mapValue.fields;
-                setOrders([{
-                    id: doc.id,
-                    createDate: caminho.createDate.timestampValue,
-                    idClient: caminho.idClient.stringValue,
-                    idStore: caminho.idStore.stringValue,
-                    itemLength: caminho.itemLength.integerValue,
-                    status: caminho.status.stringValue,
-                    totalValue: caminho.totalValue.stringValue,
-                    ...orders
-                }]
-                ); 
-                setLoading(false);
-            });
+            if(res.size > 0){
+                res.docs.map(doc => {
+                    const caminho = doc._delegate._document.data.value.mapValue.fields;
+                    setOrders([{
+                        id: doc.id,
+                        createDate: caminho.createDate.timestampValue,
+                        idClient: caminho.idClient.stringValue,
+                        idStore: caminho.idStore.stringValue,
+                        itemLength: caminho.itemLength.integerValue,
+                        status: caminho.status.stringValue,
+                        totalValue: caminho.totalValue.stringValue,
+                        ...orders
+                    }]);
+                });
+            };
+            setLoading(false);
         }) 
         .catch((error) => {
             setLoading(false);

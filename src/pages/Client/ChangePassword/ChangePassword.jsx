@@ -1,5 +1,6 @@
 import css from "./ChangePassword.module.css";
 import NavBarTop from "../../../components/NavBarTop";
+import { db } from "../../../services/api/firebaseConfig";
 
 const ChangePassword = () => {
 

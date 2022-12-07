@@ -110,6 +110,7 @@
     .input_group{
         padding: .7rem 0;
         max-width: 100%;
+        text-align: center;
     }
     .input_group > input{
         width: 100%;
