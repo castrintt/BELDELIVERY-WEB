@@ -5,7 +5,7 @@ import {useNavBarLeft} from "../../../services/hooks/useNavBarLeft";
 import NavBarLeftResponsive from "./NavBarLeftResponsive/NavBarLeftResponsive";
 
 const NavBarLeftStore = () => {
-    const {icons, openBar} = useNavBarLeft();
+    const {icons, openBar, perfilImg} = useNavBarLeft();
 
     const currentUser = getCurrentUser();
     const navigate = useNavigate();
@@ -18,7 +18,7 @@ const NavBarLeftStore = () => {
                     <div>
                         <div className={css.container_avatar}>
                             <div className={css.container_img_avatar}>
-
+                                <img src={perfilImg} alt="" />
                             </div>
                             <span>{currentUser.name}</span>
                         </div>

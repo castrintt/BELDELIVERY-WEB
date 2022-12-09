@@ -3,16 +3,25 @@ import css from "./FormPerfilEdit.module.css";
 import moment from "moment/moment";
 import Loading from "../../../../components/Loading";
 import {db} from "../../../../services/api/firebaseConfig";
+import firebase from "firebase/app";
+import "firebase/storage";
 import {
     nameValidate,
     emailValidate,
     documentValidate,
     cellValidate
 } from "../../../../utilites/helpers/helpers";
-import {ToastContainer, toast} from 'react-toastify';
+import { getCurrentUser } from "../../../../utilites/helpers/helpers";
 
-const FormPerfilEdit = ({userData, setUserData, setEditForm}) => {
-    const [loading, setLoading] = useState(false);
+const FormPerfilEdit = ({
+    userData,
+    setUserData,
+    setEditForm,
+    perfilImg,
+    setPerfilimg,
+}) => {
+    const [loading, setLoading] = useState(null);
+    const [imgInput, setImgInput] = useState(null);
     const [customError, setCustomError] = useState({
         email: "",
         name: "",
@@ -21,12 +30,13 @@ const FormPerfilEdit = ({userData, setUserData, setEditForm}) => {
     });
     const [userDataUpadate, setUserDataUpadate] = useState(userData);
 
-    const idUser = localStorage.getItem("id");
+    const currentUser = getCurrentUser();
+    const storageRef = firebase.storage().ref();
 
     const updateDataUser = () => {
         setLoading(true);
         db.collection("client")
-        .doc(idUser)
+        .doc(currentUser.id)
         .update({
             name: userDataUpadate.name,
             email: userDataUpadate.email,
@@ -37,7 +47,7 @@ const FormPerfilEdit = ({userData, setUserData, setEditForm}) => {
             setLoading(false);
             setUserData(userDataUpadate);
             setEditForm(false);
-            toast.error("Cadastrado com sucesso, vocês será redirecionado para o Login");
+            handleImg();
         })
         .catch((error) => {
             setLoading(false);
@@ -65,17 +75,36 @@ const FormPerfilEdit = ({userData, setUserData, setEditForm}) => {
         }
     };
 
+    const handleImg = () => {
+        if(!imgInput) return;
+
+        const uploadTask =  storageRef.child("user/" + currentUser.id).put(imgInput, imgInput.type);
+
+        uploadTask.on('state_changed',
+            (snapshot) => {
+                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+                switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                    console.log('Upload is paused');
+                    break;
+                case firebase.storage.TaskState.RUNNING: // or 'running'
+                    console.log('Upload is running');
+                    break;
+                }
+            },
+            (error) => {
+                console.log(error);
+            },
+            () => {
+                setPerfilimg(imgInput);
+            }
+        );
+    };
+
     return(
         <>
             {loading && <Loading />}
-            <ToastContainer
-                position="top-right"
-                autoClose={3000}
-                hideProgressBar={false}
-                closeOnClick
-                draggable
-                theme="dark"
-            />
             <div className={css.tittle}>
                 <h2>Meu Perfil</h2>
                 <div className={css.buttons_container}>
@@ -89,11 +118,12 @@ const FormPerfilEdit = ({userData, setUserData, setEditForm}) => {
             </div>
             <article className={css.container_form}>
                 <div>
-                    <img src="" />
+                    <img src={perfilImg} />
                     <input
                         type="file"
                         name="" 
                         id=""
+                        onChange={(e) => setImgInput(e.target.files[0])}
                     />
                 </div>
                 <div>
@@ -102,7 +132,7 @@ const FormPerfilEdit = ({userData, setUserData, setEditForm}) => {
                         <input
                             type="text"
                             value={userDataUpadate.name}
-                            onChange={(e) => setUserDataUpadate({...userData, name: e.target.value})}
+                            onChange={(e) => setUserDataUpadate({...userDataUpadate, name: e.target.value})}
                         />
                         {customError.name.status && 
                             <p className={css.error}>{customError.name.messenge}</p>

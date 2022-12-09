@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
 import css from "./FormPerfilNotEdit.module.css";
 import moment from "moment/moment";
 
-const FormPerfilNotEdit = ({userData, setEditForm}) => {
-
+const FormPerfilNotEdit = ({userData, setEditForm, perfilImg}) => {
+    
     return(
         <>
             <div className={css.tittle}>
@@ -14,8 +13,7 @@ const FormPerfilNotEdit = ({userData, setEditForm}) => {
             </div>
             <article className={css.container_form}>
                 <div>
-                    <img src="" />
-                    <input type="file" name="" id="" />
+                    <img src={perfilImg} />
                 </div>
                 <div>
                     <div className={css.input_group}>

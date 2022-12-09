@@ -4,7 +4,7 @@ import {Logout, getCurrentUser} from "../../../../utilites/helpers/helpers";
 import { useNavigate } from "react-router-dom";
 
 const NavBarLeftResponsive = () => {
-    const {icons, openBar, setOpenBar} = useNavBarLeft();
+    const {icons, openBar, setOpenBar, perfilImg} = useNavBarLeft();
 
     const currentUser = getCurrentUser();
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ const NavBarLeftResponsive = () => {
                         <div onClick={() => setOpenBar(false)}>
                             <div className={css.container_avatar}>
                                 <div className={css.container_img_avatar}>
-
+                                    <img src={perfilImg} alt="" />
                                 </div>
                                 <span>{currentUser.name}</span>
                             </div>
