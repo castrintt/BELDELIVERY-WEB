@@ -52,14 +52,10 @@
         border: 3px solid black;
         overflow: hidden;
         background-color: rgba(255, 255, 255, 0.623);
-    
-        display: flex;
-        justify-content: left;
-        align-items: center;
     }
     .container_avatar > .container_img_avatar > img{
-        width: 200%;
-        height: 100%;
+        width: 125px;
+        height: 110px;
     }
     .container_avatar > span{
         font-size: 1rem;

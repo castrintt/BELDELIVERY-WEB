@@ -18,10 +18,9 @@ const FormPerfilEdit = ({
     setUserData,
     setEditForm,
     perfilImg,
-    setPerfilimg,
+    setPerfilImg,
 }) => {
     const [loading, setLoading] = useState(null);
-    const [imgInput, setImgInput] = useState(null);
     const [customError, setCustomError] = useState({
         email: "",
         name: "",
@@ -30,6 +29,7 @@ const FormPerfilEdit = ({
     });
     const [userDataUpadate, setUserDataUpadate] = useState(userData);
 
+    const uploadIcon = "https://img.icons8.com/fluency/48/null/send-letter.png";
     const currentUser = getCurrentUser();
     const storageRef = firebase.storage().ref();
 
@@ -75,10 +75,12 @@ const FormPerfilEdit = ({
         }
     };
 
-    const handleImg = () => {
-        if(!imgInput) return;
+    const handleImg = (e) => {
+        const inputImg = e.target.files[0];
 
-        const uploadTask =  storageRef.child("user/" + currentUser.id).put(imgInput, imgInput.type);
+        if(!inputImg) return;
+
+        const uploadTask =  storageRef.child("user/" + currentUser.id).put(inputImg, inputImg.type);
 
         uploadTask.on('state_changed',
             (snapshot) => {
@@ -97,7 +99,7 @@ const FormPerfilEdit = ({
                 console.log(error);
             },
             () => {
-                setPerfilimg(imgInput);
+                setPerfilImg(inputImg);
             }
         );
     };
@@ -121,11 +123,14 @@ const FormPerfilEdit = ({
                     <img src={perfilImg} />
                     <input
                         type="file"
-                        name="" 
-                        id=""
-                        onChange={(e) => setImgInput(e.target.files[0])}
+                        name="file"
+                        id="file"
+                        onChange={(e) => handleImg(e)}
                     />
                 </div>
+                <label className={css.label_file} htmlFor="file">
+                    <img src={uploadIcon} alt="" />
+                </label>
                 <div>
                     <div className={css.input_group}>
                         <p>Nome completo:</p>
@@ -156,7 +161,7 @@ const FormPerfilEdit = ({
                             value={userDataUpadate.cpf}
                             onChange={(e) => setUserDataUpadate({...userDataUpadate, cpf: e.target.value})}
                         />
-                        {customError.cpf.status && 
+                        {customError.cpf.status &&
                             <p className={css.error}>{customError.cpf.messenge}</p>
                         }
                     </div>

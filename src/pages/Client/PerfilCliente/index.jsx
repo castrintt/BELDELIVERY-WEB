@@ -25,12 +25,13 @@ const PerfilCliente = () => {
         .get()
         .then((res) => {
             let dataWay = res._delegate._document.data.value.mapValue.fields;
+            console.log(dataWay)
             setUserData({
             id: res.id,
             name: dataWay.name.stringValue,
             cpf: dataWay.cpf.stringValue,
             email: dataWay.email.stringValue,
-            createdDate: dataWay.createdDate.timestampValue,
+            createdDate: dataWay.createdDate.stringValue,
             orders: dataWay.orders.integerValue,
             cellPhone: dataWay.cellPhone?.stringValue
             });
@@ -61,7 +62,7 @@ const PerfilCliente = () => {
 
     useEffect(() => {
         getUserData();
-    }, []);
+    }, [perfilImg]);
 
     return(
         <>

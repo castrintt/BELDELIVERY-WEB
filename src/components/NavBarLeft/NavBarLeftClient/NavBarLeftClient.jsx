@@ -1,14 +1,37 @@
 import css from "../styled.module.css";
+import { useEffect } from "react";
 import { getCurrentUser, Logout } from "../../../utilites/helpers/helpers";
 import { useNavigate } from "react-router-dom";
 import NavBarLeftResponsive from "./NavBarLeftResponsive/NavBarLeftResponsive";
 import {useNavBarLeft} from "../../../services/hooks/useNavBarLeft";
+import firebase from "firebase/app";
+import "firebase/storage";
 
 const NavBarLeftClient = () => {
-    const {icons, openBar, perfilImg} = useNavBarLeft();
+    const {icons, openBar, perfilImg, setPerfilImg} = useNavBarLeft();
 
     const currentUser = getCurrentUser();
     const navigate = useNavigate();
+
+    const getImagePerfil = () => {
+        const storageRef = firebase.storage().ref();
+
+        storageRef.child("user/").listAll()
+        .then((res) => {
+            res.items.map(item => {
+                if(item.name === currentUser.id){
+                    item.getDownloadURL()
+                    .then((img) => {
+                    setPerfilImg(img);
+                    })
+                }
+            })
+        })
+    };
+    
+    useEffect(() => {
+        getImagePerfil();
+    }, [])
 
     return (
         <>

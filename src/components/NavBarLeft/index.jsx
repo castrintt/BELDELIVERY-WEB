@@ -5,7 +5,7 @@ import NavBarLeftStore from "./NavBarLeftStore/NavBarLeftStore";
 import {useNavBarLeft} from "../../services/hooks/useNavBarLeft";
 
 const NavBarLeft = () => {
-    const {icons, openBar, setOpenBar} = useNavBarLeft();
+    const {icons, openBar, setOpenBar } = useNavBarLeft();
 
     const currentUser = getCurrentUser();
 
