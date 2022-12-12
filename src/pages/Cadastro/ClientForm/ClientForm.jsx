@@ -71,13 +71,17 @@ const ClientForm = () => {
             name: formData.name,
             email: formData.email,
             password: formData.password,
-            cpf: null,
+            cpf: "",
+            cellPhone: "",
+            createdDate: new Date(),
             type: 3,
             orders: 0
         })
-        .then(() => {
+        .then((res) => {
+            console.log(res)
             setLoading(false);
-            toast.success("Cadastrado com sucesso, vocês será redirecionado para o Login");
+            toast.success("Cadastrado com sucesso!");
+            toast.success("Você será redirecionado para o Login");
             setTimeout(() => {
                 navigate("/login")
             }, 5000)
@@ -87,7 +91,7 @@ const ClientForm = () => {
             setLoading(false);
         });
     };
-    
+
     return(
         <>
         {loading && <Loading />}

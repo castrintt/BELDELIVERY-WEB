@@ -6,6 +6,7 @@ import NavBarLeftResponsive from "./NavBarLeftResponsive/NavBarLeftResponsive";
 import {useNavBarLeft} from "../../../services/hooks/useNavBarLeft";
 import firebase from "firebase/app";
 import "firebase/storage";
+import AnonimoImg from "../../../utilites/img/anonimo.png";
 
 const NavBarLeftClient = () => {
     const {icons, openBar, perfilImg, setPerfilImg} = useNavBarLeft();
@@ -27,8 +28,13 @@ const NavBarLeftClient = () => {
                 }
             })
         })
+        .finally(() => {
+            if(!perfilImg){
+                setPerfilImg(AnonimoImg);
+            }
+        })
     };
-    
+
     useEffect(() => {
         getImagePerfil();
     }, [])

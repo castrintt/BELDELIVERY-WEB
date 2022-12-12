@@ -8,10 +8,8 @@ import "firebase/storage";
 import {
     nameValidate,
     emailValidate,
-    documentValidate,
-    cellValidate
+    getCurrentUser
 } from "../../../../utilites/helpers/helpers";
-import { getCurrentUser } from "../../../../utilites/helpers/helpers";
 
 const FormPerfilEdit = ({
     userData,
@@ -58,18 +56,13 @@ const FormPerfilEdit = ({
     const checkDataForm = () => {
         let email = emailValidate(userDataUpadate.email);
         let name = nameValidate(userDataUpadate.name);
-        let cpf = documentValidate(userDataUpadate.cpf);
-        let cell = cellValidate(userDataUpadate.cellPhone);
 
         setCustomError({
             email: email,
-            name: name,
-            cpf: cpf,
-            cell: cell
+            name: name
         });
 
-        if (!email.status && !name.status &&
-            !cpf.status && !cell.status)
+        if (!email.status && !name.status)
         {
             updateDataUser();
         }
@@ -161,9 +154,6 @@ const FormPerfilEdit = ({
                             value={userDataUpadate.cpf}
                             onChange={(e) => setUserDataUpadate({...userDataUpadate, cpf: e.target.value})}
                         />
-                        {customError.cpf.status &&
-                            <p className={css.error}>{customError.cpf.messenge}</p>
-                        }
                     </div>
                     <div className={css.input_group}>
                         <p>Celular:</p>
@@ -172,9 +162,6 @@ const FormPerfilEdit = ({
                             value={userDataUpadate.cellPhone}
                             onChange={(e) => setUserDataUpadate({...userDataUpadate, cellPhone: e.target.value})}
                         />
-                        {customError.cell.status &&
-                            <p className={css.error}>{customError.cell.messenge}</p>
-                        }
                     </div>
                     <div className={css.input_group}>
                         <p>Número de pedidos:</p>

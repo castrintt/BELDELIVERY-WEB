@@ -8,6 +8,7 @@ import { db } from "../../../services/api/firebaseConfig";
 import firebase from "firebase/app";
 import "firebase/storage";
 import { getCurrentUser } from "../../../utilites/helpers/helpers";
+import AnonimoImg from "../../../utilites/img/anonimo.png";
 
 const PerfilCliente = () => {
     const [loading, setLoading] = useState(false);
@@ -25,7 +26,6 @@ const PerfilCliente = () => {
         .get()
         .then((res) => {
             let dataWay = res._delegate._document.data.value.mapValue.fields;
-            console.log(dataWay)
             setUserData({
             id: res.id,
             name: dataWay.name.stringValue,
@@ -46,23 +46,28 @@ const PerfilCliente = () => {
 
     const getImagePerfil = () => {
         const storageRef = firebase.storage().ref();
-  
+
         storageRef.child("user/").listAll()
         .then((res) => {
             res.items.map(item => {
                 if(item.name === currentUser.id){
                     item.getDownloadURL()
                     .then((img) => {
-                      setPerfilImg(img);
+                        setPerfilImg(img);
                     })
                 }
             })
+        })
+        .finally(() => {
+            if(!perfilImg){
+                setPerfilImg(AnonimoImg);
+            }
         })
     };
 
     useEffect(() => {
         getUserData();
-    }, [perfilImg]);
+    }, []);
 
     return(
         <>
