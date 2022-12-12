@@ -1,10 +1,21 @@
-import { getCurrentUser } from "../../utilites/helpers/helpers";
+import { getCurrentUser, verifyExitentClient } from "../../utilites/helpers/helpers";
 import { db } from "../api/firebaseConfig";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const AuthRequiredRoutes = ({ required }) => {
-    const permission = getCurrentUser();
+    const user = getCurrentUser();
+
+    const navigate = useNavigate();
+
+    const validateTypeAcess = () => {
+        if(user.type){
+            user.type === "client" && navigate("/");
+            user.type === "store" && navigate("/gerenciar");
+        } else {
+            navigate("/sem-autorizacao");
+        };
+    };
 
     // const authUserClient = () => {
     //     db.collection(permission.type)
@@ -25,9 +36,11 @@ const AuthRequiredRoutes = ({ required }) => {
     // }, []);
 
     return (
-        required.includes(permission.type) &&
-            permission.id ? <Outlet />
-            : <Navigate to="/sem-autorizacao" />
+        required.includes(user.type) &&
+        user.id ? <Outlet />
+        : user.type === "client" ? <Navigate to="/"/>
+        : user.type === "store" ? <Navigate to="/gerenciar"/>
+        : <Navigate to="/sem-autorizacao"/>
     );
 };
 

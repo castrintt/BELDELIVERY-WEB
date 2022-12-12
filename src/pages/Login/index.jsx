@@ -85,10 +85,10 @@ const Login = () => {
                 localStorage.setItem("name", caminhoValue.name.stringValue);
                 localStorage.setItem("userType", "store");
                 toast.success("Logado com sucesso");
-                navigate("/home");
+                navigate("/gerenciar");
             } else {
                 setErrorStatus(true);
-                toast.warning("Usuário não encontrado");
+                toast.warning("Loja não encontrado");
             };
             setLoading(false);
         })

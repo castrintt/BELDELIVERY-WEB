@@ -45,12 +45,12 @@ const RouterList = () => {
 
         {/* store private routes */}
         <Route element={<AuthRequiredRoutes required={users.store} />}>
-          <Route path='/gerenciar/:store' element={<PerfilLoja />}/>
-          <Route path='/gerenciar/:store/produtos' element={<PerfilLoja />}/>
-          <Route path='/gerenciar/:store/pedidos' element={<PerfilLoja />}/>
-          <Route path='/gerenciar/:store/endereco' element={<PerfilLoja />}/>
+          <Route path='/gerenciar' element={<PerfilLoja />}/>
+          <Route path='/gerenciar/produtos' element={<PerfilLoja />}/>
+          <Route path='/gerenciar/pedidos' element={<PerfilLoja />}/>
+          <Route path='/gerenciar/endereco' element={<PerfilLoja />}/>
         </Route>
-        
+
       </Routes>
     </Router>
   );

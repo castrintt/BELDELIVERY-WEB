@@ -7,7 +7,7 @@ const PerfilLoja = () => {
         <>
             <NavBarTop />
             <div className={css.container}>
-
+                
             </div>
         </>
     )
