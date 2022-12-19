@@ -11,6 +11,7 @@ import CadastroLoja from "./pages/Cadastro/StoreForm/StoreForm";
 import OrdersClient from "./pages/Client/OrdersClient";
 import NotAuthAcess from "./pages/NotAuthAcess/NotAuthAcess";
 import ChangePassword from "./pages/Client/ChangePassword/ChangePassword";
+import Gerenciar from "./pages/Store/Gerenciar/Gerenciar";
 
 const users = {
   client: "client",
@@ -22,7 +23,6 @@ const RouterList = () => {
   return (
     <Router>
       <Routes>
-
         {/* public routes */}
         <Route path='/login' element={<Login />}/>
         <Route path='/cadastro' element={<Cadastro />}/>
@@ -45,12 +45,12 @@ const RouterList = () => {
 
         {/* store private routes */}
         <Route element={<AuthRequiredRoutes required={users.store} />}>
-          <Route path='/gerenciar' element={<PerfilLoja />}/>
-          <Route path='/gerenciar/produtos' element={<PerfilLoja />}/>
-          <Route path='/gerenciar/pedidos' element={<PerfilLoja />}/>
-          <Route path='/gerenciar/endereco' element={<PerfilLoja />}/>
+          <Route path='/gerenciar' element={<Gerenciar />}/>
+          <Route path='/gerenciar/produtos' element={<Gerenciar />}/>
+          <Route path='/gerenciar/pedidos' element={<Gerenciar />}/>
+          <Route path='/gerenciar/endereco' element={<Gerenciar />}/>
+          <Route path='/gerenciar/alterar-senha' element={<Gerenciar />}/>
         </Route>
-
       </Routes>
     </Router>
   );

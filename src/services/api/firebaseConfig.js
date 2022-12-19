@@ -3,16 +3,15 @@ import "firebase/firestore";
 import "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAab_DeA2VZuLl05oBMFeY8A9J9mv7OU6I",
-  authDomain: "beldelivery-f4426.firebaseapp.com",
-  projectId: "beldelivery-f4426",
-  storageBucket: "beldelivery-f4426.appspot.com",
-  messagingSenderId: "545880720658",
-  appId: "1:545880720658:web:eb3db6de50c19f5760dfcb"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 };
 
 firebase.initializeApp(firebaseConfig);
 
 export const db = firebase.firestore();
 export const storage = firebase.storage();
-

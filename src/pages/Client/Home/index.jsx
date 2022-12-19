@@ -1,12 +1,13 @@
-import NavBarTop from "../../../components/NavBarTop";
 import css from "./styled.module.css";
-import CategoriasCards from "../../../components/Categorias";
+import NavBarLeft from "../../../components/NavBarCliente/NavBarLeft/NavBarLeftClient";
+import NavBarTop from "../../../components/NavBarCliente/NavBarTop/index";
 
 const HomePage = () => {
 
     return(
         <>
             <NavBarTop />
+            <NavBarLeft />
             <section className={css.banner}></section>
             <main className={css.container}>
                 {/* <CategoriasCards /> */}
