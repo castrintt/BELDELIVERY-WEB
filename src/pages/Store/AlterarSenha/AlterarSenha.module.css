@@ -39,6 +39,10 @@
     border: 1px solid rgb(0, 105, 211);
     color: white;
 }
+.tittle > button:disabled{
+    background-color: #bbbbbb;
+    border: 1px solid #bbbbbb;
+}
 .buttons_container{
     display: flex;
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import NavBarTop from "../../../components/NavBarTop";
+import NavBarTop from "../../../components/NavBarCliente/NavBarTop";
 import css from "./styled.module.css";
 import { getCurrentUser } from "../../../utilites/helpers/helpers";
 import { db } from "../../../services/api/firebaseConfig";

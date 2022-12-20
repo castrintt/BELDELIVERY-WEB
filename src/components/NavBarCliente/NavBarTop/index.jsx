@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import CarrinhoModal from "../../CarrinhoModal";
 import { useState } from "react";
 import { NavDropdown } from "react-bootstrap";
-import NavBarLeft from "../../NavBarLeft";
 
 const NavBarTop = () => {
     const [openModalCarrinho,  setOpenModalCarrinho] = useState(false);
@@ -15,7 +14,6 @@ const NavBarTop = () => {
     return(
         <>
             <CarrinhoModal openModalProps={openModalCarrinho}/>
-            <NavBarLeft />
             <div className={css.container_nav_bar}>
                 <nav className={css.content_nav_bar}>
                     <div className={css.container_logo}>

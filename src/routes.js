@@ -12,6 +12,7 @@ import OrdersClient from "./pages/Client/OrdersClient";
 import NotAuthAcess from "./pages/NotAuthAcess/NotAuthAcess";
 import ChangePassword from "./pages/Client/ChangePassword/ChangePassword";
 import Gerenciar from "./pages/Store/Gerenciar/Gerenciar";
+import AlterarSenha from "./pages/Store/AlterarSenha/AlterarSenha";
 
 const users = {
   client: "client",
@@ -49,7 +50,7 @@ const RouterList = () => {
           <Route path='/gerenciar/produtos' element={<Gerenciar />}/>
           <Route path='/gerenciar/pedidos' element={<Gerenciar />}/>
           <Route path='/gerenciar/endereco' element={<Gerenciar />}/>
-          <Route path='/gerenciar/alterar-senha' element={<Gerenciar />}/>
+          <Route path='/gerenciar/alterar-senha' element={<AlterarSenha />}/>
         </Route>
       </Routes>
     </Router>

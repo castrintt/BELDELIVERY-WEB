@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import NavBarTop from "../../../components/NavBarTop";
+import NavBarTop from "../../../components/NavBarCliente/NavBarTop";
 import css from "./styled.module.css";
 import FormPerfilNotEdit from "./FormPerfilNotEdit/FormPerfilNotEdit";
 import FormPerfilEdit from "./FormPerfilEdit/FormPerfilEdit";

@@ -1,13 +1,14 @@
-import css from "./ChangePassword.module.css";
-import NavBarTop from "../../../components/NavBarCliente/NavBarTop";
-import { db } from "../../../services/api/firebaseConfig";
-import {passwordRegisterValidate, getCurrentUser } from "../../../utilites/helpers/helpers";
 import { useState } from "react";
+import css from "./AlterarSenha.module.css";
+import NavBarLeft from "../../../components/NavBarLoja/NavBarLeft/NavBarLeft";
+import NavBarTop from "../../../components/NavBarLoja/NavBarTop";
 import Loading from "../../../components/Loading";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { db } from "../../../services/api/firebaseConfig";
+import {passwordRegisterValidate, getCurrentUser } from "../../../utilites/helpers/helpers";
 
-const ChangePassword = () => {
+const AlterarSenha = () => {
     const [loading, setLoading] = useState(false);
     const [dataForm, setDataForm] = useState({
         oldPassword: "",
@@ -23,13 +24,14 @@ const ChangePassword = () => {
     const updateUserPassword = () => {
         setLoading(true);
 
-        db.collection("client")
+        db.collection("store")
         .doc(currentUser.id)
         .update({
             password: dataForm.newPassword,
         })
         .then(() => {
             setLoading(false);
+            cleanDataForm();
             toast.success("Senha alterada com sucesso!");
         })
         .catch((error) => {
@@ -41,7 +43,7 @@ const ChangePassword = () => {
     const checkOldPassword = () => {
         setLoading(true);
 
-        db.collection("client")
+        db.collection("store")
         .where("password", "==", dataForm.oldPassword)
         .get()
         .then((res) => {
@@ -49,7 +51,7 @@ const ChangePassword = () => {
                 updateUserPassword();
             } else {
                 setCustomError({
-                    oldPassword: "Senha incorreta",
+                    oldPassword: "Senha atual incorreta",
                     newPassword: null
                 })
             };
@@ -85,19 +87,16 @@ const ChangePassword = () => {
     return(
         <>
             <NavBarTop />
+            <NavBarLeft />
             {loading && <Loading />}
-            <ToastContainer 
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                closeOnClick
-                draggable
-            />
             <main className={css.container}>
                 <div className={css.tittle}>
                     <h2>Alterar senha</h2>
-                    <button onClick={() => checkDataForm()}>
-                        EDITAR
+                    <button
+                        onClick={() => checkDataForm()}
+                        disabled={dataForm.newPassword.length <= 0 && true}
+                    >
+                        SALVAR
                     </button>
                 </div>
                 <article className={css.container_form}>
@@ -130,7 +129,7 @@ const ChangePassword = () => {
                 </article>
             </main>
         </>
-    );
-};
+    )
+}
 
-export default ChangePassword;
+export default AlterarSenha;
