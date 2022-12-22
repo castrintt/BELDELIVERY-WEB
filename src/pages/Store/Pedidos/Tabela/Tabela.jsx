@@ -1,7 +1,5 @@
 import css from "./Tabela.module.css";
-import * as React from "react";
-import NavBarTop from "../../../../components/NavBarLoja/NavBarTop";
-import NavBarLeft from "../../../../components/NavBarLoja/NavBarLeft/NavBarLeft";
+import {useState, useEffect} from "react";
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -31,48 +29,82 @@ import Paper from '@mui/material/Paper';
         },
     }));
 
-const Tabela = ({orders}) => {
+const Tabela = ({orders, currentTable}) => {
+    const [dataTable, setDataTable] = useState([]);
 
-  return (
-    <>
-        <TableContainer component={Paper}>
-            <Table sx={{ width: "100%" }} aria-label="customized table">
-                <TableHead>
-                    <TableRow>
-                        <StyledTableCell align="center">Número do pedido</StyledTableCell>
-                        <StyledTableCell align="center">Status</StyledTableCell>
-                        <StyledTableCell align="center">Valor Total</StyledTableCell>
-                        <StyledTableCell align="center">Quantidade de itens</StyledTableCell>
-                        <StyledTableCell align="center">Data do pedido</StyledTableCell>
-                        <StyledTableCell align="center">Gerenciar</StyledTableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                {orders?.length > 0 ?
-                    orders.map((order) => (
-                    <StyledTableRow key={order.id}>
-                        <StyledTableCell align="center">{order.id}</StyledTableCell>
-                        <StyledTableCell align="center">{order.status}</StyledTableCell>
-                        <StyledTableCell align="center">{order.totalValue}</StyledTableCell>
-                        <StyledTableCell align="center">{order.itens}</StyledTableCell>
-                        <StyledTableCell align="center">{order.date}</StyledTableCell>
-                        <StyledTableCell align="center">X</StyledTableCell>
-                    </StyledTableRow>
-                )) :
-                    <StyledTableRow>
-                        <StyledTableCell align="center"></StyledTableCell>
-                        <StyledTableCell align="center"></StyledTableCell>
-                        <StyledTableCell align="center"></StyledTableCell>
-                        <StyledTableCell align="left">
-                        <h4>Nenhum pedido encontrado</h4></StyledTableCell>
-                        <StyledTableCell align="center"></StyledTableCell>
-                        <StyledTableCell align="center"></StyledTableCell>
-                    </StyledTableRow>
-                }
-                </TableBody>
-            </Table>
-        </TableContainer>
-    </>
+    const viewIcon = "https://img.icons8.com/color/20/null/search--v1.png";
+    const deletIcon = "https://img.icons8.com/office/20/null/delete-sign.png";
+
+    const filterTable = () => {
+        let filter = [];
+
+        switch (currentTable){
+            case 1:
+                filter = orders;
+                break;
+            case 2:
+                filter = orders.filter(order => order.status === "Em preparação");
+                break;
+            case 3:
+                filter = orders.filter(order => order.status === "Em entrega");
+                break;
+            case 4:
+                filter = orders.filter(order => order.status === "Concluído");
+                break;
+        };
+
+        setDataTable(filter);
+    };
+
+    useEffect(() => {
+        filterTable();
+    }, [currentTable]);
+
+    return (
+        <>
+            <TableContainer component={Paper}>
+                <Table sx={{ width: "100%" }} aria-label="customized table">
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell align="center">Número do pedido</StyledTableCell>
+                            <StyledTableCell align="center">Status</StyledTableCell>
+                            <StyledTableCell align="center">Valor Total</StyledTableCell>
+                            <StyledTableCell align="center">Quantidade de itens</StyledTableCell>
+                            <StyledTableCell align="center">Data do pedido</StyledTableCell>
+                            <StyledTableCell align="center">Ações</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    {dataTable?.length > 0 ?
+                        dataTable.map((order) => (
+                        <StyledTableRow key={order.id}>
+                            <StyledTableCell align="center">{order.id}</StyledTableCell>
+                            <StyledTableCell align="center">{order.status}</StyledTableCell>
+                            <StyledTableCell align="center">{order.totalValue}</StyledTableCell>
+                            <StyledTableCell align="center">{order.itens}</StyledTableCell>
+                            <StyledTableCell align="center">{order.date}</StyledTableCell>
+                            <StyledTableCell align="center">
+                                <img src={viewIcon} alt="visualizar-pedido" />
+                                {/* {order.status === "Concluído" && (
+                                    <img src={deletIcon}/>
+                                )}  */}
+                            </StyledTableCell>
+                        </StyledTableRow>
+                    )) :
+                        <StyledTableRow>
+                            <StyledTableCell align="center"></StyledTableCell>
+                            <StyledTableCell align="center"></StyledTableCell>
+                            <StyledTableCell align="center"></StyledTableCell>
+                            <StyledTableCell align="left">
+                            <h4>Nenhum pedido encontrado</h4></StyledTableCell>
+                            <StyledTableCell align="center"></StyledTableCell>
+                            <StyledTableCell align="center"></StyledTableCell>
+                        </StyledTableRow>
+                    }
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </>
     );
 };
 
