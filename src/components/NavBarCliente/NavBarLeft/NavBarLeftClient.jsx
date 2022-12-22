@@ -16,6 +16,7 @@ const NavBarLeft = () => {
 
     const getImagePerfil = () => {
         const storageRef = firebase.storage().ref();
+        setPerfilImg(AnonimoImg);
 
         storageRef.child("user/").listAll()
         .then((res) => {
@@ -27,11 +28,6 @@ const NavBarLeft = () => {
                     })
                 }
             })
-        })
-        .finally(() => {
-            if(!perfilImg){
-                setPerfilImg(AnonimoImg);
-            }
         })
     };
 

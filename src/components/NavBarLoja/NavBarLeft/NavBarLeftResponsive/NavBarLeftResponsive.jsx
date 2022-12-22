@@ -4,17 +4,26 @@ import {Logout, getCurrentUser} from "../../../../utilites/helpers/helpers";
 import { useNavigate } from "react-router-dom";
 
 const NavBarLeftResponsive = () => {
-    const {icons, openBar, setOpenBar, perfilImg} = useNavBarLeft();
+    const {icons, openBarMobile, setOpenBarMobile, perfilImg} = useNavBarLeft();
 
     const currentUser = getCurrentUser();
     const navigate = useNavigate();
 
+    const Navigate = (route) => {
+        setOpenBarMobile(false);
+        navigate(route);
+    };
+
     return(
         <>
-            {openBar &&
+            <img className={css.icon_open_menu}
+                src={icons.openNavBar}
+                onClick={() => setOpenBarMobile(!openBarMobile)}
+            />
+            {openBarMobile &&
                 <div className={css.container_left_bar}>
                     <div className={css.nav_container}>
-                        <div onClick={() => setOpenBar(false)}>
+                        <div>
                             <div className={css.container_avatar}>
                                 <div className={css.container_img_avatar}>
                                     <img src={perfilImg} alt="" />
@@ -22,31 +31,31 @@ const NavBarLeftResponsive = () => {
                                 <span>{currentUser.name}</span>
                             </div>
                             <div className={css.menu_items}
-                                onClick={() => navigate("/home")}
+                                onClick={() => Navigate("/home")}
                             >
                                 <img src={icons.home} />
                                 <span>HOME</span>
                             </div>
                             <div className={css.menu_items}
-                                onClick={() => navigate("/gerenciar-loja")}
+                                onClick={() => Navigate("/gerenciar-loja")}
                             >
                                 <img src={icons.perfil} />
                                 <span>PERFIL</span>
                             </div>
                             <div className={css.menu_items}
-                                onClick={() => navigate("/gerenciar-loja/pedidos")}
+                                onClick={() => Navigate("/gerenciar-loja/pedidos")}
                             >
                                 <img src={icons.order} />
                                 <span>PEDIDOS</span>
                             </div>
                             <div className={css.menu_items}
-                                onClick={() => navigate("/gerenciar-loja/enderecos")}
+                                onClick={() => Navigate("/gerenciar-loja/enderecos")}
                             >
                                 <img src={icons.address} />
                                 <span>ENDEREÇOS</span>
                             </div>
                             <div className={css.menu_items}
-                                onClick={() => navigate("/gerenciar-loja/alterar-senha")}
+                                onClick={() => Navigate("/gerenciar-loja/alterar-senha")}
                             >
                                 <img src={icons.changePassword} />
                                 <span>ALTERAR SENHA</span>

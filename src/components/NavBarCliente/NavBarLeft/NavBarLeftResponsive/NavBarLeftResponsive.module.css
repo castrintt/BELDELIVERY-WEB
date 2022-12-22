@@ -1,6 +1,9 @@
 .container_left_bar{
     display: none;
 }
+.icon_open_menu{
+    display: none;
+}
 
 @media all and (max-width: 770px){
     .container_left_bar{
@@ -37,6 +40,7 @@
         z-index: 999;
         left: 25px;
         cursor: pointer;
+        display: block;
     }
     .container_avatar{
         display: flex;

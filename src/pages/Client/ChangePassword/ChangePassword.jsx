@@ -1,5 +1,6 @@
 import css from "./ChangePassword.module.css";
 import NavBarTop from "../../../components/NavBarCliente/NavBarTop";
+import NavBarLeft from "../../../components/NavBarCliente/NavBarLeft/NavBarLeftClient";
 import { db } from "../../../services/api/firebaseConfig";
 import {passwordRegisterValidate, getCurrentUser } from "../../../utilites/helpers/helpers";
 import { useState } from "react";
@@ -85,6 +86,7 @@ const ChangePassword = () => {
     return(
         <>
             <NavBarTop />
+            <NavBarLeft />
             {loading && <Loading />}
             <ToastContainer 
                 position="top-right"

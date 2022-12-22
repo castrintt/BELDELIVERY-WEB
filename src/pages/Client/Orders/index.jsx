@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import NavBarTop from "../../../components/NavBarCliente/NavBarTop";
+import NavBarLeft from "../../../components/NavBarCliente/NavBarLeft/NavBarLeftClient";
 import css from "./styled.module.css";
 import { getCurrentUser } from "../../../utilites/helpers/helpers";
 import { db } from "../../../services/api/firebaseConfig";
@@ -51,6 +52,7 @@ const OrdersClient = () => {
         <>
             {loading && <Loading />}
             <NavBarTop />
+            <NavBarLeft />
             <main className={css.container}>
                 <div className={css.tittle}>
                     <h2>Meus pedidos</h2>

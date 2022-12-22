@@ -145,11 +145,6 @@
         display: none;
     }
     .icon_open_menu{
-        width: 30px;
-        position: fixed;
-        top: 1rem;
-        z-index: 999;
-        left: 25px;
-        cursor: pointer;
+        display: none;
     }
 }

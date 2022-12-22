@@ -14,7 +14,7 @@ import AnonimoImg from "../../../utilites/img/anonimo.png";
 const Gerenciar = () => {
     const [loading, setLoading] = useState(false);
     const [editForm, setEditForm] = useState(false);
-    const [perfilImg, setPerfilImg] = useState();
+    const [perfilImg, setPerfilImg] = useState(AnonimoImg);
     const [userData, setUserData] = useState({});
 
     const currentUser = getCurrentUser();
@@ -56,7 +56,7 @@ const Gerenciar = () => {
                     .then((img) => {
                         setPerfilImg(img);
                     })
-                } else setPerfilImg(AnonimoImg);
+                }
             })
         })
     };

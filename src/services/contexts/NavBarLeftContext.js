@@ -1,13 +1,13 @@
-import { useState, createContext, useEffect } from "react";
-import { getCurrentUser } from "../../utilites/helpers/helpers";
-import firebase from "firebase/app";
+import { useState, createContext } from "react";
+import AnonimoImg from "../../utilites/img/anonimo.png";
 import "firebase/storage";
 
 export const NavBarLeftContext = createContext();
 
 export const NavBarLeftContextProvider = ({ children }) => {
   const [openBar, setOpenBar] = useState(true);
-  const [perfilImg, setPerfilImg] = useState(null);
+  const [openBarMobile, setOpenBarMobile] = useState(false);
+  const [perfilImg, setPerfilImg] = useState(AnonimoImg);
 
   const icons = {
     openNavBar: "https://img.icons8.com/ios-filled/000000/menu--v1.png",
@@ -19,7 +19,6 @@ export const NavBarLeftContextProvider = ({ children }) => {
     logout: "https://img.icons8.com/windows/40/null/exit.png"
   };
 
-
   return (
     <NavBarLeftContext.Provider
       value={{
@@ -27,7 +26,9 @@ export const NavBarLeftContextProvider = ({ children }) => {
         setOpenBar,
         icons,
         perfilImg,
-        setPerfilImg
+        setPerfilImg,
+        setOpenBarMobile,
+        openBarMobile
       }}
     >
       {children}

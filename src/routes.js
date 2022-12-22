@@ -2,17 +2,18 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AuthRequiredRoutes from "./services/auth/auth";
 
 import HomePage from "./pages/Client/Home";
-import PerfilCliente from "./pages/Client/PerfilCliente";
+import PerfilCliente from "./pages/Client/Perfil";
 import PerfilLoja from "./pages/Client/PerfilLoja";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro/Cadastro";
 import CadastroCliente from "./pages/Cadastro/ClientForm/ClientForm";
 import CadastroLoja from "./pages/Cadastro/StoreForm/StoreForm";
-import OrdersClient from "./pages/Client/OrdersClient";
+import OrdersClient from "./pages/Client/Orders";
 import NotAuthAcess from "./pages/NotAuthAcess/NotAuthAcess";
 import ChangePassword from "./pages/Client/ChangePassword/ChangePassword";
 import Gerenciar from "./pages/Store/Gerenciar/Gerenciar";
 import AlterarSenha from "./pages/Store/AlterarSenha/AlterarSenha";
+import Pedidos from "./pages/Store/Pedidos/Pedidos";
 
 const users = {
   client: "client",
@@ -48,7 +49,7 @@ const RouterList = () => {
         <Route element={<AuthRequiredRoutes required={users.store} />}>
           <Route path='/gerenciar' element={<Gerenciar />}/>
           <Route path='/gerenciar/produtos' element={<Gerenciar />}/>
-          <Route path='/gerenciar/pedidos' element={<Gerenciar />}/>
+          <Route path='/gerenciar/pedidos' element={<Pedidos />}/>
           <Route path='/gerenciar/endereco' element={<Gerenciar />}/>
           <Route path='/gerenciar/alterar-senha' element={<AlterarSenha />}/>
         </Route>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import NavBarTop from "../../../components/NavBarCliente/NavBarTop";
+import NavBarLeft from "../../../components/NavBarCliente/NavBarLeft/NavBarLeftClient";
 import css from "./styled.module.css";
 import FormPerfilNotEdit from "./FormPerfilNotEdit/FormPerfilNotEdit";
 import FormPerfilEdit from "./FormPerfilEdit/FormPerfilEdit";
@@ -46,6 +47,7 @@ const PerfilCliente = () => {
 
     const getImagePerfil = () => {
         const storageRef = firebase.storage().ref();
+        setPerfilImg(AnonimoImg);
 
         storageRef.child("user/").listAll()
         .then((res) => {
@@ -58,11 +60,6 @@ const PerfilCliente = () => {
                 }
             })
         })
-        .finally(() => {
-            if(!perfilImg){
-                setPerfilImg(AnonimoImg);
-            }
-        })
     };
 
     useEffect(() => {
@@ -73,6 +70,7 @@ const PerfilCliente = () => {
         <>
             {loading && <Loading />}
             <NavBarTop />
+            <NavBarLeft />
             <main className={css.container}>
                 {editForm ?
                     <FormPerfilEdit
