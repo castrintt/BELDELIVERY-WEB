@@ -14,6 +14,7 @@ import ChangePassword from "./pages/Client/ChangePassword/ChangePassword";
 import Gerenciar from "./pages/Store/Gerenciar/Gerenciar";
 import AlterarSenha from "./pages/Store/AlterarSenha/AlterarSenha";
 import Pedidos from "./pages/Store/Pedidos/Pedidos";
+import Produtos from "./pages/Store/Produtos/Produtos";
 
 const users = {
   client: "client",
@@ -48,7 +49,7 @@ const RouterList = () => {
         {/* store private routes */}
         <Route element={<AuthRequiredRoutes required={users.store} />}>
           <Route path='/gerenciar' element={<Gerenciar />}/>
-          <Route path='/gerenciar/produtos' element={<Gerenciar />}/>
+          <Route path='/gerenciar/produtos' element={<Produtos />}/>
           <Route path='/gerenciar/pedidos' element={<Pedidos />}/>
           <Route path='/gerenciar/endereco' element={<Gerenciar />}/>
           <Route path='/gerenciar/alterar-senha' element={<AlterarSenha />}/>

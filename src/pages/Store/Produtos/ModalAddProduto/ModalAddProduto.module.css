@@ -1,0 +1,26 @@
+.modal{
+    width: 500px;
+    height: 450px;
+}
+.tittle_category{
+    padding-top: 1.5rem;
+    font-size: 1.1rem;
+}
+.form_control_custom{
+    margin: 1rem 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form_control_custom svg{
+    font-size: 2.5rem;
+    margin-right: 1.5rem;
+}
+.form_control_custom > input:last-of-type{
+    display: none;
+}
+.text_area{
+    margin: 1rem 0;
+    width: 100%;
+}
