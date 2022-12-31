@@ -6,6 +6,8 @@ import Loading from "../../components/Loading";
 import { db } from "../../services/api/firebaseConfig.js";
 import { emailValidate, passwordLoginValidate } from "../../utilites/helpers/helpers";
 import { ToastContainer, toast } from 'react-toastify';
+import { useDispatch } from "react-redux";
+import UserActionType from "../../redux/cart/action-types";
 
 const Login = () => {
     const [loginType, setLoginType] = useState("Client");
@@ -20,6 +22,7 @@ const Login = () => {
         password: ""
     });
 
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const DataVerify = () => {
@@ -80,7 +83,13 @@ const Login = () => {
         .then((res) => {
             if(res.size > 0){
                 const caminhoValue = res.docs[0]._delegate._document.data.value.mapValue.fields;
-                
+
+                dispatch({
+                    type: UserActionType.LOGIN,
+                    payload: {
+                        name: caminhoValue.name.stringValue,
+                    }
+                });
                 localStorage.setItem("id", res.docs[0].id);
                 localStorage.setItem("name", caminhoValue.name.stringValue);
                 localStorage.setItem("userType", "store");
