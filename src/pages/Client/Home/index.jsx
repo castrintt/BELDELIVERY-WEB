@@ -20,68 +20,35 @@ const HomePage = () => {
 
     const getStores = () => {
         setLoading(true);
-        const storeListArray = [];
 
-        db.collection("store")
+        db.collection("/store")
         .get()
         .then((res) => {
             if(res.size > 0){
+                //setStoreList([]);
                 res.docs.map(doc => {
-                    let currentImg;
                     let way = doc._delegate._document.data.value.mapValue.fields;
-
-                    storeListArray.push({
+                    console.log(way)
+                    let store = {
                         id: doc.id,
                         name: way.name.stringValue,
                         category: way.category.stringValue,
                         url: way.urlName.stringValue,
-                        img: imgList.find(img => img.name ===  doc.id)
-                    });
+                        img: way.img?.stringValue,
+                    };
 
-                    console.log({
-                        id: doc.id,
-                        name: way.name.stringValue,
-                        category: way.category.stringValue,
-                        url: way.urlName.stringValue,
-                        img: imgList.find(img => img.name ===  doc.id)?.content
-                    })
+                    setStoreList(prevStore => [...prevStore, store]);
                 });
             };
             setLoading(false);
         })
         .catch(error => {
-            console.log(error);
             setLoading(false);
         })
-        .finally(() => {
-            setStoreList(storeListArray);
-        })
-    };
-
-    const getImagePerfil = () => {
-        const storageRef = firebase.storage().ref();
-        const imgs = [];
-
-        storageRef.child("user/").listAll()
-        .then((res) => {
-            res.items.map(item => {
-                item.getDownloadURL()
-                .then((img) => {
-                    imgs.push({
-                        name: item.name,
-                        content: img
-                    });
-                })
-            })
-        })
-        .finally(() => {
-            setImgList(imgs);
-            getStores();
-        });
     };
 
     useEffect(() => {
-        getImagePerfil();
+        getStores();
     }, []);
 
     return(
@@ -96,8 +63,7 @@ const HomePage = () => {
                     storeList.map(store => (
                         <div key={store.id} onClick={() => navigate(`/lojas/${store.url}`)}>
                             <div>
-                                
-                                <img src={store.img && store.img.content} alt="" />
+                                <img src={store.img} alt="" /> 
                             </div>
                             <div>
                                 <span>{store.name}</span>

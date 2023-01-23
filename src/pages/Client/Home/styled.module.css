@@ -15,7 +15,9 @@
 }
 .container > div{
     margin: 0 2rem 2rem 0;
-    width: 400px;
+    width: 30%;
+    min-width: 280px;
+    max-width: 350px;
     height: 150px;
     padding: 0 1rem;
     cursor: pointer;
@@ -51,4 +53,39 @@
 .container > div > div:last-of-type > span{
    font-size: 1.1rem;
    font-weight: 700;
+}
+
+@media all and (max-width: 770px){
+    .container{
+        padding: 2rem 0;
+        justify-content: start;
+    }
+    .container > div{
+        margin: .6rem auto;
+        width: 45%;
+        max-width: 220px;
+        min-width: 0;
+        height: 270px;
+        padding: 0 1rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+    }
+    .container > div > div:first-of-type{
+        margin: .5rem 0;
+        width: 90%;
+        height: 50%;
+        border: 1px solid black;
+        border-radius: 50%;
+
+        overflow: hidden;
+    }
+    .container > div > div:last-of-type{
+        padding: .5rem 0;
+        width: 100%;
+        height: 20%;
+        text-align: center;
+    }
 }
