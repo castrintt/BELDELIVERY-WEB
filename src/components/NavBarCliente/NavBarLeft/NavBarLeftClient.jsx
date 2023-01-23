@@ -16,18 +16,16 @@ const NavBarLeft = () => {
 
     const getImagePerfil = () => {
         const storageRef = firebase.storage().ref();
-        setPerfilImg(AnonimoImg);
 
         storageRef.child("user/").listAll()
         .then((res) => {
-            res.items.map(item => {
-                if(item.name === currentUser.id){
-                    item.getDownloadURL()
-                    .then((img) => {
+            let userId = res.items.find(x => x.name === currentUser.id);
+            if(userId){
+                userId.getDownloadURL()
+                .then((img) => {
                     setPerfilImg(img);
-                    })
-                }
-            })
+                })
+            } else setPerfilImg(AnonimoImg);
         })
     };
 

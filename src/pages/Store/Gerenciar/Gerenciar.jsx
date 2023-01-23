@@ -80,6 +80,7 @@ const Gerenciar = () => {
                     setPerfilImg={setPerfilImg}
                     editForm={editForm}
                     setEditForm={setEditForm}
+                    getImagePerfil={getImagePerfil}
                 /> :
                 <FormNotEdit
                     userData={userData}

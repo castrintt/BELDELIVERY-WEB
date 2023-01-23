@@ -7,13 +7,11 @@ import { useEffect } from "react";
 import { db } from "../../../services/api/firebaseConfig";
 import { getCurrentUser } from "../../../utilites/helpers/helpers";
 import { useNavigate } from "react-router-dom";
-import firebase from "firebase/app";
-import "firebase/storage";
+import AnonimoImg from "../../../utilites/img/anonimo.png";
 
 const HomePage = () => {
     const [loading, setLoading] = useState(false);
     const [storeList, setStoreList] = useState([]);
-    const [imgList, setImgList] = useState([]);
 
     // const currentUser = getCurrentUser();
     const navigate = useNavigate();
@@ -25,7 +23,7 @@ const HomePage = () => {
         .get()
         .then((res) => {
             if(res.size > 0){
-                //setStoreList([]);
+                setStoreList([]);
                 res.docs.map(doc => {
                     let way = doc._delegate._document.data.value.mapValue.fields;
                     console.log(way)
@@ -63,7 +61,7 @@ const HomePage = () => {
                     storeList.map(store => (
                         <div key={store.id} onClick={() => navigate(`/lojas/${store.url}`)}>
                             <div>
-                                <img src={store.img} alt="" /> 
+                                <img src={store.img !== undefined ? store.img : AnonimoImg} alt="" /> 
                             </div>
                             <div>
                                 <span>{store.name}</span>

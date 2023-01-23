@@ -80,6 +80,7 @@ const PerfilCliente = () => {
                         setPerfilImg={setPerfilImg}
                         editForm={editForm}
                         setEditForm={setEditForm}
+                        getImagePerfil={getImagePerfil}
                     /> :
                     <FormPerfilNotEdit
                         userData={userData}

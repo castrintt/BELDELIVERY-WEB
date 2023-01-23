@@ -17,6 +17,7 @@ const FormEdit = ({
     setEditForm,
     perfilImg,
     setPerfilImg,
+    getImagePerfil
 }) => {
     const [loading, setLoading] = useState(null);
     const [customError, setCustomError] = useState({
@@ -40,12 +41,13 @@ const FormEdit = ({
             email: userDataUpadate.email,
             cpf: userDataUpadate.cpf,
             cellPhone: userDataUpadate.cellPhone,
+            img: perfilImg
         })
         .then(() => {
             setLoading(false);
             setUserData(userDataUpadate);
             setEditForm(false);
-            handleImg();
+            //handleImg();
         })
         .catch((error) => {
             setLoading(false);
@@ -93,6 +95,8 @@ const FormEdit = ({
             },
             () => {
                 setPerfilImg(inputImg);
+                updateDataUser();
+                getImagePerfil();
             }
         );
     };

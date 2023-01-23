@@ -6,6 +6,7 @@ import {useNavBarLeft} from "../../../services/hooks/useNavBarLeft";
 import NavBarLeftResponsive from "./NavBarLeftResponsive/NavBarLeftResponsive";
 import firebase from "firebase/app";
 import "firebase/storage";
+import AnonimoImg from "../../../utilites/img/anonimo.png";
 
 const NavBarLeft = () => {
     const {icons, openBar, setPerfilImg, perfilImg, setOpenBar} = useNavBarLeft();
@@ -18,15 +19,14 @@ const NavBarLeft = () => {
 
         storageRef.child("user/").listAll()
         .then((res) => {
-            res.items.map(item => {
-                if(item.name === currentUser.id){
-                    item.getDownloadURL()
-                    .then((img) => {
+            let userId = res.items.find(x => x.name === currentUser.id);
+            if(userId){
+                userId.getDownloadURL()
+                .then((img) => {
                     setPerfilImg(img);
-                    })
-                };
-            })
-        })
+                })
+            } else setPerfilImg(AnonimoImg);
+        });
     };
 
     useEffect(() => {
