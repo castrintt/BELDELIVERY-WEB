@@ -31,31 +31,25 @@ const NavBarLeftResponsive = () => {
                                 <span>{currentUser.name}</span>
                             </div>
                             <div className={css.menu_items}
-                                onClick={() => Navigate("/home")}
-                            >
-                                <img src={icons.home} />
-                                <span>HOME</span>
-                            </div>
-                            <div className={css.menu_items}
-                                onClick={() => Navigate("/gerenciar-loja")}
+                                onClick={() => Navigate("/gerenciar")}
                             >
                                 <img src={icons.perfil} />
-                                <span>PERFIL</span>
+                                <span>GERENCIAR</span>
                             </div>
                             <div className={css.menu_items}
-                                onClick={() => Navigate("/gerenciar-loja/pedidos")}
+                                onClick={() => Navigate("/gerenciar/produtos")}
+                            >
+                                <img src={icons.order} />
+                                <span>MEUS PRODUTOS</span>
+                            </div>
+                            <div className={css.menu_items}
+                                onClick={() => Navigate("/gerenciar/pedidos")}
                             >
                                 <img src={icons.order} />
                                 <span>PEDIDOS</span>
                             </div>
                             <div className={css.menu_items}
-                                onClick={() => Navigate("/gerenciar-loja/enderecos")}
-                            >
-                                <img src={icons.address} />
-                                <span>ENDEREÇOS</span>
-                            </div>
-                            <div className={css.menu_items}
-                                onClick={() => Navigate("/gerenciar-loja/alterar-senha")}
+                                onClick={() => Navigate("/gerenciar/alterar-senha")}
                             >
                                 <img src={icons.changePassword} />
                                 <span>ALTERAR SENHA</span>

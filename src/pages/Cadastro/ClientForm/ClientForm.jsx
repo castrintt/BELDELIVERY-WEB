@@ -27,6 +27,7 @@ const ClientForm = () => {
         confirmatedPassword: ""
     });
 
+    const imgUrl = "https://firebasestorage.googleapis.com/v0/b/beldelivery-f4426.appspot.com/o/user%2Fanonimo.png?alt=media&token=3cd2a9df-8b5a-4a4c-aaa9-aa7a92e90376";
     const navigate = useNavigate();
     
     const DataVerify = () => {
@@ -153,7 +154,6 @@ const ClientForm = () => {
                 </Button>
             </div>
         </section>
-            
         </>
     )
 }

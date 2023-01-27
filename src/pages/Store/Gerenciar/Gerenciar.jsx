@@ -5,6 +5,8 @@ import NavBarLeft from "../../../components/NavBarLoja/NavBarLeft/NavBarLeft";
 import Loading from "../../../components/Loading";
 import FormNotEdit from "./FormNotEdit/FormNotEdit";
 import FormEdit from "./FormEdit/FormEdit";
+import FormAddressNotEdit from "./FormAddressNotEdit/FormAddressNotEdit";
+import FormAddressEdit from "./FormAddressEdit/FormAddressEdit";
 import { db } from "../../../services/api/firebaseConfig";
 import firebase from "firebase/app";
 import "firebase/storage";
@@ -13,9 +15,11 @@ import AnonimoImg from "../../../utilites/img/anonimo.png";
 
 const Gerenciar = () => {
     const [loading, setLoading] = useState(false);
-    const [editForm, setEditForm] = useState(false);
+    const [editFormPerfil, setEditFormPerfil] = useState(false);
+    const [editFormAdress, setEditFormAdress] = useState(false);
     const [perfilImg, setPerfilImg] = useState(AnonimoImg);
     const [userData, setUserData] = useState({});
+    const [addressData, setAddressData] = useState(null);
 
     const currentUser = getCurrentUser();
 
@@ -45,6 +49,37 @@ const Gerenciar = () => {
         });
     };
 
+    const getAddressData = () => {
+        // setLoading(true);
+        
+        db.collection("Address")
+        .where("idUser", "==" , currentUser.id)
+        .get()
+        .then((res) => {
+            console.log(res)
+            if(res.size > 0){
+                let dataWay = res.docs[0]._delegate._document.data.value.mapValue.fields;
+                setAddressData({
+                    id: res.docs[0].id,
+                    rua: dataWay.rua.stringValue,
+                    bairro: dataWay.bairro.stringValue,
+                    cidade: dataWay.cidade.stringValue,
+                    estado: dataWay.estado.stringValue,
+                    numero: dataWay.numero.stringValue,
+                    referencia: dataWay.referencia.stringValue,
+                    idUser: dataWay.idUser.stringValue,
+                });
+            } else {
+                setAddressData(null)
+            };
+            // setLoading(false);
+        })
+        .catch(error => {
+            console.log(error);
+            // setLoading(false);
+        });
+    };
+
     const getImagePerfil = () => {
         const storageRef = firebase.storage().ref();
 
@@ -63,6 +98,7 @@ const Gerenciar = () => {
 
     useEffect(() => {
         getUserData();
+        getAddressData();
         getImagePerfil();
     }, []);
 
@@ -72,20 +108,32 @@ const Gerenciar = () => {
         <NavBarLeft />
         {loading && <Loading />}
         <main className={css.container}>
-            {editForm ?
+            {editFormPerfil ?
                 <FormEdit
                     userData={userData}
                     setUserData={setUserData}
                     perfilImg={perfilImg}
                     setPerfilImg={setPerfilImg}
-                    editForm={editForm}
-                    setEditForm={setEditForm}
+                    editForm={editFormPerfil}
+                    setEditForm={setEditFormPerfil}
                     getImagePerfil={getImagePerfil}
                 /> :
                 <FormNotEdit
                     userData={userData}
                     perfilImg={perfilImg}
-                    setEditForm={setEditForm}
+                    setEditForm={setEditFormPerfil}
+                />
+            }
+            {editFormAdress ?
+                <FormAddressEdit
+                    userData={addressData}
+                    setUserData={setAddressData}
+                    editForm={editFormAdress}
+                    setEditForm={setEditFormAdress}
+                /> :
+                <FormAddressNotEdit
+                    userData={addressData}
+                    setEditForm={setEditFormAdress}
                 />
             }
         </main>

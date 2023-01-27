@@ -53,7 +53,7 @@ const NavBarLeft = () => {
                             onClick={() => navigate("/gerenciar")}
                         >
                             <img src={icons.perfil} />
-                            <span>PERFIL</span>
+                            <span>GERENCIAR</span>
                         </div>
                         <div className={css.menu_items}
                             onClick={() => navigate("/gerenciar/produtos")}
@@ -67,12 +67,12 @@ const NavBarLeft = () => {
                             <img src={icons.order} />
                             <span>PEDIDOS</span>
                         </div>
-                        <div className={css.menu_items}
+                        {/* <div className={css.menu_items}
                             onClick={() => navigate("/gerenciar/endereco")}
                         >
                             <img src={icons.address} />
                             <span>ENDEREÇOS</span>
-                        </div>
+                        </div> */}
                         <div className={css.menu_items}
                             onClick={() => navigate("/gerenciar/alterar-senha")}
                         >
@@ -95,13 +95,8 @@ const NavBarLeft = () => {
                     <div>
                         <div className={css.container_avatar}>
                             <div className={css.container_img_avatar}>
-
+                                <img src={perfilImg} alt="" />
                             </div>
-                        </div>
-                        <div className={css.menu_items_hidde}
-                            onClick={() => navigate("/")}
-                        >
-                            <img src={icons.home} />
                         </div>
                         <div className={css.menu_items_hidde}
                             onClick={() => navigate("/gerenciar")}
@@ -114,15 +109,20 @@ const NavBarLeft = () => {
                             <img src={icons.order} />
                         </div>
                         <div className={css.menu_items_hidde}
-                            onClick={() => navigate("/gerenciar/endereco")}
+                            onClick={() => navigate("/gerenciar/pedidos")}
                         >
-                            <img src={icons.address} />
+                            <img src={icons.order} />
                         </div>
                         <div className={css.menu_items_hidde}
                             onClick={() => navigate("/gerenciar/alterar-senha")}
                         >
-                            <img src={icons.changePasswordIcon} />
+                            <img src={icons.changePassword} />
                         </div>
+                        {/* <div className={css.menu_items_hidde}
+                            onClick={() => navigate("/gerenciar/endereco")}
+                        >
+                            <img src={icons.address} />
+                        </div> */}
                     </div>
                     <div>
                         <div className={css.menu_items_hidde} onClick={() => Logout()}>

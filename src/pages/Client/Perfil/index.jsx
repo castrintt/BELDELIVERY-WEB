@@ -4,6 +4,8 @@ import NavBarLeft from "../../../components/NavBarCliente/NavBarLeft/NavBarLeftC
 import css from "./styled.module.css";
 import FormPerfilNotEdit from "./FormPerfilNotEdit/FormPerfilNotEdit";
 import FormPerfilEdit from "./FormPerfilEdit/FormPerfilEdit";
+import FormAddressNotEdit from "./FormAddressNotEdit/FormAddressNotEdit";
+import FormAddressEdit from "./FormAddressEdit/FormAddressEdit";
 import Loading from "../../../components/Loading";
 import { db } from "../../../services/api/firebaseConfig";
 import firebase from "firebase/app";
@@ -14,8 +16,19 @@ import AnonimoImg from "../../../utilites/img/anonimo.png";
 const PerfilCliente = () => {
     const [loading, setLoading] = useState(false);
     const [editForm, setEditForm] = useState(false);
+    const [editFormAdress, setEditFormAdress] = useState(false);
     const [perfilImg, setPerfilImg] = useState();
     const [userData, setUserData] = useState({});
+    const [addressData, setAddressData] = useState({
+        id: null,
+        rua: "",
+        bairro: "",
+        cidade: "",
+        estado: "",
+        numero: "",
+        referencia: "",
+        idUser: "",
+    });
 
     const currentUser = getCurrentUser();
     
@@ -45,6 +58,32 @@ const PerfilCliente = () => {
         });
     };
 
+    const getAddressData = () => {
+
+        db.collection("Address")
+        .where("idUser", "==" , currentUser.id)
+        .get()
+        .then((res) => {
+            console.log(res)
+            if(res.size > 0){
+                let dataWay = res.docs[0]._delegate._document.data.value.mapValue.fields;
+                setAddressData({
+                    id: res.docs[0].id,
+                    rua: dataWay.rua.stringValue,
+                    bairro: dataWay.bairro.stringValue,
+                    cidade: dataWay.cidade.stringValue,
+                    estado: dataWay.estado.stringValue,
+                    numero: dataWay.numero.stringValue,
+                    referencia: dataWay.referencia.stringValue,
+                    idUser: dataWay.idUser.stringValue,
+                });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    };
+
     const getImagePerfil = () => {
         const storageRef = firebase.storage().ref();
         setPerfilImg(AnonimoImg);
@@ -63,6 +102,7 @@ const PerfilCliente = () => {
     };
 
     useEffect(() => {
+        getAddressData();
         getUserData();
     }, []);
 
@@ -86,6 +126,18 @@ const PerfilCliente = () => {
                         userData={userData}
                         perfilImg={perfilImg}
                         setEditForm={setEditForm}
+                    />
+                }
+                {editFormAdress ?
+                    <FormAddressEdit
+                        userData={addressData}
+                        setUserData={setAddressData}
+                        editForm={editFormAdress}
+                        setEditForm={setEditFormAdress}
+                    /> :
+                    <FormAddressNotEdit
+                        userData={addressData}
+                        setEditForm={setEditFormAdress}
                     />
                 }
             </main>
