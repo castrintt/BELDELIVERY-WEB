@@ -1,23 +1,25 @@
 import { useEffect, useState } from "react";
 import NavBarTop from "../../../components/NavBarCliente/NavBarTop";
 import NavBarLeft from "../../../components/NavBarCliente/NavBarLeft/NavBarLeftClient";
+import TableResponsive from "./TableResponsive/TableResponsive";
+import Table from "./Table/Table";
 import css from "./styled.module.css";
 import { getCurrentUser } from "../../../utilites/helpers/helpers";
 import { db } from "../../../services/api/firebaseConfig";
 import Loading from "../../../components/Loading";
-import moment from "moment";
 
 const OrdersClient = () => {
     const [loading, setLoading] = useState(false);
+    const [currentTable, setCurrentTable] = useState(1);
     const [orders, setOrders] = useState([]);
-
-    const viewIcon = "https://img.icons8.com/color/20/null/search--v1.png";
-    const deletIcon = "https://img.icons8.com/office/20/null/delete-sign.png";
+    const [dataTable, setDataTable] = useState([]);
 
     const currentUser = getCurrentUser();
 
     const getOrders = () => {
         setLoading(true);
+        let ordersResponse = [];
+
         db.collection("orders")
         .where("idClient", "==" , currentUser.id)
         .get()
@@ -25,7 +27,7 @@ const OrdersClient = () => {
             if(res.size > 0){
                 res.docs.map(doc => {
                     const caminho = doc._delegate._document.data.value.mapValue.fields;
-                    setOrders([{
+                    ordersResponse.push({
                         id: doc.id,
                         createDate: caminho.createDate.timestampValue,
                         idClient: caminho.idClient.stringValue,
@@ -33,15 +35,40 @@ const OrdersClient = () => {
                         itemLength: caminho.itemLength.integerValue,
                         status: caminho.status.stringValue,
                         totalValue: caminho.totalValue.stringValue,
+                        storeName: caminho.storeName.stringValue,
                         ...orders
-                    }]);
+                    });
                 });
             };
             setLoading(false);
-        }) 
+            setOrders(ordersResponse);
+            setDataTable(ordersResponse);
+        })
         .catch((error) => {
             setLoading(false);
         })
+    };
+
+    const filterTable = (currentNumber) => {
+        setCurrentTable(currentNumber)
+        let filter = [];
+
+        switch (currentNumber){
+            case 1:
+                filter = orders;
+                break;
+            case 2:
+                filter = orders.filter(order => order.status === "Em preparação");
+                break;
+            case 3:
+                filter = orders.filter(order => order.status === "Em entrega");
+                break;
+            case 4:
+                filter = orders.filter(order => order.status === "Concluído");
+                break;
+        };
+
+        setDataTable(filter);
     };
 
     useEffect(() => {
@@ -57,43 +84,35 @@ const OrdersClient = () => {
                 <div className={css.tittle}>
                     <h2>Meus pedidos</h2>
                 </div>
+                <div className={css.select_table}>
+                    <div
+                        onClick={() => filterTable(1)}
+                        className={currentTable === 1 && css.active_option}
+                    >
+                        TODOS
+                    </div>
+                    <div
+                        onClick={() => filterTable(2)}
+                        className={currentTable === 2 && css.active_option}
+                    >
+                    EM PREPARAÇÃO
+                    </div>
+                    <div
+                        onClick={() => filterTable(3)}
+                        className={currentTable === 3 && css.active_option}
+                    >
+                    EM ENTREGA
+                    </div>
+                    <div
+                        onClick={() => filterTable(4)}
+                        className={currentTable === 4 && css.active_option}
+                    >
+                        CONCLUÍDOS
+                    </div>
+                </div>
                 <article className={css.container_content}>
-                    {orders?.length > 0 ?
-                        orders.map(order => (
-                            <div className={css.card_order} key={order.id}>
-                                <div>
-                                    <p>Status</p>
-                                    <p>{order.status}</p>
-                                </div>
-                                <div>
-                                    <p>Itens</p>
-                                    <p>{order.itemLength}</p>
-                                </div>
-                                <div>
-                                    <p>Data do pedido</p>
-                                    <p>{moment(order.createDate).format("DD/MM/YYYY")}</p>
-                                </div>
-                                <div>
-                                    <p>Valor total</p>
-                                    <p>{order.totalValue}</p>
-                                </div>
-                                <div>
-                                    <p>Ações</p>
-                                    <div className={css.actions_container}>
-                                        <span>
-                                            <img src={viewIcon} />
-                                        </span>
-                                        <span>
-                                            <img src={deletIcon} />
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        )) : 
-                        <div className={css.not_found}>
-                            <p>Nenhum pedido foi achado</p>
-                        </div>
-                    }
+                    <TableResponsive orders={dataTable} />
+                    <Table orders={dataTable} />
                 </article>
             </main>
         </>

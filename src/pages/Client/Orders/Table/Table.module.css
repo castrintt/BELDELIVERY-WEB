@@ -1,0 +1,6 @@
+
+@media all and (max-width: 790px){
+    .container_table{
+        display: none;
+    }
+}

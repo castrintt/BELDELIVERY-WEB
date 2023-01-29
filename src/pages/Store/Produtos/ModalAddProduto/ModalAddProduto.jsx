@@ -18,7 +18,7 @@ import { getCurrentUser } from "../../../../utilites/helpers/helpers";
 import firebase from "firebase/app";
 import "firebase/storage";
 
-export default function ModalAddProduto({openModalAdd, setOpenModalAdd}) {
+export default function ModalAddProduto({openModalAdd, setOpenModalAdd, getAllProducts}) {
     const [fileImg, setFileImg] = React.useState(null);
     const [dataForm, setDataForm] = React.useState({
         name: null,
@@ -46,13 +46,13 @@ export default function ModalAddProduto({openModalAdd, setOpenModalAdd}) {
         })
         .then((res) => {
             setLoading(false);
-            console.log(res)
             handleImg(res.id)
-            toast.success("Senha alterada com sucesso!");
+            toast.success("Produto cadastrado com sucesso!");
             setTimeout(() => {
                 cleanDataForm();
             }, 50);
             setOpenModalAdd(false);
+            getAllProducts();
         })
         .catch((error) => {
             setLoading(false);

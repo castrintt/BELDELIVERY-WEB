@@ -72,7 +72,11 @@ const Produtos = () => {
                 </article>
             </main>
 
-            <ModalAddProduto openModalAdd={openModalAdd} setOpenModalAdd={setOpenModalAdd} />
+            <ModalAddProduto
+                openModalAdd={openModalAdd}
+                setOpenModalAdd={setOpenModalAdd}
+                getAllProducts={getAllProducts}
+            />
         </>
     );
 };
