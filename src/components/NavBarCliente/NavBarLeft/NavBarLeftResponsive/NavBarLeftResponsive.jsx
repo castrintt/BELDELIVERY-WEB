@@ -48,12 +48,6 @@ const NavBarLeftResponsive = () => {
                                 <img src={icons.order} />
                                 <span>PEDIDOS</span>
                             </div>
-                            {/* <div className={css.menu_items}
-                                onClick={() => Navigate("/perfil/enderecos")}
-                            >
-                                <img src={icons.address} />
-                                <span>ENDEREÇOS</span>
-                            </div> */}
                             <div className={css.menu_items}
                                 onClick={() => Navigate("/perfil/alterar-senha")}
                             >

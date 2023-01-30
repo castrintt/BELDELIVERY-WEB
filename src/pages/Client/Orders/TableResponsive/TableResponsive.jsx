@@ -23,10 +23,6 @@ const TableResponsive = ({orders}) => {
                             <p>Valor total</p>
                             <p>{order.totalValue}</p>
                         </div>
-                        {/* <div>
-                            <p>Itens</p>
-                            <p>{order.itemLength}</p>
-                        </div> */}
                         <div>
                             <p>Data do pedido</p>
                             <p>{moment(order.createDate).format("DD/MM/YYYY")}</p>

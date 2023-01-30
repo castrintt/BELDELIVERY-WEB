@@ -67,12 +67,6 @@ const NavBarLeft = () => {
                             <img src={icons.order} />
                             <span>PEDIDOS</span>
                         </div>
-                        {/* <div className={css.menu_items}
-                            onClick={() => navigate("/perfil/enderecos")}
-                        >
-                            <img src={icons.address} />
-                            <span>ENDEREÇOS</span>
-                        </div> */}
                         <div className={css.menu_items}
                             onClick={() => navigate("/perfil/alterar-senha")}
                         >
@@ -113,11 +107,6 @@ const NavBarLeft = () => {
                         >
                             <img src={icons.order} />
                         </div>
-                        {/* <div className={css.menu_items_hidde}
-                            onClick={() => navigate("/perfil/enderecos")}
-                        >
-                            <img src={icons.address} />
-                        </div> */}
                         <div className={css.menu_items_hidde}
                             onClick={() => navigate("/perfil/alterar-senha")}
                         >

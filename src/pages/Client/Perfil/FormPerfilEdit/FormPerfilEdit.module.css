@@ -32,8 +32,7 @@
     flex-wrap: wrap;
 }
 .input_group{
-    width: 100%;
-    max-width: 250px;
+    width: 200px;
     padding: 2rem 0;
 }
 .input_group > p{
