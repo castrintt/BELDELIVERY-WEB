@@ -15,7 +15,7 @@ const FormPerfilNotEdit = ({userData, setEditForm, perfilImg}) => {
                 <div>
                     <img src={perfilImg} />
                 </div>
-                <div>
+                <div className={css.form_grid}>
                     <div className={css.input_group}>
                         <p>Nome completo:</p>
                         <p>{userData.name}</p>

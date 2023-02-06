@@ -12,11 +12,8 @@ const FormAddressNotEdit = ({userData, setEditForm}) => {
                 </button>
             </div>
             <article className={css.container_form}>
-                <div>
-                    {/* <img src={perfilImg}/> */}
-                </div>
                 {userData.id ? 
-                <div>
+                <div className={css.form_grid}>
                     <div className={css.input_group}>
                         <p>Rua:</p>
                         <p>{userData?.rua}</p>

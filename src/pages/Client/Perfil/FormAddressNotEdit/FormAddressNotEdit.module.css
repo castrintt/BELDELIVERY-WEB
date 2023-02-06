@@ -5,37 +5,33 @@
     padding: 2rem;
     background-color: #e8c39e4b;
     border-radius: .4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
-.container_form > div:first-of-type{
-   display: none;
-}
-.container_form > div:last-of-type{
+
+.form_grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     padding-top: 1rem;
     width: 100%;
-    display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
 }
+
 .input_group{
-    width: 100%;
-    max-width: 150px;
     padding: 2rem 0;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
 }
+
 .input_group > p{
     margin: 0;
     font-size: 1.1rem;
 }
+
 .input_group > p:first-of-type{
     font-weight: 600;
 }
-/* .container_form > div:first-of-type > input{
-    width: 100%;
-    height: 100%;
-} */
+
 .tittle{
     margin: 0 auto;
     padding: 2rem 0;
@@ -44,10 +40,11 @@
     justify-content: space-between;
     align-items: center;
 }
+
 .tittle > h2{
     font-size: 2rem;
     color: #ff6c3e;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvet
 }
 .tittle > button{
     padding: .5rem 1.2rem;

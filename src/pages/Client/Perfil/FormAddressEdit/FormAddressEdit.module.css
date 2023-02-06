@@ -1,12 +1,13 @@
-.container_form{
+.container_form {
     margin: 0 auto;
     width: 90%;
     height: auto;
     padding: 2rem;
     background-color: #e8c39e4b;
     border-radius: .4rem;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
     align-items: center;
 }
 .container_form > div:first-of-type{
@@ -14,24 +15,29 @@
 }
 .container_form > div:last-of-type{
     padding-top: 1rem;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
+    grid-column: 1 / span 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: auto;
+    grid-gap: 0;
+    justify-items: center;
     align-items: center;
-    flex-wrap: wrap;
 }
-.input_group{
-    width: 200px;
-    padding: 2rem 0;
+.input_group {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    width: 250px;
+    padding: 1rem 0;
 }
-.input_group > p{
+.input_group > p {
     margin: 0;
     font-size: 1.1rem;
 }
-.input_group > p:first-of-type{
+.input_group > p:first-of-type {
     font-weight: 600;
 }
-.input_group > input{
+.input_group > input {
     width: 90%;
     border: 1px solid rgba(0, 0, 0, 0.308);
     outline: none;
@@ -39,29 +45,19 @@
     border-radius: .3rem;
     background-color: #fff;
 }
-.input_group > input:focus{
+.input_group > input:focus {
     border: 1px solid rgb(0, 0, 0);
 }
-.tittle{
+.tittle {
     margin: 0 auto;
     padding: 2rem 0;
     width: 90%;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto;
+    justify-items: start;
     align-items: center;
-}
-.tittle > h2{
-    font-size: 2rem;
     color: #ff6c3e;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.tittle > button{
-    padding: .5rem 1.2rem;
-    border-radius: 5px;
-    background-color: dodgerblue;
-    border: none;
-    outline: none;
-    color: white;
 }
 
 .buttons_container{

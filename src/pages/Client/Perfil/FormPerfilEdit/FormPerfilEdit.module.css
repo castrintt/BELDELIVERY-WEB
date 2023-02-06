@@ -23,16 +23,17 @@
 .container_form > div:first-of-type > input{
     display: none;
 }
-.container_form > div:last-of-type{
+.form_grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     padding-top: 1rem;
+    gap: 1rem;
     width: 100%;
-    display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
 }
 .input_group{
-    width: 200px;
+    max-width: 250px;
     padding: 2rem 0;
 }
 .input_group > p{
