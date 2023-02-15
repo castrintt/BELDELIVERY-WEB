@@ -41,13 +41,13 @@ const PerfilCliente = () => {
         .then((res) => {
             let dataWay = res._delegate._document.data.value.mapValue.fields;
             setUserData({
-            id: res.id,
-            name: dataWay.name.stringValue,
-            cpf: dataWay.cpf.stringValue,
-            email: dataWay.email.stringValue,
-            createdDate: dataWay.createdDate.stringValue,
-            orders: dataWay.orders.integerValue,
-            cellPhone: dataWay.cellPhone?.stringValue
+                id: res.id,
+                name: dataWay.name.stringValue,
+                cpf: dataWay.cpf.stringValue,
+                email: dataWay.email.stringValue,
+                createdDate: dataWay.createdDate.stringValue,
+                orders: dataWay.orders.integerValue,
+                cellPhone: dataWay.cellPhone?.stringValue
             });
             getImagePerfil();
             setLoading(false);
@@ -59,7 +59,7 @@ const PerfilCliente = () => {
     };
 
     const getAddressData = () => {
-
+        
         db.collection("Address")
         .where("idUser", "==" , currentUser.id)
         .get()

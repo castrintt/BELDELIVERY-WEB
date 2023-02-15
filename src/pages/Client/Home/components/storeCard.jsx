@@ -8,7 +8,7 @@ const StoreCard = ({storeList}) => {
 
     return(
         <>
-            {storeList.length > 0 &&
+            {storeList?.length > 0 &&
                 storeList.map(store => (
                     <div key={store.id} onClick={() => navigate(`/lojas/${store.url}`)}>
                         <div>

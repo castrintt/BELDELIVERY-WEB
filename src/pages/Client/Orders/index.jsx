@@ -95,13 +95,13 @@ const OrdersClient = () => {
                         onClick={() => filterTable(2)}
                         className={currentTable === 2 && css.active_option}
                     >
-                    EM PREPARAÇÃO
+                        EM PREPARAÇÃO
                     </div>
                     <div
                         onClick={() => filterTable(3)}
                         className={currentTable === 3 && css.active_option}
                     >
-                    EM ENTREGA
+                        EM ENTREGA
                     </div>
                     <div
                         onClick={() => filterTable(4)}

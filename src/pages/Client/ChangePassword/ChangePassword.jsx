@@ -44,6 +44,7 @@ const ChangePassword = () => {
 
         db.collection("client")
         .where("password", "==", dataForm.oldPassword)
+        .where("name", "==", currentUser.name)
         .get()
         .then((res) => {
             if(res.size > 0) {
@@ -53,6 +54,7 @@ const ChangePassword = () => {
                     oldPassword: "Senha incorreta",
                     newPassword: null
                 })
+                cleanDataForm();
             };
             setLoading(false);
         })

@@ -46,7 +46,6 @@ const FormPerfilEdit = ({
             setLoading(false);
             setUserData(userDataUpadate);
             setEditForm(false);
-            //handleImg();
         })
         .catch((error) => {
             setLoading(false);

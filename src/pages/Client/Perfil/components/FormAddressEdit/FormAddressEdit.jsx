@@ -1,16 +1,13 @@
 import { useState } from "react";
 import css from "./FormAddressEdit.module.css";
-import moment from "moment/moment";
-import Loading from "../../../../components/Loading";
-import {db} from "../../../../services/api/firebaseConfig";
-import firebase from "firebase/app";
+import Loading from "../../../../../components/Loading";
+import {db} from "../../../../../services/api/firebaseConfig";
 import "firebase/storage";
 import {
     nameValidate,
     emailValidate,
     getCurrentUser
-} from "../../../../utilites/helpers/helpers";
-import { useEffect } from "react";
+} from "../../../../../utilites/helpers/helpers";
 
 const FormAddressEdit = ({
     userData,
