@@ -17,14 +17,14 @@
     margin: 0 2rem 2rem 0;
     width: 30%;
     min-width: 280px;
-    max-width: 330px;
-    height: 150px;
+    max-width: 300px;
+    height: 130px;
     padding: 0 1rem;
     cursor: pointer;
     border-radius: .5rem;
     border: 1px solid rgba(0, 0, 0, 0.13);
     box-shadow: 1px 1px rgba(0, 0, 0, 0.507);
-    background-color: #ff6c3e;
+    background-color: #fff;
 
     display: flex;
     justify-content: space-around;
@@ -36,8 +36,8 @@
     transition: all .3s;
 }
 .container > div > div:first-of-type{
-   width: 110px;
-   height: 110px;
+   width: 100px;
+   height: 100px;
    border-radius: 50%;
 
    overflow: hidden;

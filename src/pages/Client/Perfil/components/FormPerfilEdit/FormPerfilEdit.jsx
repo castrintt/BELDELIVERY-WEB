@@ -1,15 +1,15 @@
 import { useState } from "react";
 import css from "./FormPerfilEdit.module.css";
 import moment from "moment/moment";
-import Loading from "../../../../components/Loading";
-import {db} from "../../../../services/api/firebaseConfig";
+import Loading from "../../../../../components/Loading";
+import {db} from "../../../../../services/api/firebaseConfig";
 import firebase from "firebase/app";
 import "firebase/storage";
 import {
     nameValidate,
     emailValidate,
     getCurrentUser
-} from "../../../../utilites/helpers/helpers";
+} from "../../../../../utilites/helpers/helpers";
 
 const FormPerfilEdit = ({
     userData,
