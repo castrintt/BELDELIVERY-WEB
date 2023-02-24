@@ -3,7 +3,7 @@
     width: 90%;
     height: auto;
     padding: 2rem;
-    background-color: #e8c39e4b;
+    background-color: #F7F7F7;
     border-radius: .4rem;
 }
 
@@ -43,8 +43,8 @@
 
 .tittle > h2{
     font-size: 2rem;
-    color: #ff6c3e;
-    font-family: Arial, Helvet
+    color: #BD0117;
+    font-family: Arial, Helvet;
 }
 .tittle > button{
     padding: .5rem 1.2rem;

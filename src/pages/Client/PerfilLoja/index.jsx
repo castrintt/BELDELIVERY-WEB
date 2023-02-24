@@ -9,6 +9,7 @@ import Card from "./components/Card/Card";
 const PerfilLoja = () => {
     const [loading, setLoading] = useState(false);
     const [store, setStore] = useState({});
+    const [products, setProducts] = useState([]);
 
     const getStore = () => {
         const pathSegments = window.location.pathname.split("/");
@@ -26,12 +27,40 @@ const PerfilLoja = () => {
                 category: dataWay.category.stringValue,
                 cellPhone: dataWay.cellPhone.stringValue,
             });
+            getProducts(res.docs[0].id);
             setLoading(false);
         })
         .catch(error => {
             console.log(error);
             setLoading(false);
         });
+    };
+
+    const getProducts = (id) => {
+        let allProducts = [];
+        db.collection("products")
+        .where("idStore", "==", id)
+        .get()
+        .then((res) => {
+            res.docs.forEach(doc => {
+                let dataWay = doc._delegate._document.data.value.mapValue.fields;
+                console.log("dataWay")
+                allProducts.push({
+                    id: doc.id,
+                    name: dataWay.name.stringValue,
+                    img: dataWay.img.stringValue,
+                    value: dataWay.value.stringValue,
+                    description: dataWay.description.stringValue,
+                    createdDate: dataWay.createdDate.timestampValue
+                });
+            });
+            setProducts(allProducts);
+            setLoading(false);
+        })
+        .catch(error => {
+            // console.log(error);
+            setLoading(false);
+        })
     };
 
     useEffect(() => {
@@ -59,7 +88,11 @@ const PerfilLoja = () => {
                         <h3>Produtos</h3>
                     </div>
                     <div className={css.container_products}>
-                        <Card />
+                        {products?.length ? 
+                        products?.map(product => (
+                            <Card key={product.id} product={product}/>
+                        )) : 
+                        "Sem produtos"}
                     </div>
                 </article>
             </div>

@@ -49,10 +49,19 @@ const HomePage = () => {
             {loading && <Loading />}
             <NavBarTop />
             <NavBarLeft />
-            <section className={css.banner}></section>
-            <main className={css.container}>
-                <StoreCard storeList={storeList} />
-            </main>
+            <div className={css.container}>
+                <div className={css.tittle}>
+                    <h2>Lojas</h2>
+                </div>
+                <article className={css.container_content}>
+                    <div className={css.container_products}>
+                        {storeList?.length > 0 &&
+                            storeList.map(store =>
+                                <StoreCard key={store.id} store={store}/>
+                            )}
+                    </div>
+                </article>
+            </div>
         </>
     )
 }

@@ -3,7 +3,7 @@
     width: 90%;
     height: auto;
     padding: 2rem;
-    background-color: #e8c39e4b;
+    background-color: #F7F7F7;
     border-radius: .4rem;
     display: flex;
     flex-direction: column;
@@ -57,7 +57,7 @@
 }
 .tittle > h2{
     font-size: 2rem;
-    color: #ff6c3e;
+    color: #BD0117;
     font-family: Arial, Helvetica, sans-serif;
 }
 .tittle > button{

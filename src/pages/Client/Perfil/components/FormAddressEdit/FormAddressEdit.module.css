@@ -3,7 +3,7 @@
     width: 90%;
     height: auto;
     padding: 2rem;
-    background-color: #e8c39e4b;
+    background-color: #F7F7F7;
     border-radius: .4rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -57,7 +57,7 @@
     grid-template-rows: auto;
     justify-items: start;
     align-items: center;
-    color: #ff6c3e;
+    color: #BD0117;
 }
 
 .buttons_container{
