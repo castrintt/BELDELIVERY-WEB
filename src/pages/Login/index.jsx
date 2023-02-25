@@ -6,8 +6,6 @@ import Loading from "../../components/Loading";
 import { db } from "../../services/api/firebaseConfig.js";
 import { emailValidate, passwordLoginValidate } from "../../utilites/helpers/helpers";
 import { ToastContainer, toast } from 'react-toastify';
-import { useDispatch } from "react-redux";
-import UserActionType from "../../redux/cart/action-types";
 
 const Login = () => {
     const [loginType, setLoginType] = useState("Client");
@@ -22,7 +20,6 @@ const Login = () => {
         password: ""
     });
 
-    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const DataVerify = () => {
