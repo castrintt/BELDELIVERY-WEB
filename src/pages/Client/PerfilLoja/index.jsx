@@ -2,25 +2,26 @@ import NavBarTop from "../../../components/NavBarCliente/NavBarTop";
 import NavBarLeft from "../../../components/NavBarCliente/NavBarLeft/NavBarLeftClient";
 import css from "./styled.module.css";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { db } from "../../../services/api/firebaseConfig";
 import Loading from "../../../components/Loading";
 import Card from "./components/Card/Card";
 
 const PerfilLoja = () => {
     const [loading, setLoading] = useState(false);
-    const [store, setStore] = useState({});
+    const [storeData, setStoreData] = useState({});
     const [products, setProducts] = useState([]);
+    const {store} = useParams();
 
     const getStore = () => {
-        const pathSegments = window.location.pathname.split("/");
-        const storeName = pathSegments[pathSegments.length - 1];
+        setLoading(true);
 
         db.collection("store")
-        .where("urlName", "==", storeName)
+        .where("urlName", "==", store)
         .get()
         .then((res) => {
             let dataWay = res.docs[0]._delegate._document.data.value.mapValue.fields;
-            setStore({
+            setStoreData({
                 id: res.docs[0].id,
                 name: dataWay.name.stringValue,
                 img: dataWay.img.stringValue,
@@ -37,14 +38,16 @@ const PerfilLoja = () => {
     };
 
     const getProducts = (id) => {
+        setLoading(true);
+
         let allProducts = [];
+
         db.collection("products")
         .where("idStore", "==", id)
         .get()
         .then((res) => {
             res.docs.forEach(doc => {
                 let dataWay = doc._delegate._document.data.value.mapValue.fields;
-                console.log("dataWay")
                 allProducts.push({
                     id: doc.id,
                     name: dataWay.name.stringValue,
@@ -75,12 +78,12 @@ const PerfilLoja = () => {
             <div className={css.container}>
                 <div className={css.tittle}>
                     <span className={css.image_container}>
-                        <img src={store.img} alt="imagem loja" />
+                        <img src={storeData.img} alt="imagem loja" />
                     </span>
                     <div>
-                        <h2>{store.name}</h2>
-                        <p>{store.category}</p>
-                        <p>{store.cellPhone}</p>
+                        <h2>{storeData.name}</h2>
+                        <p>{storeData.category}</p>
+                        <p>{storeData.cellPhone}</p>
                     </div>
                 </div>
                 <article className={css.container_content}>

@@ -15,6 +15,7 @@ import Gerenciar from "./pages/Store/Gerenciar/Gerenciar";
 import AlterarSenha from "./pages/Store/AlterarSenha/AlterarSenha";
 import Pedidos from "./pages/Store/Pedidos/Pedidos";
 import Produtos from "./pages/Store/Produtos/Produtos";
+import Category from "./pages/Client/Category/Category";
 
 const users = {
   client: "client",
@@ -43,7 +44,7 @@ const RouterList = () => {
           <Route path='/perfil/alterar-senha' element={<ChangePassword />}/>
           <Route path='/lojas' element={<PerfilLoja />}/>
           <Route path='/lojas/:store' element={<PerfilLoja />}/>
-          <Route path='/delivery/descobrir/:categoria' element={<HomePage />}/>
+          <Route path='/descobrir/:category' element={<Category />}/>
         </Route>
 
         {/* store private routes */}

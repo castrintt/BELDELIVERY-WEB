@@ -51,7 +51,7 @@ const HomePage = () => {
             <NavBarLeft />
             <div className={css.container}>
                 <div className={css.tittle}>
-                    <h2>Lojas</h2>
+                    <h2>Nossas Lojas</h2>
                 </div>
                 <article className={css.container_content}>
                     <div className={css.container_products}>
@@ -64,6 +64,6 @@ const HomePage = () => {
             </div>
         </>
     )
-}
+};
 
 export default HomePage;

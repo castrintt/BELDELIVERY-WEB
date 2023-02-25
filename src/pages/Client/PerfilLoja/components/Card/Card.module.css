@@ -3,10 +3,12 @@
     width: 300px;
     height: 250px;
     border: 1px solid rgba(0, 0, 0, 0.192);
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.507);
     border-radius: 10px;
     overflow: hidden;
     transition: all .2s;
     cursor: pointer;
+    background-color: #F7F7F7;
 }
 .card_container:hover{
     scale: 1.05;
@@ -32,14 +34,14 @@
 }
 .card_container > div:last-of-type > h4{
     font-size: 1.5rem;
-    font-weight: lighter;
+    font-weight: 500;
 }
 .card_container > div:last-of-type > p{
     padding-bottom: 20px;
     font-size: .9rem;
 }
 .card_container > div:last-of-type > span{
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: green;
     font-weight: bold;
 }

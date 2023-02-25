@@ -9,7 +9,7 @@ const NavBarTop = () => {
     const [openModalCarrinho,  setOpenModalCarrinho] = useState(false);
     const navigate = useNavigate();
 
-    const ItensDropDownCategorie = ["Hambugueria", "Sorveteria", "Bar"];
+    const ItensDropDownCategorie = ["Hambugueria", "Sorveteria", "Bar", "Lanchonete"];
 
     return(
         <>
@@ -21,11 +21,12 @@ const NavBarTop = () => {
                     </div>
                     <div className={css.container_menu}>
                         <NavDropdown
+                            style={{color: "#F7F7F7"}} 
                             id="nav-dropdown-dark-example"
                             title="Categorias"
                             >
                             {ItensDropDownCategorie.map((item) => (
-                                <NavDropdown.Item onClick={() => navigate(`/delivery/descobrir/${item}`)} key={item.length}>
+                                <NavDropdown.Item onClick={() => navigate(`/descobrir/${item}`)} key={item.length}>
                                     {item}
                                 </NavDropdown.Item>
                             ))}
