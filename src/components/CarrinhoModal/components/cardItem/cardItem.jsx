@@ -1,29 +1,25 @@
 import { useState, useEffect } from "react";
 import css from "./cardItem.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { updateItem } from "../../../../redux/cartSlice";
 
-const CardItem = () => {
-    const [product, setProduct] = useState({});
-    const [unidad, setUnidad] = useState(product.unidad);
-    const [amount, setAmout] = useState(product.value);
+const CardItem = ({product}) => {
+    const [amount, setAmout] = useState();
+    const dispatch = useDispatch();
 
-    const cart = useSelector(state => state.cart);
+    const someUnidad = () => {
+        product = {...product, unidad:  product.unidad + 1};
+        dispatch(updateItem(product));
+    };
 
-    const clicou = (operation) => {
-        if(operation === 1){
-            setUnidad(unidad + 1);
-        } else {
-            setUnidad(unidad - 1);
-        }
+    const decriseUnidad = () => {
+        product = {...product, unidad: product.unidad - 1};
+        dispatch(updateItem(product));
     };
 
     useEffect(() => {
-        const selectedProduct = cart.cartItem[0]; // Assuming the cart only has one item
-        setProduct(selectedProduct);
-        setUnidad(selectedProduct.unidad);
-        setAmout(selectedProduct.value * selectedProduct.unidad);
-    }, [cart]);
-
+        setAmout(product.value * product.unidad);
+    }, [product]);
 
     return (
         <>
@@ -35,12 +31,12 @@ const CardItem = () => {
                 <div>
                     <button
                         className={css.cart_product_operator}
-                        onClick={() => clicou(1)}
+                        onClick={() => someUnidad()}
                     >+</button>
-                    <span className={css.cart_product_unidad}>{unidad}</span>
+                    <span className={css.cart_product_unidad}>{product.unidad}</span>
                     <button
                         className={css.cart_product_operator}
-                        onClick={() => clicou(2)}
+                        onClick={() => decriseUnidad()}
                     >-</button>
                 </div>
             </div>

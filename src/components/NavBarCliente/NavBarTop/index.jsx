@@ -4,10 +4,13 @@ import { useNavigate } from "react-router-dom";
 import CarrinhoModal from "../../CarrinhoModal";
 import { useState } from "react";
 import { NavDropdown } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 const NavBarTop = () => {
     const [openModalCarrinho,  setOpenModalCarrinho] = useState(false);
     const navigate = useNavigate();
+
+    const cart = useSelector(state => state.cartItem);
 
     const ItensDropDownCategorie = ["Hambugueria", "Sorveteria", "Bar", "Lanchonete"];
 

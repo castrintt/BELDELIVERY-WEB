@@ -37,39 +37,6 @@
     overflow: auto;
 }
 
-.cart_summary{
-    padding: 1rem;
-    background-color: #F7F7F7;
-}  
-.cart_summary h3 {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-  
-.cart_summary_item {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-  
-.cart_summary_item span:first-child {
-    font-weight: bold;
-}
-  
-.cart_checkout {
-    display: block;
-    width: 100%;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    margin-top: 10px
-}
-.cart_checkout:hover {
-    background-color: #3e8e41;
-}
-
 @media all and (max-width: 770px){
     .container_carrinho_modal{
         width: 250px;
