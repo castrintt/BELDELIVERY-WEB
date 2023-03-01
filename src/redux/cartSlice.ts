@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getCurrentUser } from "../utilites/helpers/helpers";
-import { useState } from "react";
 
 //interfaces
 interface CartItem {
@@ -28,12 +27,11 @@ const cart = () => {
     if (!!localCart) {
       return JSON.parse(localCart);
     }
-    return { cartItem: [] };
 };
 
 //stado inicial
 const initialState: CartState = {
-    cartItem: cart().cartItem,
+    cartItem: cart(),
     idStore: null,
     idClient: user.id,
     feerDelivery: 0
@@ -44,21 +42,17 @@ export const slice = createSlice({
   initialState,
   reducers: {
     addItem(state, action: PayloadAction<CartItem>) {
-        const payload = action.payload;
-        let currentCart: CartItem[] = cart().cartItem;
-        currentCart.push(payload);
-        if(state.idStore === null){
-            state.idStore = payload.idStore;
-        };
-        if (payload.id === state.idStore) {
-            localStorage.setItem("cart", JSON.stringify(currentCart));
-            return {
-                ...state,
-                cartItem: [...state.cartItem, payload],
-                idStore: payload.idStore
-            };
-        } else {
+        const newItem = action.payload;
+
+        if (state.idStore !== null && newItem.idStore !== state.idStore) {
             return state;
+        };
+        
+        localStorage.setItem("cart", JSON.stringify([...state.cartItem, newItem]));
+        return {
+            ...state,
+            cartItem: [...state.cartItem, newItem],
+            idStore: newItem.idStore ?? state.idStore
         };
     },
     updateItem(state, action: PayloadAction<CartItem>) {

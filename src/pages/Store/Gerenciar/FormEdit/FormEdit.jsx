@@ -128,7 +128,7 @@ const FormEdit = ({
                 <label className={css.label_file} htmlFor="file">
                     <img src={uploadIcon} alt="" />
                 </label>
-                <div>
+                <div className={css.form_grid}>
                     <div className={css.input_group}>
                         <p>Nome completo:</p>
                         <input

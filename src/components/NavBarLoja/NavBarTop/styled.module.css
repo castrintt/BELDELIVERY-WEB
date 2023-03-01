@@ -3,7 +3,7 @@
     top: 0;
     height: 60px;
     width: 100%;
-    background-color: #ff6c3e;
+    background-color: #BD0117;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.164);
     z-index: 99;
 }
@@ -81,6 +81,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: #F7F7F7;
 }
 .container_carrinho > span:nth-child(2){
     font-size: 13px;

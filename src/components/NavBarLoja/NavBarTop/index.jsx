@@ -1,4 +1,4 @@
-import css from "./styled.module.css"
+import css from "./styled.module.css";
 import logo from '../../../utilites/img/delivery-logo.png';
 import { useNavigate } from "react-router-dom";
 import CarrinhoModal from "../../CarrinhoModal";
@@ -20,16 +20,6 @@ const NavBarTop = () => {
                         <img onClick={() => navigate("/home")} src={logo} alt="logo-site" />
                     </div>
                     <div className={css.container_menu}>
-                        <NavDropdown
-                            id="nav-dropdown-dark-example"
-                            title="Categorias"
-                            >
-                            {ItensDropDownCategorie.map((item) => (
-                                <NavDropdown.Item onClick={() => navigate(`/delivery/descobrir/${item}`)} key={item.length}>
-                                    {item}
-                                </NavDropdown.Item>
-                            ))}
-                        </NavDropdown>
                     </div>
                     <div className={css.container_input}>
                         <img src="https://img.icons8.com/ios-filled/30/000000/search--v1.png"/>

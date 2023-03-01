@@ -18,7 +18,7 @@
 }
 .tittle > h2{
     font-size: 2rem;
-    color: #ff6c3e;
+    color: #BD0117;
     font-family: Arial, Helvetica, sans-serif;
 }
 .select_table{
@@ -46,7 +46,8 @@
 }
 
 .active_option{
-    background-color: #ff6c3e;
+    background-color: #BD0117;
+    color: white;
 }
 
 @media all and (max-width: 770px){
