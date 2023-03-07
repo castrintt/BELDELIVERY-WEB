@@ -22,7 +22,7 @@ const Card = ({product}) => {
             return description;
         }
     };
-
+    
     return(
         <>
             <div className={css.card_container} onClick={() => setModalOpen(true)}>

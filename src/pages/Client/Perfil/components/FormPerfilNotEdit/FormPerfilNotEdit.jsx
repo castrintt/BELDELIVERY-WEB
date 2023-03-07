@@ -1,7 +1,7 @@
 import css from "./FormPerfilNotEdit.module.css";
 import moment from "moment/moment";
 
-const FormPerfilNotEdit = ({userData, setEditForm, perfilImg}) => {
+const FormPerfilNotEdit = ({userData, setEditForm}) => {
     
     return(
         <>
@@ -13,7 +13,7 @@ const FormPerfilNotEdit = ({userData, setEditForm, perfilImg}) => {
             </div>
             <article className={css.container_form}>
                 <div>
-                    <img src={perfilImg} />
+                    <img src={userData.img} />
                 </div>
                 <div className={css.form_grid}>
                     <div className={css.input_group}>

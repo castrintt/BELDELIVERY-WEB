@@ -40,6 +40,7 @@ const PerfilCliente = () => {
         .get()
         .then((res) => {
             let dataWay = res._delegate._document.data.value.mapValue.fields;
+            console.log("dataWay", dataWay)
             setUserData({
                 id: res.id,
                 name: dataWay.name.stringValue,
@@ -47,13 +48,12 @@ const PerfilCliente = () => {
                 email: dataWay.email.stringValue,
                 createdDate: dataWay.createdDate.stringValue,
                 orders: dataWay.orders.integerValue,
-                cellPhone: dataWay.cellPhone?.stringValue
+                cellPhone: dataWay.cellPhone?.stringValue,
+                img: dataWay.img?.stringValue
             });
-            getImagePerfil();
             setLoading(false);
         })
         .catch(error => {
-            console.log(error);
             setLoading(false);
         });
     };
@@ -80,25 +80,7 @@ const PerfilCliente = () => {
             }
         })
         .catch(error => {
-            console.log(error);
         });
-    };
-
-    const getImagePerfil = () => {
-        const storageRef = firebase.storage().ref();
-        setPerfilImg(AnonimoImg);
-
-        storageRef.child("user/").listAll()
-        .then((res) => {
-            res.items.map(item => {
-                if(item.name === currentUser.id){
-                    item.getDownloadURL()
-                    .then((img) => {
-                        setPerfilImg(img);
-                    })
-                }
-            })
-        })
     };
 
     useEffect(() => {
@@ -116,11 +98,8 @@ const PerfilCliente = () => {
                     <FormPerfilEdit
                         userData={userData}
                         setUserData={setUserData}
-                        perfilImg={perfilImg}
-                        setPerfilImg={setPerfilImg}
                         editForm={editForm}
                         setEditForm={setEditForm}
-                        getImagePerfil={getImagePerfil}
                     /> :
                     <FormPerfilNotEdit
                         userData={userData}

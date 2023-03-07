@@ -59,6 +59,7 @@ const PerfilLoja = () => {
             });
             setProducts(allProducts);
             setLoading(false);
+            console.log(products);
         })
         .catch(error => {
             // console.log(error);

@@ -14,10 +14,7 @@ import {
 const FormPerfilEdit = ({
     userData,
     setUserData,
-    setEditForm,
-    perfilImg,
-    setPerfilImg,
-    getImagePerfil
+    setEditForm
 }) => {
     const [loading, setLoading] = useState(null);
     const [customError, setCustomError] = useState({
@@ -92,9 +89,7 @@ const FormPerfilEdit = ({
                 console.log(error);
             },
             () => {
-                setPerfilImg(inputImg);
                 updateDataUser();
-                getImagePerfil();
             }
         );
     };
@@ -115,7 +110,7 @@ const FormPerfilEdit = ({
             </div>
             <article className={css.container_form}>
                 <div>
-                    <img src={perfilImg} />
+                    <img src={userDataUpadate.img} />
                     <input
                         type="file"
                         name="file"

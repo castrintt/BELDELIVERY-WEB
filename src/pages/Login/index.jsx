@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import css from "./styled.module.css";
 import { useState, useEffect } from "react";
 import Loading from "../../components/Loading";
-import { db } from "../../services/api/firebaseConfig.js";
+import { db, auth } from "../../services/api/firebaseConfig.js";
 import { emailValidate, passwordLoginValidate } from "../../utilites/helpers/helpers";
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -33,6 +33,7 @@ const Login = () => {
 
         if(emailValidated.status === false && passwordValidated.status === false){
             setErrorStatus(false);
+            newAuthUser();
         } else {
             if(emailValidated.status === true){
                 toast.error(emailValidated.messenge);
@@ -43,11 +44,10 @@ const Login = () => {
         };
     };
 
-    const loginClient = () => {
+    const getDataClient = async () => {
         setLoading(true);
-        db.collection("client")
+        await db.collection("client")
         .where("email", "==" , formData.email)
-        .where("password", "==", formData.password)
         .get()
         .then((res) => {
             if(res.size > 0){
@@ -56,7 +56,7 @@ const Login = () => {
                 localStorage.setItem("id", res.docs[0].id);
                 localStorage.setItem("name", caminhoValue.name.stringValue);
                 localStorage.setItem("userType", "client");
-                toast.success("Logado com sucesso");
+                toast.warning("Logado com sucesso");
                 navigate("/home");
             } else {
                 setErrorStatus(true);
@@ -71,11 +71,10 @@ const Login = () => {
         })
     };
 
-    const loginStore = () => {
+    const getDataStore = async () => {
         setLoading(true);
-        db.collection("store")
+        await db.collection("store")
         .where("email", "==" , formData.email)
-        .where("password", "==", formData.password)
         .get()
         .then((res) => {
             if(res.size > 0){
@@ -98,14 +97,20 @@ const Login = () => {
             setLoading(false);
         })
     };
-
-    useEffect(() => {
-        if(loginType === "Client" & !errorStatus){
-            loginClient();
-        } else if (loginType === "Store" & !errorStatus){
-            loginStore();
-        }
-    }, [errorStatus]);
+    
+    const newAuthUser = async () => {
+        await auth.signInWithEmailAndPassword(formData.email, formData.password)
+        .then(res => {
+            if(loginType === "Client"){
+                getDataClient();
+            } else if (loginType === "Store"){
+                getDataStore();
+            };
+        })
+        .catch(error => {
+            toast.error("Usuário não encontrado");
+        })
+    };
 
     return(
         <>

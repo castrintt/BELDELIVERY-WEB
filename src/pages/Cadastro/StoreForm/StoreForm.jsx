@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Loading from "../../../components/Loading";
 import { ToastContainer, toast } from 'react-toastify';
-import { db } from "../../../services/api/firebaseConfig";
+import { db, auth } from "../../../services/api/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import {
     emailValidate,
@@ -14,9 +14,9 @@ import {
 } from "../../../utilites/helpers/helpers";
 
 const StoreForm = () => {
-    const [ loading, setLoading ] = useState(false);
-    const [ customError, setCustomError ] = useState({});
-    const [ formData, setFormData ] = useState({
+    const [loading, setLoading] = useState(false);
+    const [customError, setCustomError] = useState({});
+    const [formData, setFormData] = useState({
         name: "",
         email: "",
         password: "",
@@ -78,16 +78,18 @@ const StoreForm = () => {
         };
 
         urlStoreName(formData.name);
-        if(error_number === 0) postNewStore();
+        if(error_number === 0) {
+            newAuthUser();
+            postNewStore();
+        };
     };
 
-    const postNewStore = () => {
+    const postNewStore = async () => {
         setLoading(true);
 
-        db.collection("store").add({
+        await db.collection("store").add({
             name: formData.name,
             email: formData.email,
-            password: formData.password,
             document: formData.document,
             cellPhone: "",
             urlName: formData.url_name,
@@ -126,6 +128,16 @@ const StoreForm = () => {
         else response.status = true;
 
         return response;
+    };
+
+    const newAuthUser = async () => {
+        await auth.createUserWithEmailAndPassword(formData.email, formData.password)
+        .then(res => {
+            
+        })
+        .catch(error => {
+            
+        })
     };
 
     return(

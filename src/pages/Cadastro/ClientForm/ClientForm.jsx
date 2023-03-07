@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Loading from "../../../components/Loading";
-import { db } from "../../../services/api/firebaseConfig";
+import { db, auth } from "../../../services/api/firebaseConfig";
 import {
     passwordRegisterValidate,
     passwordRegisterConfirmate,
@@ -14,13 +14,13 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const ClientForm = () => {
     const [ loading, setLoading ] = useState(false);
-    const [ customError, setCustomError ] = useState({
+    const [customError, setCustomError] = useState({
         name: false,
         email: false,
         password: false,
         confirmatedPassword: false
     });
-    const [ formData, setFormData ] = useState({
+    const [formData, setFormData] = useState({
         name: "",
         email: "",
         password: "",
@@ -48,6 +48,7 @@ const ClientForm = () => {
             && passwordConfirmateValidated.status === false
             && nameValidated.status === false
         ){
+            newAuthUser()
             postNewClient();
         } else {
             if(nameValidated.status === true){
@@ -65,18 +66,18 @@ const ClientForm = () => {
         };
     };
 
-    const postNewClient = () => {
+    const postNewClient = async () => {
         setLoading(true);
 
-        db.collection("client").add({
+        await db.collection("client").add({
             name: formData.name,
             email: formData.email,
-            password: formData.password,
             cpf: "",
             cellPhone: "",
             createdDate: new Date(),
             type: 3,
-            orders: 0
+            orders: 0,
+            img: imgUrl
         })
         .then((res) => {
             console.log(res)
@@ -91,6 +92,16 @@ const ClientForm = () => {
             console.log(error);
             setLoading(false);
         });
+    };
+
+    const newAuthUser = async () => {
+        await auth.createUserWithEmailAndPassword(formData.email, formData.password)
+        .then(res => {
+            
+        })
+        .catch(error => {
+            
+        })
     };
 
     return(
