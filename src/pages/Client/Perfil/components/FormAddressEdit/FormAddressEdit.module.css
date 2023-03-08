@@ -3,7 +3,7 @@
     width: 90%;
     height: auto;
     padding: 2rem;
-    background-color: #F7F7F7;
+    background-color: var(--second-color);
     border-radius: .4rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -57,7 +57,7 @@
     grid-template-rows: auto;
     justify-items: start;
     align-items: center;
-    color: #BD0117;
+    color: var(--main-color);
 }
 
 .buttons_container{

@@ -1,0 +1,91 @@
+.container_login{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to right top, #ff6c3e 1%, #e8c39e 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card_login{
+    width: 450px;
+    height: 600px;
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.281);
+    border-radius: 10px;
+
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.164);
+    text-align: center;
+}
+.card_login > h1{
+    font-weight: 700;
+    font-size: 2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    line-height: 3rem;
+}
+.card_login > div:first-of-type{
+    padding: 2rem 0 1rem 0;
+    text-align: left;
+}
+.card_login > div > label{
+    text-align: left;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.card_login > div > input{
+    margin-bottom: 1rem;
+    padding: .6rem;
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    color: gray;
+    background-color: rgba(255, 255, 255, 0.384);
+}
+.card_login > div > input:focus{
+    background-color: rgba(255, 255, 255, 0.658);
+}
+.card_login > div:nth-of-type(2){
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.card_login > div:nth-of-type(2) > button{
+    width: 100%;
+}
+.card_login > div:nth-of-type(3){
+    width: 100%;
+    padding: .4rem .9rem;
+    background-color: rgba(255, 255, 255, 0.205);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.205);
+    font-weight: 600;
+    cursor: pointer;
+}
+.card_login > div:nth-of-type(3):hover{
+    background-color: rgba(255, 255, 255, 0.315);
+}
+.link{
+    width: auto;
+    margin-top: 1rem;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+}
+.link:last-of-type{
+    margin: 1rem 0;
+}
+#error_input{
+    outline: 3px solid red;
+}
+
+@media all and (max-width: 650px) {
+    .card_login{
+        margin: 2rem 0;
+        width: 95%;
+        height: auto;
+        padding: 3rem 2rem;
+    }
+}

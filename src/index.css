@@ -5,3 +5,7 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
+:root{
+  --main-color: #BD0117;
+  --second-color: #F7F7F7;
+}
