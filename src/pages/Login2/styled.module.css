@@ -1,91 +1,56 @@
-.container_login{
+.bg_login{
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(to right top, #ff6c3e 1%, #e8c39e 70%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* background-image: linear-gradient(to right top, #ff6c3e 1%, #e8c39e 70%); */
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.card_login{
-    width: 450px;
-    height: 600px;
-    padding: 50px;
-    background-color: rgba(255, 255, 255, 0.281);
-    border-radius: 10px;
-
-    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.164);
-    text-align: center;
-}
-.card_login > h1{
-    font-weight: 700;
-    font-size: 2rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    line-height: 3rem;
-}
-.card_login > div:first-of-type{
-    padding: 2rem 0 1rem 0;
-    text-align: left;
-}
-.card_login > div > label{
-    text-align: left;
-    font-weight: bold;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-.card_login > div > input{
-    margin-bottom: 1rem;
-    padding: .6rem;
-    width: 100%;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    color: gray;
-    background-color: rgba(255, 255, 255, 0.384);
-}
-.card_login > div > input:focus{
-    background-color: rgba(255, 255, 255, 0.658);
-}
-.card_login > div:nth-of-type(2){
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-.card_login > div:nth-of-type(2) > button{
-    width: 100%;
-}
-.card_login > div:nth-of-type(3){
-    width: 100%;
-    padding: .4rem .9rem;
-    background-color: rgba(255, 255, 255, 0.205);
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.205);
-    font-weight: 600;
-    cursor: pointer;
-}
-.card_login > div:nth-of-type(3):hover{
-    background-color: rgba(255, 255, 255, 0.315);
-}
-.link{
-    width: auto;
-    margin-top: 1rem;
-    font-size: 14px;
-    text-decoration: underline;
-    cursor: pointer;
-
+.bg_login > div{
+    width: 50%;
+    height: 100%;
+    border: 1px solid black;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-.link:last-of-type{
-    margin: 1rem 0;
+.bg_login > div:first-of-type > img{
+    width: 40%;
 }
-#error_input{
-    outline: 3px solid red;
+.container_form{
+    width: 45%;
+    height: 50%;
 }
-
-@media all and (max-width: 650px) {
-    .card_login{
-        margin: 2rem 0;
-        width: 95%;
-        height: auto;
-        padding: 3rem 2rem;
-    }
+.container_form > div{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.card_form{
+    height: 80%;
+    background-color: var(--second-color);
+    border: 1px solid #0000001e;
+    border-radius: 5px;
+    padding: 1.2em;
+    text-align: center;
+}
+.card_form > input{
+    width: 100%;
+    padding: .3em;
+    border: 1px solid #0000002c;
+    outline: none;
+}
+.card_form > input:first-of-type{
+    margin: 1em 0 .5em;
+}
+.card_form > button{
+    margin-top: 1.5em;
+    padding: .4em 3em;
+    background-color: var(--main-color);
+    color: #fff;
 }
