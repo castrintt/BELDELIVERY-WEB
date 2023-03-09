@@ -18,7 +18,7 @@
 }
 .bg_login > div:first-of-type{
     width: 45%;
-    border-right: 1px solid black;
+    border-right: 1px solid rgba(0, 0, 0, 0.308);
     background-image: linear-gradient(to top, var(--main-color) 15%, #fff 100%);
 }
 .bg_login > div:first-of-type > img{
@@ -27,6 +27,8 @@
 .container_form{
     width: 45%;
     height: 50%;
+    max-width: 25em;
+    max-height: 23em;
 }
 .container_form > div{
     width: 100%;
