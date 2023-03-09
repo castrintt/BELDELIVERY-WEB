@@ -1,14 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import css from "./styled.module.css";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Loading from "../../components/Loading";
 import { db, auth } from "../../services/api/firebaseConfig.js";
 import { emailValidate, passwordLoginValidate } from "../../utilites/helpers/helpers";
 import { ToastContainer, toast } from 'react-toastify';
+import Logo from "../../utilites/img/delivery-logo.png"
 
-const Login = () => {
-    const [loginType, setLoginType] = useState("Client");
+const Login2 = () => {
+    const [loginType, setLoginType] = useState(1);
     const [loading, setLoading] = useState(false);
     const [customError, setCustomError] = useState({
         email: false,
@@ -17,12 +18,13 @@ const Login = () => {
     const [errorStatus, setErrorStatus] = useState(true);
     const [formData, setFormData] = useState({
         email: "",
-        password: ""
+        password: "",
     });
 
     const navigate = useNavigate();
 
-    const DataVerify = () => {
+    const DataVerify = (e) => {
+        e.preventDefault();
         let emailValidated = emailValidate(formData.email);
         let passwordValidated = passwordLoginValidate(formData.password);
 
@@ -101,9 +103,9 @@ const Login = () => {
     const newAuthUser = async () => {
         await auth.signInWithEmailAndPassword(formData.email, formData.password)
         .then(res => {
-            if(loginType === "Client"){
+            if(loginType === 1){
                 getDataClient();
-            } else if (loginType === "Store"){
+            } else {
                 getDataStore();
             };
         })
@@ -113,7 +115,7 @@ const Login = () => {
     };
 
     return(
-        <>
+        <React.Fragment>
             {loading && <Loading />}
             <ToastContainer 
                 position="top-right"
@@ -123,51 +125,50 @@ const Login = () => {
                 draggable
                 theme="dark"
             />
-            <section className={css.container_login}>
-                <div className={css.card_login}>
-                    <h1>
-                        {loginType === "Client"
-                        ? "Faça Login e mate sua fome!"
-                        : "Faça login e venda conosco!"}
-                    </h1>
-                    <div>
-                        <input
-                            type="text"
-                            id={customError.email && css.error_input}
-                            placeholder="E-mail"
-                            value={formData.email}
-                            onChange={e => setFormData({...formData, email: e.target.value})}
-                        />
-                        <input
-                            type="text"
-                            id={customError.password && css.error_input}
-                            placeholder="Senha"
-                            value={formData.password}
-                            onChange={e => setFormData({...formData, password: e.target.value})}
-                        />
-                        <span className={css.link}>
-                            Esqueceu sua senha?
-                        </span>
-                    </div>
-
-                    <div>
-                        <Button variant="primary" onClick={() => DataVerify()}>LOGIN</Button>
-                        <div className={css.link} onClick={() => navigate("/cadastro")}>Ainda não tem conta? Cadastre-se</div>
-                    </div>
-                    
-                    {loginType === "Client" ? (
-                        <div onClick={() => setLoginType("Store")}>
-                            <span>Logue como Loja</span>
+            <section className={css.bg_login}>
+                <div>
+                    <img src={Logo} alt="logo-delivery" />
+                </div>
+                <div>
+                    <div className={css.container_form}>
+                        <div>
+                            <span
+                                onClick={() => loginType == 1 ? setLoginType(2) : setLoginType(1)}
+                                className={css.cursor_pointer}
+                            >
+                                {loginType == 1 ? "Logar como loja" : "Logar como cliente"}
+                            </span>
                         </div>
-                    ) : (
-                        <div onClick={() => setLoginType("Client")}>
-                            <span>Logue como Cliente</span>
+                        <form
+                            action="POST"
+                            className={css.card_form}
+                            onSubmit={e => DataVerify(e)}
+                        >
+                            <h2>Login</h2>
+                            <input
+                                type="text"
+                                value={formData.email}
+                                onChange={e => setFormData({...formData, email: e.target.value})}
+                                placeholder="Email"
+                            />
+                            <input
+                                type="text"
+                                value={formData.password}
+                                onChange={e => setFormData({...formData, password: e.target.value})}
+                                placeholder="Senha"
+                            />
+                            <button type="submit">Enviar</button>
+                        </form>
+                        <div
+                            className={css.cursor_pointer}
+                        >
+                            <span onClick={() => navigate("/cadastro")}>Criar nova conta</span>
                         </div>
-                    )}
+                    </div>
                 </div>
            </section>
-        </>
+        </React.Fragment>
     );
 };
 
-export default Login;
+export default Login2;

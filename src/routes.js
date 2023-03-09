@@ -5,7 +5,6 @@ import HomePage from "./pages/Client/Home";
 import PerfilCliente from "./pages/Client/Perfil";
 import PerfilLoja from "./pages/Client/PerfilLoja";
 import Login from "./pages/Login";
-import Login2 from "./pages/Login2";
 import Cadastro from "./pages/Cadastro/Cadastro";
 import CadastroCliente from "./pages/Cadastro/ClientForm/ClientForm";
 import CadastroLoja from "./pages/Cadastro/StoreForm/StoreForm";
@@ -29,7 +28,7 @@ const RouterList = () => {
     <Router>
       <Routes>
         {/* public routes */}
-        <Route path='/login' element={<Login2 />}/>
+        <Route path='/login' element={<Login />}/>
         <Route path='/cadastro' element={<Cadastro />}/>
         <Route path='/cadastro/cliente' element={<CadastroCliente />}/>
         <Route path='/cadastro/loja' element={<CadastroLoja />}/>
