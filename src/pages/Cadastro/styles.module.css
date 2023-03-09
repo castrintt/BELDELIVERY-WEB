@@ -29,16 +29,11 @@
 }
 .container_form{
     width: 23em;
-    height: 25em;
+    height: 20em;
 }
-.container_form > div{
-    width: 100%;
-    height: 10%;
-    display: flex;
-    justify-content: right;
-    align-items: center;
+.container_form > h2{
+    text-align: center;
     color: var(--main-color);
-    font-weight: 700;
 }
 .card_form{
     height: 80%;
@@ -49,24 +44,20 @@
     text-align: center;
     box-shadow: 1px 2px rgba(0, 0, 0, 0.247);
 }
-.card_form > input{
-    margin-top: .3em;
-    width: 100%;
-    padding: .5em;
-    border: 1px solid #00000017;
-    outline: none;
-    color: gray;
-    border-radius: 10px;
-}
-.card_form > input:focus{
-    border: 1px solid #00000050;
-}
 .card_form > h2{
-    margin-bottom: 1em;
+    margin: 1rem 0;
+    font-size: 1.7rem;
 }
-.card_form > button{
+.card_form > div{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.card_form > div > button{
     margin-top: 2em;
-    padding: .4em 3em;
+    width: 45%;
+    padding: .5rem 0;
     background-color: var(--main-color);
     color: #fff;
     border: none;
@@ -74,7 +65,4 @@
 }
 .cursor_pointer:hover{
     cursor: pointer;
-}
-#error_input{
-    border: 1px solid red;
 }

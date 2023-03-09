@@ -1,5 +1,5 @@
-import css from "./ClientForm.module.css";
-import { useState, useEffect } from "react";
+import css from "./styles.module.css";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Loading from "../../../components/Loading";
@@ -11,6 +11,7 @@ import {
     nameValidate
 } from "../../../utilites/helpers/helpers";
 import { ToastContainer, toast } from 'react-toastify';
+import Logo from "../../../utilites/img/delivery-logo.png";
 
 const ClientForm = () => {
     const [ loading, setLoading ] = useState(false);
@@ -30,7 +31,9 @@ const ClientForm = () => {
     const imgUrl = "https://firebasestorage.googleapis.com/v0/b/beldelivery-f4426.appspot.com/o/user%2Fanonimo.png?alt=media&token=3cd2a9df-8b5a-4a4c-aaa9-aa7a92e90376";
     const navigate = useNavigate();
     
-    const DataVerify = () => {
+    const DataVerify = (e) => {
+        e.preventDefault();
+
         let nameValidated = nameValidate(formData.name);
         let emailValidated = emailValidate(formData.email);
         let passwordValidated = passwordRegisterValidate(formData.password);
@@ -105,67 +108,58 @@ const ClientForm = () => {
     };
 
     return(
-        <>
-        {loading && <Loading />}
-        <ToastContainer 
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            closeOnClick
-            draggable
-            theme="dark"
-        />
-        <section className={css.container_cadastro}>
-            <div className={css.card_login}>
-                <h1>Faça seu cadastro</h1>
-                <div className={css.container_form}>
-                    <div className={css.input_group}>
-                        <input
-                            id={customError.name == true && css.error_input}
-                            type="text"
-                            placeholder="Nome"
-                            onChange={e => setFormData({...formData, name: e.target.value})}
-                            value={formData.name}
-                        />
-                    </div>
-                    <div className={css.input_group}>
-                        <input 
-                            type="email"
-                            id={customError.email == true && css.error_input}
-                            placeholder="E-mail"
-                            onChange={e => setFormData({...formData, email: e.target.value})}
-                            value={formData.email}
-                        />
-                    </div>
-                    <div className={css.input_group}>
-                        <input
-                            type="password"
-                            id={customError.password == true && css.error_input}
-                            placeholder="Crie uma senha"
-                            onChange={e => setFormData({...formData, password: e.target.value})}
-                            value={formData.password}
-                        />
-                    </div>
-                    <div className={css.input_group}>
-                        <input 
-                            type="password"
-                            id={customError.confirmatedPassword == true && css.error_input}
-                            placeholder="Confirme a senha"
-                            onChange={e => setFormData({...formData, confirmatedPassword: e.target.value})}
-                            value={formData.confirmatedPassword}
-                        />
+        <React.Fragment>
+            {loading && <Loading />}
+            <ToastContainer 
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                closeOnClick
+                draggable
+                theme="dark"
+            />
+            <section className={css.bg_login}>
+                <div>
+                    <img src={Logo} alt="logo-delivery" />
+                </div>
+                <div>
+                    <div className={css.container_form}>
+                        <form
+                            action="POST"
+                            className={css.card_form}
+                            onSubmit={e => DataVerify(e)}
+                        >
+                            <h2>Faça seu cadastro</h2>
+                            <input
+                                type="text"
+                                placeholder="Nome"
+                                onChange={e => setFormData({...formData, name: e.target.value})}
+                                value={formData.name}
+                            />
+                            <input
+                                type="text"
+                                value={formData.email}
+                                onChange={e => setFormData({...formData, email: e.target.value})}
+                                placeholder="Email"
+                            />
+                            <input
+                                type="text"
+                                placeholder="Senha"
+                                onChange={e => setFormData({...formData, password: e.target.value})}
+                                value={formData.password}
+                            />
+                            <input
+                                type="text"
+                                placeholder="Confirme a senha"
+                                onChange={e => setFormData({...formData, confirmatedPassword: e.target.value})}
+                                value={formData.confirmatedPassword}
+                            />
+                            <button type="submit">Enviar</button>
+                        </form>
                     </div>
                 </div>
-                <Button
-                    variant="primary"
-                    className={css.button}
-                    onClick={() => DataVerify()}
-                >
-                    Cadastrar
-                </Button>
-            </div>
-        </section>
-        </>
+            </section>
+        </React.Fragment>
     )
 }
 

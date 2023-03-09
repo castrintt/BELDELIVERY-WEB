@@ -147,12 +147,14 @@ const Login2 = () => {
                             <h2>Login</h2>
                             <input
                                 type="text"
+                                id={customError.email && css.error_input}
                                 value={formData.email}
                                 onChange={e => setFormData({...formData, email: e.target.value})}
                                 placeholder="Email"
                             />
                             <input
                                 type="text"
+                                id={customError.password && css.error_input}
                                 value={formData.password}
                                 onChange={e => setFormData({...formData, password: e.target.value})}
                                 placeholder="Senha"

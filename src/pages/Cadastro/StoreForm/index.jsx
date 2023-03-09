@@ -1,5 +1,5 @@
-import css from "./StoreForm.module.css";
-import { useState } from "react";
+import css from "./styles.module.css";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Loading from "../../../components/Loading";
 import { ToastContainer, toast } from 'react-toastify';
@@ -12,6 +12,7 @@ import {
     passwordRegisterConfirmate,
     documentValidate
 } from "../../../utilites/helpers/helpers";
+import Logo from "../../../utilites/img/delivery-logo.png";
 
 const StoreForm = () => {
     const [loading, setLoading] = useState(false);
@@ -29,7 +30,9 @@ const StoreForm = () => {
     const imgUrl = "https://firebasestorage.googleapis.com/v0/b/beldelivery-f4426.appspot.com/o/user%2Fanonimo.png?alt=media&token=3cd2a9df-8b5a-4a4c-aaa9-aa7a92e90376";
     const navigate = useNavigate();
 
-    const DataVerify = () => {
+    const DataVerify = (e) => {
+        e.preventDefault();
+
         let name = nameValidate(formData.name);
         let email = emailValidate(formData.email);
         let password = passwordRegisterValidate(formData.password);
@@ -141,7 +144,7 @@ const StoreForm = () => {
     };
 
     return(
-        <>
+        <React.Fragment>
             {loading && <Loading />}
             <ToastContainer 
                 position="top-right"
@@ -151,11 +154,18 @@ const StoreForm = () => {
                 draggable
                 theme="dark"
             />
-            <main className={css.container_cadastro}>
-                <div className={css.card_login}>
-                    <h1>Faça seu cadastro</h1>
+            <section className={css.bg_login}>
+                <div>
+                    <img src={Logo} alt="logo-delivery" />
+                </div>
+                <div>
                     <div className={css.container_form}>
-                        <div>
+                        <form
+                            action="POST"
+                            className={css.card_form}
+                            onSubmit={e => DataVerify(e)}
+                        >
+                            <h2>Faça seu cadastro</h2>
                             <input
                                 type="text"
                                 id={customError.name && css.error_input}
@@ -163,8 +173,6 @@ const StoreForm = () => {
                                 onChange={e => setFormData({...formData, name: e.target.value})}
                                 value={formData.name}
                             />
-                        </div>
-                        <div>
                             <input
                                 type="text"
                                 id={customError.email && css.error_input}
@@ -172,8 +180,6 @@ const StoreForm = () => {
                                 onChange={e => setFormData({...formData, email: e.target.value})}
                                 value={formData.email}
                             />
-                        </div>
-                        <div>
                             <input
                                 type="password"
                                 id={customError.password && css.error_input}
@@ -181,8 +187,6 @@ const StoreForm = () => {
                                 onChange={e => setFormData({...formData, password: e.target.value})}
                                 value={formData.password}
                             />
-                        </div>
-                        <div>
                             <input
                                 type="password"
                                 id={customError.confirm_password && css.error_input}
@@ -190,8 +194,6 @@ const StoreForm = () => {
                                 onChange={e => setFormData({...formData, confirm_password: e.target.value})}
                                 value={formData.confirm_password}
                             />
-                        </div>
-                        <div>
                             <input
                                 type="text"
                                 id={customError.document && css.error_input}
@@ -199,30 +201,23 @@ const StoreForm = () => {
                                 onChange={e => setFormData({...formData, document: e.target.value})}
                                 value={formData.document}
                             />
-                        </div>
-                        <Form.Select
-                            size="sm"
-                            value={formData.category}
-                            onChange={e => setFormData({...formData, category: e.target.value})}
-                            id={customError.category && css.error_input}
-                        >
-                            <option value="" disabled selected>Selecione uma categoria</option>
-                            <option value="Lanchonete">Lanchonete</option>
-                            <option value="Hamburgueria">Hamburgueria</option>
-                            <option value="Bar">Bar</option>
-                            <option value="Sorveteria">Sorveteria</option>
-                        </Form.Select>
-                        </div>
-                    <Button
-                        variant="primary"
-                        className={css.button_container}
-                        onClick={() => DataVerify()}
-                    >
-                        Cadastrar
-                    </Button>
+                            <select
+                                value={formData.category}
+                                onChange={e => setFormData({...formData, category: e.target.value})}
+                                id={!!customError.category && css.error_input}
+                            >
+                                <option value="" disabled selected>Selecione uma categoria</option>
+                                <option value="Lanchonete">Lanchonete</option>
+                                <option value="Hamburgueria">Hamburgueria</option>
+                                <option value="Bar">Bar</option>
+                                <option value="Sorveteria">Sorveteria</option>
+                            </select>
+                            <button type="submit">Enviar</button>
+                        </form>
+                    </div>
                 </div>
-            </main>
-        </>
+            </section>
+        </React.Fragment>
     );
 };
 
