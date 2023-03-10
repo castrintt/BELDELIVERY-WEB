@@ -132,24 +132,28 @@ const ClientForm = () => {
                             <h2>Faça seu cadastro</h2>
                             <input
                                 type="text"
+                                id={customError.name && css.error_input}
                                 placeholder="Nome"
                                 onChange={e => setFormData({...formData, name: e.target.value})}
                                 value={formData.name}
                             />
                             <input
                                 type="text"
+                                id={customError.email && css.error_input}
                                 value={formData.email}
                                 onChange={e => setFormData({...formData, email: e.target.value})}
                                 placeholder="Email"
                             />
                             <input
                                 type="text"
+                                id={customError.password && css.error_input}
                                 placeholder="Senha"
                                 onChange={e => setFormData({...formData, password: e.target.value})}
                                 value={formData.password}
                             />
                             <input
                                 type="text"
+                                id={customError.confirmatedPassword && css.error_input}
                                 placeholder="Confirme a senha"
                                 onChange={e => setFormData({...formData, confirmatedPassword: e.target.value})}
                                 value={formData.confirmatedPassword}

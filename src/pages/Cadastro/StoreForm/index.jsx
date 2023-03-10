@@ -204,7 +204,7 @@ const StoreForm = () => {
                             <select
                                 value={formData.category}
                                 onChange={e => setFormData({...formData, category: e.target.value})}
-                                id={!!customError.category && css.error_input}
+                                id={customError.category && css.error_input}
                             >
                                 <option value="" disabled selected>Selecione uma categoria</option>
                                 <option value="Lanchonete">Lanchonete</option>
