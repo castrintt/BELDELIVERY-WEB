@@ -212,7 +212,7 @@ const StoreForm = () => {
                                 <option value="Bar">Bar</option>
                                 <option value="Sorveteria">Sorveteria</option>
                             </select>
-                            <button type="submit">Enviar</button>
+                            <button type="submit">Cadastrar</button>
                         </form>
                     </div>
                 </div>

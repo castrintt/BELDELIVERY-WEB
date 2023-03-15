@@ -158,7 +158,7 @@ const ClientForm = () => {
                                 onChange={e => setFormData({...formData, confirmatedPassword: e.target.value})}
                                 value={formData.confirmatedPassword}
                             />
-                            <button type="submit">Enviar</button>
+                            <button type="submit">Cadastrar</button>
                         </form>
                     </div>
                 </div>

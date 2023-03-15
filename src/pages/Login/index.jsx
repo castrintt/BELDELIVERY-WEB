@@ -132,12 +132,7 @@ const Login2 = () => {
                 <div>
                     <div className={css.container_form}>
                         <div>
-                            <span
-                                onClick={() => loginType == 1 ? setLoginType(2) : setLoginType(1)}
-                                className={css.cursor_pointer}
-                            >
-                                {loginType == 1 ? "Logar como loja" : "Logar como cliente"}
-                            </span>
+                            <p>Bem-vindo(a)</p>
                         </div>
                         <form
                             action="POST"
@@ -161,10 +156,16 @@ const Login2 = () => {
                             />
                             <button type="submit">Enviar</button>
                         </form>
-                        <div
-                            className={css.cursor_pointer}
-                        >
-                            <span onClick={() => navigate("/cadastro")}>Criar nova conta</span>
+                        <div>
+                            <span
+                                onClick={() => loginType == 1 ? setLoginType(2) : setLoginType(1)}
+                                className={css.cursor_pointer}
+                            >
+                                {loginType == 1 ? "Logar como loja" : "Logar como cliente"}
+                            </span>
+                            <span className={css.cursor_pointer} onClick={() => navigate("/cadastro")}>
+                                Criar nova conta
+                            </span>
                         </div>
                     </div>
                 </div>
