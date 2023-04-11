@@ -1,7 +1,7 @@
 import css from "./ChangePassword.module.css";
 import NavBarTop from "../../../components/NavBarCliente/NavBarTop";
 import NavBarLeft from "../../../components/NavBarCliente/NavBarLeft/NavBarLeftClient";
-import { db } from "../../../services/api/firebaseConfig";
+import { db } from "../../../config/api/firebaseConfig";
 import {passwordRegisterValidate, getCurrentUser } from "../../../utilites/helpers/helpers";
 import { useState } from "react";
 import Loading from "../../../components/Loading";

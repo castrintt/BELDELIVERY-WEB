@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Loading from "../../../components/Loading";
 import { ToastContainer, toast } from 'react-toastify';
-import { db, auth } from "../../../services/api/firebaseConfig";
+import { db } from "../../../config/api/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import {
     emailValidate,
@@ -12,6 +12,7 @@ import {
     passwordRegisterConfirmate,
     documentValidate
 } from "../../../utilites/helpers/helpers";
+import { auth } from "../../../config/api/firebaseConfig";
 import Logo from "../../../utilites/img/delivery-logo.png";
 
 const StoreForm = () => {

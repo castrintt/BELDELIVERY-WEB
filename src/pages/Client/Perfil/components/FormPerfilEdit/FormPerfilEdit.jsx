@@ -2,7 +2,7 @@ import { useState } from "react";
 import css from "./FormPerfilEdit.module.css";
 import moment from "moment/moment";
 import Loading from "../../../../../components/Loading";
-import {db} from "../../../../../services/api/firebaseConfig";
+import { db } from "../../../../../config/api/firebaseConfig";
 import firebase from "firebase/app";
 import "firebase/storage";
 import {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import css from "./cardItem.module.css";
 import { useDispatch } from "react-redux";
-import { updateItem } from "../../../../redux/cartSlice";
+import { updateItem } from "../../../../store/redux/slices/cartSlice";
 
 const CardItem = ({product}) => {
     const [amount, setAmout] = useState();

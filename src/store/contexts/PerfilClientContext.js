@@ -1,6 +1,6 @@
 import { useState, createContext, useEffect } from "react";
 import { getCurrentUser } from "../../utilites/helpers/helpers";
-import { db } from "../api/firebaseConfig";
+import { db } from "../../config/api/firebaseConfig";
 import firebase from "firebase/app";
 import "firebase/storage";
 

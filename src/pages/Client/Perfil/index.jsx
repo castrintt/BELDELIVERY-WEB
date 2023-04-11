@@ -7,7 +7,7 @@ import FormPerfilEdit from "./components/FormPerfilEdit/FormPerfilEdit";
 import FormAddressNotEdit from "./components/FormAddressNotEdit/FormAddressNotEdit";
 import FormAddressEdit from "./components/FormAddressEdit/FormAddressEdit";
 import Loading from "../../../components/Loading";
-import { db } from "../../../services/api/firebaseConfig";
+import { db } from "../../../config/api/firebaseConfig";
 import firebase from "firebase/app";
 import "firebase/storage";
 import { getCurrentUser } from "../../../utilites/helpers/helpers";

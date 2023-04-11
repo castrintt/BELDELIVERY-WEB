@@ -5,7 +5,7 @@ import Loading from "../../../components/Loading";
 import StoreCard from "./components/storeCard";
 import { useState } from "react";
 import { useEffect } from "react";
-import { db } from "../../../services/api/firebaseConfig";
+import { db } from "../../../config/api/firebaseConfig";
 
 const HomePage = () => {
     const [loading, setLoading] = useState(false);

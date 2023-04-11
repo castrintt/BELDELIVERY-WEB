@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { db } from "../../services/api/firebaseConfig";
+import { db } from "../../config/api/firebaseConfig";
 
 export const verifyExitentClient = (email) => {
     let response = true;

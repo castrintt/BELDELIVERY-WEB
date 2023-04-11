@@ -1,7 +1,7 @@
 import { useState } from "react";
 import css from "./FormAddressEdit.module.css";
 import Loading from "../../../../../components/Loading";
-import {db} from "../../../../../services/api/firebaseConfig";
+import { db } from "../../../../../config/api/firebaseConfig";
 import "firebase/storage";
 import {
     nameValidate,

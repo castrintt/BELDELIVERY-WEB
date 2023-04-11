@@ -5,7 +5,7 @@ import Tabela from "./Tabela/Tabela";
 import { useState } from "react";
 import ModalAddProduto from "./ModalAddProduto/ModalAddProduto";
 import { getCurrentUser } from "../../../utilites/helpers/helpers";
-import { db } from "../../../services/api/firebaseConfig";
+import { db } from "../../../config/api/firebaseConfig";
 import { useEffect } from "react";
 import Loading from "../../../components/Loading";
 

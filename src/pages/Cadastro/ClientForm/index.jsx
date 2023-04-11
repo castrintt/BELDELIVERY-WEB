@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Loading from "../../../components/Loading";
-import { db, auth } from "../../../services/api/firebaseConfig";
+import { db, auth } from "../../../config/api/firebaseConfig";
 import {
     passwordRegisterValidate,
     passwordRegisterConfirmate,

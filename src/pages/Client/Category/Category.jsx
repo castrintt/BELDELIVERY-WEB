@@ -4,7 +4,7 @@ import css from "./Category.module.css";
 import NavBarLeft from "../../../components/NavBarCliente/NavBarLeft/NavBarLeftClient";
 import NavBarTop from "../../../components/NavBarCliente/NavBarTop";
 import Loading from "../../../components/Loading";
-import { db } from "../../../services/api/firebaseConfig";
+import { db } from "../../../config/api/firebaseConfig";
 import StoreCard from "./components/storeCard";
 
 const Category = () => {

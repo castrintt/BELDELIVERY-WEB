@@ -7,7 +7,7 @@ import FormNotEdit from "./FormNotEdit/FormNotEdit";
 import FormEdit from "./FormEdit/FormEdit";
 import FormAddressNotEdit from "./FormAddressNotEdit/FormAddressNotEdit";
 import FormAddressEdit from "./FormAddressEdit/FormAddressEdit";
-import { db } from "../../../services/api/firebaseConfig";
+import { db } from "../../../config/api/firebaseConfig";
 import firebase from "firebase/app";
 import "firebase/storage";
 import { getCurrentUser } from "../../../utilites/helpers/helpers";

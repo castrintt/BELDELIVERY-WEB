@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import css from "./styled.module.css";
 import { getCurrentUser, Logout} from "../../../utilites/helpers/helpers";
 import { useNavigate } from "react-router-dom";
-import {useNavBarLeft} from "../../../services/hooks/useNavBarLeft";
+import { useNavBarLeft } from "../../../store/hooks/useNavBarLeft";
 import NavBarLeftResponsive from "./NavBarLeftResponsive/NavBarLeftResponsive";
 import firebase from "firebase/app";
 import "firebase/storage";

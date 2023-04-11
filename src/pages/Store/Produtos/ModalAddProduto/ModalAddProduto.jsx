@@ -11,7 +11,7 @@ import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import { db } from "../../../../services/api/firebaseConfig";
+import { db } from "../../../../config/api/firebaseConfig";
 import { ToastContainer, toast } from 'react-toastify';
 import Loading from "../../../../components/Loading";
 import { getCurrentUser } from "../../../../utilites/helpers/helpers";

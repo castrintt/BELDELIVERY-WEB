@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import css from "./styled.module.css";
 import React, { useState, useEffect } from "react";
 import Loading from "../../components/Loading";
-import { db, auth } from "../../services/api/firebaseConfig.js";
+import { db, auth } from "../../config/api/firebaseConfig";
 import { emailValidate, passwordLoginValidate } from "../../utilites/helpers/helpers";
 import { ToastContainer, toast } from 'react-toastify';
 import Logo from "../../utilites/img/delivery-logo.png"

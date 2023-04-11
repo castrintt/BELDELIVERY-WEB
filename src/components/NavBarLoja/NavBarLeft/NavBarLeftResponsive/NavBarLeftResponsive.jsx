@@ -1,6 +1,6 @@
 import css from "./NavBarLeftResponsive.module.css";
-import {useNavBarLeft} from "../../../../services/hooks/useNavBarLeft";
-import {Logout, getCurrentUser} from "../../../../utilites/helpers/helpers";
+import { useNavBarLeft } from "../../../../store/hooks/useNavBarLeft";
+import { getCurrentUser, Logout } from "../../../../utilites/helpers/helpers";
 import { useNavigate } from "react-router-dom";
 
 const NavBarLeftResponsive = () => {

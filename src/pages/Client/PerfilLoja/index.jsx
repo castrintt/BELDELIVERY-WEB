@@ -3,7 +3,7 @@ import NavBarLeft from "../../../components/NavBarCliente/NavBarLeft/NavBarLeftC
 import css from "./styled.module.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { db } from "../../../services/api/firebaseConfig";
+import { db } from "../../../config/api/firebaseConfig";
 import Loading from "../../../components/Loading";
 import Card from "./components/Card/Card";
 

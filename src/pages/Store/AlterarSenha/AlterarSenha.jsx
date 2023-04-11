@@ -5,7 +5,7 @@ import NavBarTop from "../../../components/NavBarLoja/NavBarTop";
 import Loading from "../../../components/Loading";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { db } from "../../../services/api/firebaseConfig";
+import { db } from "../../../config/api/firebaseConfig";
 import {passwordRegisterValidate, getCurrentUser } from "../../../utilites/helpers/helpers";
 
 const AlterarSenha = () => {

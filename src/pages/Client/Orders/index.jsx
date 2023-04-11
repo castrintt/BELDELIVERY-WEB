@@ -5,7 +5,7 @@ import TableResponsive from "./TableResponsive/TableResponsive";
 import Table from "./Table/Table";
 import css from "./styled.module.css";
 import { getCurrentUser } from "../../../utilites/helpers/helpers";
-import { db } from "../../../services/api/firebaseConfig";
+import { db } from "../../../config/api/firebaseConfig";
 import Loading from "../../../components/Loading";
 
 const OrdersClient = () => {

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AuthRequiredRoutes from "./services/auth/auth";
+import AuthRequiredRoutes from "./config/auth/auth";
 import { ClientLazy, StoreLazy, OthersLazy } from "./utilites/lazyRoutes/LazyRoutes";
 import { Suspense } from "react";
 
