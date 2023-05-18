@@ -10,21 +10,18 @@
     align-items: center;
 }
 .bg_login > div{
-    width: 65%;
+    width: 50%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .bg_login > div:first-of-type{
-    width: 35%;
+    width: 50%;
     background-image: linear-gradient(to top, #000 0%, var(--main-color) 25%);
 }
 .bg_login > div:first-of-type > img{
     width: 50%;
-}
-.bg_login > div:last-of-type{
-    background-color: var(--second-color);
 }
 .container_form{
     width: 22em;
@@ -40,7 +37,7 @@
 }
 .container_form > div > p{
     margin: 0;
-   font-size: 1.3rem;
+    font-size: 1rem;
 }
 .container_form > div > span{
     margin: 0;
@@ -87,4 +84,13 @@
 }
 #error_input{
     border: 1px solid rgba(255, 0, 0, 0.267);
+}
+
+@media all and (max-width: 700px) {
+    .bg_login > div{
+        background-color: white;
+    }
+    .bg_login > div:first-of-type{
+        display: none;
+    }
 }

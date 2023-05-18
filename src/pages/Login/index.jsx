@@ -117,14 +117,6 @@ const Login2 = () => {
     return(
         <React.Fragment>
             {loading && <Loading />}
-            <ToastContainer 
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                closeOnClick
-                draggable
-                theme="dark"
-            />
             <section className={css.bg_login}>
                 <div>
                     <img src={Logo} alt="logo-delivery" />
@@ -169,7 +161,15 @@ const Login2 = () => {
                         </div>
                     </div>
                 </div>
-           </section>
+            </section>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                closeOnClick
+                draggable
+                theme="dark"
+            />
         </React.Fragment>
     );
 };

@@ -48,7 +48,7 @@ const Category = () => {
             <NavBarTop />
             <NavBarLeft />
             <div className={css.container}>
-            <div className={css.tittle}>
+                <div className={css.tittle}>
                     <h2>{category}</h2>
                 </div>
                 <article className={css.container_content}>

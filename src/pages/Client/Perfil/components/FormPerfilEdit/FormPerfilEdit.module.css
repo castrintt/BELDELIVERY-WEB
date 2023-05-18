@@ -1,9 +1,9 @@
 .container_form{
     margin: 0 auto;
-    width: 90%;
+    width: 95%;
     height: auto;
     padding: 2rem;
-    background-color: #F7F7F7;
+    border: 3px solid red;
     border-radius: .4rem;
     display: flex;
     flex-direction: column;
@@ -24,17 +24,33 @@
     display: none;
 }
 .form_grid{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    padding-top: 1rem;
-    gap: 1rem;
+    padding-bottom: 1rem;
     width: 100%;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: .5fr .5fr .5fr .5fr .5fr .5fr;
+    grid-template-rows: auto auto;
+    gap: 2rem 1rem;
+    grid-template-areas:
+    "name name email email cpf cel"
+    "orders created . . . .";
 }
-.input_group{
-    max-width: 250px;
-    padding: 2rem 0;
+.form_grid > div:nth-child(1){
+    grid-area: name;
+}
+.form_grid > div:nth-child(2){
+    grid-area: email;
+}
+.form_grid > div:nth-child(3){
+    grid-area: cpf;
+}
+.form_grid > div:nth-child(4){
+    grid-area: cel;
+}
+.form_grid > div:nth-child(5){
+    grid-area: orders;
+}
+.form_grid > div:nth-child(6){
+    grid-area: created;
 }
 .input_group > p{
     margin: 0;
@@ -44,11 +60,11 @@
     font-weight: 600;
 }
 .input_group > input{
-    width: 90%;
-    border: 1px solid rgba(0, 0, 0, 0.308);
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.178);
     outline: none;
     padding: .3rem;
-    border-radius: .3rem;
+    border-radius: .2rem;
     background-color: #fff;
 }
 .input_group > input:focus{
@@ -57,7 +73,7 @@
 .tittle{
     margin: 0 auto;
     padding: 2rem 0;
-    width: 90%;
+    width: 95%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -117,14 +133,21 @@
     cursor: pointer;
 }
 
+
 @media all and (max-width: 850px){
-    .input_group{
-        padding: .7rem 0;
-        max-width: 100%;
-        text-align: center;
-    }
-    .input_group > input{
+    .form_grid{
         width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+        gap: .5rem 0;
+        grid-template-areas:
+        "name"
+        "email"
+        "cpf"
+        "cel"
+        "orders"
+        "created";
     }
     .buttons_container > button{
         margin-left: .3rem;

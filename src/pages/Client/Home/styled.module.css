@@ -1,11 +1,11 @@
 .container{
-    padding: 4rem 0 1rem 15rem;
+    padding: 5rem 0 1rem 15rem;
     width: 100%;
 }
 .tittle{
     margin: 10px auto;
     padding: 2rem 0;
-    width: 90%;
+    width: 95%;
     display: flex;
     align-items: center;
     background-color: #BD0117;
@@ -20,7 +20,7 @@
 }
 .container_content{
     margin: 0 auto;
-    width: 90%;
+    width: 95%;
     height: auto;
     display: flex;
     justify-content: start;
@@ -35,11 +35,11 @@
 
 @media all and (max-width: 770px){
     .container{
-        padding: 4rem 0 1rem 0;
+        padding: 5rem 0 1rem 0;
     }
     .container_content{
         margin: 0 auto;
-        width: 90%;
+        width: 95%;
         height: auto;
         display: flex;
         justify-content: space-around;

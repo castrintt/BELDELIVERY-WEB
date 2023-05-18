@@ -1,9 +1,9 @@
 .container_form{
     margin: 0 auto;
-    width: 90%;
+    width: 95%;
     height: auto;
     padding: 2rem;
-    background-color: #F7F7F7;
+    border: 3px solid red;
     border-radius: .4rem;
 }
 
@@ -35,7 +35,7 @@
 .tittle{
     margin: 0 auto;
     padding: 2rem 0;
-    width: 90%;
+    width: 95%;
     display: flex;
     justify-content: space-between;
     align-items: center;
