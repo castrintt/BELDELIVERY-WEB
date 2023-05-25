@@ -16,7 +16,7 @@ import AnonimoImg from "../../../utilites/img/anonimo.png";
 const PerfilCliente = () => {
     const [loading, setLoading] = useState(false);
     const [editForm, setEditForm] = useState(false);
-    const [editFormAdress, setEditFormAdress] = useState(false);
+    const [editFormAddress, setEditFormAddress] = useState(false);
     const [perfilImg, setPerfilImg] = useState();
     const [userData, setUserData] = useState({});
     const [addressData, setAddressData] = useState({
@@ -107,16 +107,16 @@ const PerfilCliente = () => {
                         setEditForm={setEditForm}
                     />
                 }
-                {editFormAdress ?
+                {editFormAddress ?
                     <FormAddressEdit
                         userData={addressData}
                         setUserData={setAddressData}
-                        editForm={editFormAdress}
-                        setEditForm={setEditFormAdress}
+                        editForm={editFormAddress}
+                        setEditForm={setEditFormAddress}
                     /> :
                     <FormAddressNotEdit
                         userData={addressData}
-                        setEditForm={setEditFormAdress}
+                        setEditForm={setEditFormAddress}
                     />
                 }
             </main>

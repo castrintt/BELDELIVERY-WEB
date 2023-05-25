@@ -24,8 +24,10 @@
     width: 50%;
 }
 .container_form{
-    width: 22em;
-    height: 22em;
+    width: 90%;
+    height: 90%;
+    max-width: 22em;
+    max-height: 22em;
 }
 .container_form > div{
     width: 100%;
@@ -87,10 +89,17 @@
 }
 
 @media all and (max-width: 700px) {
+    .bg_login{
+        flex-direction: column;
+    }
     .bg_login > div{
-        background-color: white;
+        width: 100%;
     }
     .bg_login > div:first-of-type{
-        display: none;
+        height: 20rem;
+        width: 100%;
+    }
+    .container_form{
+        align-items: center;
     }
 }
