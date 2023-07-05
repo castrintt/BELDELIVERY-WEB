@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getCurrentUser } from "../../../utilites/helpers/helpers";
+import { getCurrentUser } from "../../../utils/helpers/helpers";
 
 //interfaces
 interface CartItem {

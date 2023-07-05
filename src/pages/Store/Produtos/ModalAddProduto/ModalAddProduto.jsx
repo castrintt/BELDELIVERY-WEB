@@ -14,7 +14,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { db } from "../../../../config/api/firebaseConfig";
 import { ToastContainer, toast } from 'react-toastify';
 import Loading from "../../../../components/Loading";
-import { getCurrentUser } from "../../../../utilites/helpers/helpers";
+import { getCurrentUser } from "../../../../utils/helpers/helpers";
 import firebase from "firebase/app";
 import "firebase/storage";
 

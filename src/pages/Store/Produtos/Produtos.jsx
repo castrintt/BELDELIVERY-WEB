@@ -4,7 +4,7 @@ import NavBarLeft from "../../../components/NavBarLoja/NavBarLeft/NavBarLeft";
 import Tabela from "./Tabela/Tabela";
 import { useState } from "react";
 import ModalAddProduto from "./ModalAddProduto/ModalAddProduto";
-import { getCurrentUser } from "../../../utilites/helpers/helpers";
+import { getCurrentUser } from "../../../utils/helpers/helpers";
 import { db } from "../../../config/api/firebaseConfig";
 import { useEffect } from "react";
 import Loading from "../../../components/Loading";

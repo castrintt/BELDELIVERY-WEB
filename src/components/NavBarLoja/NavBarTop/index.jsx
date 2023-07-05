@@ -1,5 +1,5 @@
 import css from "./styled.module.css";
-import logo from '../../../utilites/img/delivery-logo.png';
+import logo from "../../../utils/img/delivery-logo.png";
 import { useNavigate } from "react-router-dom";
 import CarrinhoModal from "../../CarrinhoModal";
 import { useState } from "react";

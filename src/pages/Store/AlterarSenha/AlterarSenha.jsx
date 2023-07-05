@@ -6,7 +6,10 @@ import Loading from "../../../components/Loading";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { db } from "../../../config/api/firebaseConfig";
-import {passwordRegisterValidate, getCurrentUser } from "../../../utilites/helpers/helpers";
+import {
+  passwordRegisterValidate,
+  getCurrentUser,
+} from "../../../utils/helpers/helpers";
 
 const AlterarSenha = () => {
     const [loading, setLoading] = useState(false);

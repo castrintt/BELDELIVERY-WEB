@@ -6,10 +6,10 @@ import { db } from "../../../../config/api/firebaseConfig";
 import firebase from "firebase/app";
 import "firebase/storage";
 import {
-    nameValidate,
-    emailValidate,
-    getCurrentUser
-} from "../../../../utilites/helpers/helpers";
+  nameValidate,
+  emailValidate,
+  getCurrentUser,
+} from "../../../../utils/helpers/helpers";
 
 const FormAddressEdit = ({
     userData,

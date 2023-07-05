@@ -10,8 +10,8 @@ import Loading from "../../../components/Loading";
 import { db } from "../../../config/api/firebaseConfig";
 import firebase from "firebase/app";
 import "firebase/storage";
-import { getCurrentUser } from "../../../utilites/helpers/helpers";
-import AnonimoImg from "../../../utilites/img/anonimo.png";
+import { getCurrentUser } from "../../../utils/helpers/helpers";
+import AnonimoImg from "../../../utils/img/anonimo.png";
 
 const PerfilCliente = () => {
     const [loading, setLoading] = useState(false);

@@ -1,12 +1,12 @@
 import css from "./styled.module.css";
 import { useEffect } from "react";
-import { getCurrentUser, Logout } from "../../../utilites/helpers/helpers";
+import { getCurrentUser, Logout } from "../../../utils/helpers/helpers";
 import { useNavigate } from "react-router-dom";
 import NavBarLeftResponsive from "./NavBarLeftResponsive/NavBarLeftResponsive";
 import { useNavBarLeft } from "../../../store/hooks/useNavBarLeft";
 import firebase from "firebase/app";
 import "firebase/storage";
-import AnonimoImg from "../../../utilites/img/anonimo.png";
+import AnonimoImg from "../../../utils/img/anonimo.png";
 
 const NavBarLeft = () => {
     const {icons, openBar, setOpenBar, perfilImg, setPerfilImg} = useNavBarLeft();

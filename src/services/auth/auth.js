@@ -1,22 +1,22 @@
-import { getCurrentUser } from "../../utilites/helpers/helpers";
+import { getCurrentUser } from "../../utils/helpers/helpers";
 import { Navigate, Outlet } from "react-router-dom";
 
 const AuthRequiredRoutes = ({ required }) => {
-    const user = getCurrentUser();
-
-    return (
-        required.includes(user.type) &&
-        user.id ? <Outlet />
-        : user.type === "client" ? <Navigate to="/"/>
-        : user.type === "store" ? <Navigate to="/gerenciar"/>
-        : <Navigate to="/login"/>
-    );
+  const user = getCurrentUser();
+  const navigateUserType = {
+    client: <Navigate to="/" />,
+    store: <Navigate to="/gerenciar" />,
+  };
+  if (required.includes(user.type) && user.id) {
+    return <Outlet />;
+  }
+  return navigateUserType[user.type] ?? <Navigate to="/login" />;
 };
 
 export default AuthRequiredRoutes;
 
 // import { useEffect } from "react";
-// import { getCurrentUser } from "../../utilites/helpers/helpers";
+// import { getCurrentUser } from "../../utils/helpers/helpers";
 // import { Navigate, Outlet } from "react-router-dom";
 // import { db } from "../../config/api/firebaseConfig";
 

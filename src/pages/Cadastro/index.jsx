@@ -1,6 +1,6 @@
 import css from "./styles.module.css";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../utilites/img/delivery-logo.png"
+import Logo from "../../utils/img/delivery-logo.png";
 
 const Cadastro = () => {
     const navigate = useNavigate();

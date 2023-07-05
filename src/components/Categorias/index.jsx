@@ -1,5 +1,5 @@
 import css from "./styled.module.css";
-import Hamb from "../../utilites/img/hamburguer.jpg"
+import Hamb from "../../utils/img/hamburguer.jpg";
 
 const CategoriasCards = () => {
 

@@ -1,5 +1,5 @@
 import css from "./storeCard.module.css";
-import AnonimoImg from "../../../../utilites/img/anonimo.png";
+import AnonimoImg from "../../../../utils/img/anonimo.png";
 import { useNavigate } from "react-router-dom";
 
 const StoreCard = ({store}) => {

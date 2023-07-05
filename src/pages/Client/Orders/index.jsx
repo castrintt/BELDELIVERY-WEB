@@ -4,7 +4,7 @@ import NavBarLeft from "../../../components/NavBarCliente/NavBarLeft/NavBarLeftC
 import TableResponsive from "./TableResponsive/TableResponsive";
 import Table from "./Table/Table";
 import css from "./styled.module.css";
-import { getCurrentUser } from "../../../utilites/helpers/helpers";
+import { getCurrentUser } from "../../../utils/helpers/helpers";
 import { db } from "../../../config/api/firebaseConfig";
 import Loading from "../../../components/Loading";
 
